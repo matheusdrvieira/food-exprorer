@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+transition: 500ms;
 width: 100%;
 height: 120px;
 
@@ -63,11 +64,23 @@ img{
     }
 
     img{
+        width: 600px;
+        height: 350px;
+        margin-top: -91px;
+        margin-left: -48px;
+        transition: 500ms;
+    }
+}
+
+@media (min-width: 1100px) {
+    img{
         width: 632px;
         height: 406px;
 
         margin-top: -146px;
         margin-left: -55px;
+        transition: 500ms;
     }
+
 }
 `;

@@ -8,6 +8,7 @@ import { RiFileListLine } from "react-icons/ri";
 import { BsList } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { WINDOW_MOBILE_WIDTH } from "../../utils/constants"
+import { ButtonSvg } from "../ButtonSvg";
 
 export function Header() {
     const [isMobile, setIsMobile] = useState([
@@ -39,7 +40,7 @@ export function Header() {
                     :
 
                     <LogoTextMobile>
-                        <Button id="buttonSvg" icon={BsList} />
+                        <ButtonSvg id="buttonSvg" icon={BsList} />
                         <img src={titleBg} alt="logo" />
                         <h1>food_Explorer</h1>
                     </LogoTextMobile >
@@ -52,13 +53,18 @@ export function Header() {
 
             {
                 isMobile > WINDOW_MOBILE_WIDTH ?
-                    <Button id="buttonRequests" icon={RiFileListLine} title="Pedidos(0)" /> : <Button id="buttonSvg" icon={RiFileListLine} />
+                    <Button id="buttonRequests" icon={RiFileListLine} title={`Pedidos(${"0"})`} />
+                    :
+                    <button id="alou">
+                        <div id="buttonSvg"> <RiFileListLine /></div>
+                        <span>{0}</span>
+                    </button>
             }
 
             {
                 isMobile > WINDOW_MOBILE_WIDTH ?
-                    <Button id="buttonExit" icon={RxExit} /> : null
+                    <ButtonSvg id="buttonExit" icon={RxExit} /> : null
             }
-        </Container>
+        </Container >
     )
 }

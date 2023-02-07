@@ -52,7 +52,7 @@ export function Card({ data, isAdm, ...rest }) {
             <div id="Buttons-Wrapper">
                 <div id="input-Wrapper">
                     <ButtonSvg id="ButtonSvg" icon={FiMinus} />
-                    <Input id="inputNumber" type="number" value="01" />
+                    <Input id="inputNumber" type="number" defaultValue={"01"} />
                     <ButtonSvg id="ButtonSvg" icon={FiPlus} />
                 </div>
 

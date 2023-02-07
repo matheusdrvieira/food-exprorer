@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const Container = styled.div`
    width:210px;
-   height:292px;
    
    display: flex;
    flex-direction: column;
    align-items: center;
    text-align: center;
+   flex: none;
   
    border-radius:8px;
    padding:24px;
@@ -21,15 +21,12 @@ export const Container = styled.div`
        height: 0;
        display: flex;
        justify-content: flex-end;
-       margin-top:-16px;
    }
 
     img{
         width: 88px;
         height: 88px;
         border-radius: 50%;
-
-        margin-top:20px;
         margin-bottom:12px;
     }
 
@@ -52,14 +49,13 @@ export const Container = styled.div`
                     width: 50px;
                     height: 32px;
                     background:none; 
-                    
+                    color: white;
+                    text-align: center;
+                 
                     input[type="number"]::-webkit-outer-spin-button,
                     input[type="number"]::-webkit-inner-spin-button {
                         -webkit-appearance: none;
                         margin: 0;
-                    }
-                    input[type="number"] {
-                        -moz-appearance: textfield;
                     }
                 }
                 button{

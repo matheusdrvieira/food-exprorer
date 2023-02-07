@@ -25,15 +25,46 @@ export const Container = styled.header`
         }
     }
 
-    #buttonSvg{
-        background:transparent;
-        margin:0;
-        margin-right:10px;
-        width: 2.2rem;
+    #alou{
+        display: flex;
+        border: none;
+        background: transparent;
+        margin-left: -15px;
+        
+        span{
+            width: 20px;
+            height: 20px;
+
+            position: relative;
+
+            right: 15px;
+            bottom: 8px;
+
+            border-radius: 50%;
+
+            font-family: 'Poppins';
+            font-size: 14px;
+            
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color:${({ theme }) => theme.COLORS.WHITE} ;
+            background-color: ${({ theme }) => theme.COLORS.BACKGROUND_BUTTON};
+        }
+        #buttonSvg{
+            margin-right:10px;
+            width: 2.2rem;
+
+            svg{
+                font-size: 30px;
+                color:${({ theme }) => theme.COLORS.WHITE} ;
+            }
+        }
     }
 
     #buttonExit{
-        background:transparent;
         margin:0;
         width:3.2rem;
     }
