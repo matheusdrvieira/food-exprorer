@@ -83,7 +83,7 @@ export const Container = styled.div`
         color:${({ theme }) => theme.COLORS.WHITE};
       }
 
-    @media (min-width: 686px) {
+    @media (min-width: 1000px) {
         width:304px;
         height:462px;
 

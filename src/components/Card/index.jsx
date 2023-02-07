@@ -26,7 +26,7 @@ export function Card({ data, isAdm, ...rest }) {
     return (
         < Container {...rest}>
             {
-                isAdm = 0 ?
+                isAdm = 1 ?
                     <div id="favoriteAdd"><ButtonSvg icon={FiHeart} /></div>
 
                     :
