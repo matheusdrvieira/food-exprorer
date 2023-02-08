@@ -1,8 +1,8 @@
-import { Container } from "./style"
-import { Header } from "../../components/Header"
-import { CardDetails } from "../../components/CardDetails"
-import { ButtonText } from "../../components/ButtonText"
-import { RiArrowLeftSLine } from "react-icons/ri"
+import { Container } from "./style";
+import { Header } from "../../components/Header";
+import { CardDetails } from "../../components/CardDetails";
+import { ButtonText } from "../../components/ButtonText";
+import { RiArrowLeftSLine } from "react-icons/ri";
 
 export function Details() {
     return (

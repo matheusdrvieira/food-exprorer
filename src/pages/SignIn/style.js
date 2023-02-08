@@ -22,13 +22,13 @@ export const Container = styled.div`
         }
     }
 
-    @media (min-width: 740px) {
-        justify-content: space-around;
-        flex-direction:row;
+@media (min-width: 740px) {
+    justify-content: space-around;
+    flex-direction:row;
         
-        gap:0;
+    gap:0;
 
-        #title{
+    #title{
         padding:0 1rem;
         gap: 2rem;
 
@@ -37,8 +37,7 @@ export const Container = styled.div`
             height:4.3rem;
         }
     }
-    }
-`;
+}`;
 
 export const Form = styled.form`
     display:flex;
@@ -78,8 +77,8 @@ export const Form = styled.form`
         }
     }
 
-    @media (min-width: 740px) {
-        justify-content: center;
-        background:${({ theme }) => theme.COLORS.BACKGROUND_002};
-    }
-    `;
+@media (min-width: 740px) {
+    justify-content: center;
+
+    background:${({ theme }) => theme.COLORS.BACKGROUND_002};
+}`;

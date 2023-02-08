@@ -1,9 +1,9 @@
-import { Container } from "./style"
-import { Header } from "../../components/Header"
-import { Card } from "../../components/Card"
-import { Banner } from "../../components/Banner"
-import { ButtonSvg } from "../../components/ButtonSvg"
-import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from "react-icons/ai"
+import { Container } from "./style";
+import { Header } from "../../components/Header";
+import { Card } from "../../components/Card";
+import { Banner } from "../../components/Banner";
+import { ButtonSvg } from "../../components/ButtonSvg";
+import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from "react-icons/ai";
 import { useRef } from 'react';
 
 export function Home() {
@@ -22,18 +22,16 @@ export function Home() {
     };
     return (
         <Container>
-
             <Header />
 
             <main>
                 <Banner />
-
                 <section>
-
                     <h1>Refeições</h1>
 
                     <div id="buttonsCarousel">
                         <ButtonSvg id="buttonSvg" icon={AiOutlineDoubleLeft} onClick={handleLeftClick} />
+
                         <div id="carousel" ref={carousel}>
                             <Card data={{
                                 nameProduct: "Salada Ravanello",

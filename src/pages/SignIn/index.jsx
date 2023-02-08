@@ -1,11 +1,11 @@
-import { Container, Form } from "./style"
+import { Container, Form } from "./style";
 import titleBg from "../../assets/Polygon.png";
 import { FiMail, FiLock } from "react-icons/fi";
-import { Input } from "../../components/Input"
-import { Button } from "../../components/Button"
-import { ButtonText } from "../../components/ButtonText"
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
+import { ButtonText } from "../../components/ButtonText";
 import { useEffect, useState } from "react";
-import { WINDOW_MOBILE_SIGN } from "../../utils/constants"
+import { WINDOW_MOBILE_SIGN } from "../../utils/constants";
 
 export function SignIn() {
     const [isMobile, setIsMobile] = useState([
@@ -33,11 +33,7 @@ export function SignIn() {
             <Form>
                 {
                     isMobile > WINDOW_MOBILE_SIGN ?
-                        <div>
-                            <h2>Faça login</h2>
-                        </div>
-                        :
-                        null
+                        <div><h2>Faça login</h2></div> : null
                 }
 
                 <label htmlFor="email">Email</label>
