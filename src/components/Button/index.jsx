@@ -1,13 +1,14 @@
 import { Container } from "./style";
 
-export function Button({ title, icon: Icon, ...rest }) {
+export function Button({ title, price, icon: Icon, ...rest }) {
     return (
         < Container
             type="button"
             {...rest}
         >
+            {Icon && <Icon />}
             {title}
-            {Icon && <Icon size={22} />}
+            {price}
         </Container >
     )
 }

@@ -18,8 +18,6 @@ export const Container = styled.header`
         margin:0;
         padding: 0 4.6rem;
 
-        flex-direction: row-reverse;
-
         svg{
             margin-right:1.0rem;
         }

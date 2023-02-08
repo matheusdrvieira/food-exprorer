@@ -10,8 +10,6 @@ export const Container = styled.button`
     
     border-radius:1.0rem;
     border:none;
-    
-    margin-top:1.5rem;
 
     font-family: 'Poppins';
     font-size: 1.4rem;

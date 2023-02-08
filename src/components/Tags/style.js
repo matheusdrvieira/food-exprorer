@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const Container = styled.span`
-   font-size:12px;
-   border-radius:10px;
+   font-family: 'Poppins';
+   font-weight: 500;
+   font-size: 14px;
+   line-height: 24px;
+
+   border-radius:5px;
    
-   padding:5px 14px;
-   margin-right:8px;
+   padding:4px 8px;
    
    color:${({ theme }) => theme.COLORS.WHITE};
-   background-color:${({ theme }) => theme.COLORS.BACKGROUND_700};
+   background-color:${({ theme }) => theme.COLORS.BACKGROUND_TAG};
 `;

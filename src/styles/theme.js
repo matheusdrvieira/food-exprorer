@@ -6,6 +6,7 @@ export default {
         BACKGROUND_BUTTON: "#750310",
         BACKGROUND_HEADER: "#00111A",
         BACKGROUND_CARD: "#00070A",
+        BACKGROUND_TAG: "#192227",
 
         COLOR_PRICE: "#82F3FF",
 
