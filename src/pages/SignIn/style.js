@@ -15,36 +15,36 @@ export const Container = styled.div`
         display: flex;
         justify-content: center;
 
-        gap: 10px;
+        gap: 1.0rem;
 
         >img{
-            width:43px;
-            height:43px;
+            width:4.3rem;
+            height:4.3rem;
         }
 
         >h1{ 
             font-family: 'Roboto';
             font-style: normal;
             font-weight: 700;
-            font-size: 37.2431px;
-            line-height: 44px;
+            font-size: 3.7rem;
+            line-height: 4.4rem;
 
-            margin-bottom: 73px;
+            margin-bottom: 7.3rem;
         }
     }
  
     >form{
-        width: 330px;
+        width: 33.0rem;
         height: 416px;
 
-        padding: 12px 14px;
+        padding: 1.2rem 1.4rem;
 
         >label{
             color:${({ theme }) => theme.COLORS.GRAY};
         }
 
         >div{
-            margin: 8px 0 32px;
+            margin: 8px 0 3.2rem;
         }
             
         >#buttonText{
@@ -52,12 +52,12 @@ export const Container = styled.div`
             display: flex;
             justify-content: center;
 
-            margin-top: 32px;
+            margin-top: 3.2rem;
 
             font-family: 'Poppins';
             font-weight: 500;
-            font-size: 14px;
-            line-height: 24px;
+            font-size: 1.4rem;
+            line-height: 2.4rem;
         }
     }
 
@@ -66,33 +66,35 @@ export const Container = styled.div`
     flex-direction: row;
     
     justify-content: space-around;
-    padding: 0 108px;
+
+    gap: 2.0rem;
+    padding: 0 10.8rem;
 
     >#title{
         
-        width: 300px;
+        width: 32.0rem;
 
         >img{
-            width: 49.43px;
-            height: 47.5px;
+            width: 4.9rem;
+            height: 4.7rem;
         }
 
         >h1{ 
             font-family: 'Roboto';
             font-style: normal;
             font-weight: 700;
-            font-size: 42px;
-            line-height: 49px;
+            font-size: 4.2rem;
+            line-height: 4.9rem;
         }
     }
  
     >form{
-        width: 476px;
-        height: 540px;
+        width: 47.6rem;
+        height: 54.0rem;
 
-        padding: 64px;
+        padding: 6.4rem;
 
-        border-radius: 10px;
+        border-radius: 1.0rem;
            
         background:${({ theme }) => theme.COLORS.BACKGROUND_002};
            
@@ -103,11 +105,11 @@ export const Container = styled.div`
             display: flex;
             justify-content: center;
 
-            margin-bottom: 32px;
+            margin-bottom: 3.2rem;
 
             font-family: 'Poppins';
             font-weight: 500;
-            font-size: 32px;
+            font-size: 3.2rem;
             line-height: 100%;
         }
 
