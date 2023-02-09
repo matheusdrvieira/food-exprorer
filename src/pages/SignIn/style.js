@@ -1,93 +1,118 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    height:100vh;
+    width: 100%;
+    height: 100vh;
 
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items:center;
-    
-    padding: 0 4.7rem;
-    gap:7.3rem;
-    
-    >#title{
-        display:flex;
-        align-items:center;
-        gap: 1rem;
-
-        h1{
-            font-family: 'Roboto';
-            font-weight: 700;
-            font-size: 30px;
-            line-height: 44px; 
-        }
-
-        >img{
-            width:4.3rem;
-            height:4.3rem;
-        }
-    }
-
-@media (min-width: 1000px) {
-    flex-direction: row;
-    justify-content: space-between;
-
-    padding: 0 10.8rem;
-    
-    >#title{
-        h1{
-            font-weight: 700;
-            font-size: 42px;
-            line-height: 49px; 
-        }
-    }
-}`;
-
-export const Form = styled.form`
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    #buttonText{
-        justify-content: center;
-        margin-top: 3.2rem;
-    }
-
-    >div{
-            margin: 8px 0 3.2rem;
-    }
-
-    label{
-        font-family: 'Roboto';
-        font-size: 16px;
-        color:${({ theme }) => theme.COLORS.GRAY};
-    }
-
-@media (min-width: 1000px) {
-    width:476px;
-    height: 540px;
-    padding:64px ;
-
-    border-radius: 8px;
-
-    
-
-    background-color:${({ theme }) => theme.COLORS.BACKGROUND_002};
-
-    h2{ 
+    >#title{
         width: 100%;
-        
+
         display: flex;
         justify-content: center;
 
-        font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 32px;
+        gap: 10px;
+
+        >img{
+            width:43px;
+            height:43px;
+        }
+
+        >h1{ 
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 37.2431px;
+            line-height: 44px;
+
+            margin-bottom: 73px;
+        }
+    }
+ 
+    >form{
+        width: 330px;
+        height: 416px;
+
+        padding: 12px 14px;
+
+        >label{
+            color:${({ theme }) => theme.COLORS.GRAY};
+        }
+
+        >div{
+            margin: 8px 0 32px;
+        }
+            
+        >#buttonText{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            margin-top: 32px;
+
+            font-family: 'Poppins';
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+        }
     }
 
-    >button{
-        border-radius: 5px;
-    }
+@media (min-width: 1000px) {
 
+    flex-direction: row;
+    
+    justify-content: space-around;
+    padding: 0 108px;
+
+    >#title{
+        
+        width: 300px;
+
+        >img{
+            width: 49.43px;
+            height: 47.5px;
+        }
+
+        >h1{ 
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 42px;
+            line-height: 49px;
+        }
+    }
+ 
+    >form{
+        width: 476px;
+        height: 540px;
+
+        padding: 64px;
+
+        border-radius: 10px;
+           
+        background:${({ theme }) => theme.COLORS.BACKGROUND_002};
+           
+
+        >h2{
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+
+            margin-bottom: 32px;
+
+            font-family: 'Poppins';
+            font-weight: 500;
+            font-size: 32px;
+            line-height: 100%;
+        }
+
+        >button{
+            border-radius: 5px;
+        }
+    }
 }`;

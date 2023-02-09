@@ -1,4 +1,4 @@
-import { Container, Form } from "./style";
+import { Container } from "./style";
 import titleBg from "../../assets/Polygon.png";
 import { FiMail, FiLock } from "react-icons/fi";
 import { Input } from "../../components/Input";
@@ -30,14 +30,14 @@ export function SignIn() {
                 <h1>food_Explorer</h1>
             </div>
 
-            <Form>
+            <form>
                 {
                     isMobile > WINDOW_MOBILE_WIDTH ?
-                        <div><h2>Faça login</h2></div> : null
+                        <h2>Faça login</h2> : null
                 }
 
                 <label htmlFor="email">Email</label>
-                <Input id="email" type="email" placeholder="Exemplo: exemplo@exemplo.com.br" icon={FiMail} />
+                <Input id="email" type="email" placeholder="exemplo@exemplo.com.br" icon={FiMail} />
 
                 <label htmlFor="password">Senha</label>
                 <Input id="password" type="password" placeholder="No mínimo 6 caracteres" icon={FiLock} />
@@ -45,8 +45,7 @@ export function SignIn() {
                 <Button title="Entrar" />
 
                 <ButtonText id="buttonText" title="Criar uma conta" />
-            </Form>
-
+            </form>
         </Container>
     )
 }

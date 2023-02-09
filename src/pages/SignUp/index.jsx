@@ -1,4 +1,4 @@
-import { Container, Form } from "./style";
+import { Container } from "./style";
 import titleBg from "../../assets/Polygon.png";
 import { FiMail, FiUser, FiLock } from "react-icons/fi";
 import { Input } from "../../components/Input";
@@ -31,10 +31,10 @@ export function SignUp() {
                 <h1>food_Explorer</h1>
             </div>
 
-            <Form>
+            <form>
                 {
                     isMobile > WINDOW_MOBILE_SIGN ?
-                        <div><h2>Crie sua conta</h2></div> : null
+                        <h2>Crie sua conta</h2> : null
                 }
 
                 <label htmlFor="user">Nome</label>
@@ -48,10 +48,8 @@ export function SignUp() {
 
                 <Button title="Criar conta" />
 
-                <div>
-                    <ButtonText title="Já tenho uma conta" />
-                </div>
-            </Form>
+                <ButtonText id="buttonText" title="Já tenho uma conta" />
+            </form>
         </Container>
     )
 }

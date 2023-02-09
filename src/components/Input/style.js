@@ -18,6 +18,14 @@ export const Container = styled.div`
         border:0;
         background:transparent;
         color: ${({ theme }) => theme.COLORS.WHITE};
+
+        &::placeholder{
+            font-family: 'Roboto';
+            
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 100%;
+        }
     }
     >svg{
         margin-left:1.6rem;
