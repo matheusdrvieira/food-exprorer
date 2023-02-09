@@ -5,7 +5,7 @@ import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { ButtonText } from "../../components/ButtonText";
 import { useEffect, useState } from "react";
-import { WINDOW_MOBILE_SIGN } from "../../utils/constants";
+import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
 
 export function SignIn() {
     const [isMobile, setIsMobile] = useState([
@@ -32,7 +32,7 @@ export function SignIn() {
 
             <Form>
                 {
-                    isMobile > WINDOW_MOBILE_SIGN ?
+                    isMobile > WINDOW_MOBILE_WIDTH ?
                         <div><h2>Faça login</h2></div> : null
                 }
 
@@ -42,12 +42,11 @@ export function SignIn() {
                 <label htmlFor="password">Senha</label>
                 <Input id="password" type="password" placeholder="No mínimo 6 caracteres" icon={FiLock} />
 
-                <Button title="Criar conta" />
+                <Button title="Entrar" />
 
-                <div>
-                    <ButtonText title="Criar uma conta" />
-                </div>
+                <ButtonText id="buttonText" title="Criar uma conta" />
             </Form>
+
         </Container>
     )
 }

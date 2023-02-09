@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Container = styled.span`
    font-family: 'Poppins';
    font-weight: 500;
-   font-size: 14px;
-   line-height: 24px;
+   font-size: 1.4rem;
+   line-height: 2.4rem;
 
    border-radius:5px;
    

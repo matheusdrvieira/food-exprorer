@@ -15,12 +15,12 @@ export const Container = styled.div`
     
     background:${({ theme }) => theme.COLORS.BACKGROUND_HEADER};
 
-    div{
+    >div{
         display: flex;
         flex-direction: column;
         justify-content: center;
 
-        h1{
+        >h1{
             font-family: 'Poppins';
             font-size: 1.8rem;
             line-height: 100%;
@@ -28,14 +28,14 @@ export const Container = styled.div`
             margin-bottom: 1.0rem;
         }
 
-        p{
+        >p{
             font-family: 'Poppins';
             font-size: 1.2rem;
             line-height: 100%;
         }
     }
 
-    img{
+    >img{
         width: 19.1rem;
         height: 14.9rem;
 
@@ -50,10 +50,10 @@ export const Container = styled.div`
 
     border-radius: 8px;
 
-    div{
+    >div{
         padding: 0 8px;
 
-        h1{
+        >h1{
             font-weight: 500;
             font-size: 4.0rem;
             line-height: 100%;
@@ -61,14 +61,14 @@ export const Container = styled.div`
             margin-bottom: 2.0rem;
         }
 
-        p{
+        >p{
             font-weight: 400;
             font-size: 1.6rem;
             line-height: 100%;
         }
     }
 
-    img{
+    >img{
         width: 50.0rem;
         height: 35.0rem;
 
@@ -80,13 +80,13 @@ export const Container = styled.div`
 }
 
 @media (min-width: 1100px) {
-    img{
+    >img{
         width: 63.2rem;
         height: 40.6rem;
 
         margin-top: -14.6rem;
         margin-left: -5.5rem;
-        
+
         transition: 500ms;
     }
 }`;

@@ -10,14 +10,14 @@ export const Container = styled.div`
    flex: none;
   
    border-radius:8px;
+   border: 1px solid ${({ theme }) => theme.COLORS.BORDER_CARD};
 
    padding:2.4rem;
-   margin-bottom:1.6rem;
    
    color:${({ theme }) => theme.COLORS.WHITE};
    background-color:${({ theme }) => theme.COLORS.BACKGROUND_CARD};
      
-   #favoriteAdd{
+   >#favoriteAdd{
        width: 100%;
        height: 0;
 
@@ -25,22 +25,22 @@ export const Container = styled.div`
        justify-content: flex-end;
    }
 
-    img{
+   >img{
         width: 8.8rem;
         height: 8.8rem;
 
         border-radius: 50%;
-
+        
         margin-bottom:1.2rem;
     }
 
-   span{
+    >span{
         margin-bottom:1.2rem;
 
         color:${({ theme }) => theme.COLORS.COLOR_PRICE};
    }
 
-   #Buttons-Wrapper{
+   >#Buttons-Wrapper{
         width: 100%;
 
         display: flex;
@@ -49,7 +49,7 @@ export const Container = styled.div`
 
         gap: 1.4rem;
 
-        #input-Wrapper{
+        >#input-Wrapper{
             display: flex;
             align-items:center;
             
@@ -60,15 +60,15 @@ export const Container = styled.div`
                 background:none; 
                 text-align: center;
                  
-                input[type="number"]::-webkit-outer-spin-button,
-                input[type="number"]::-webkit-inner-spin-button {
+                >input[type="number"]::-webkit-outer-spin-button,
+                >input[type="number"]::-webkit-inner-spin-button {
                     -webkit-appearance: none;
                     margin: 0;
                 }
             }
         }
         
-        #buttonAdd{      
+        >#buttonAdd{      
            height:3.2rem;
         }
     }
@@ -86,16 +86,15 @@ export const Container = styled.div`
 
 @media (min-width: 1000px) {
     width:30.4rem;
-    height:46.2rem;
 
-    img{
+    >img{
         width: 17.6rem;
         height: 17.6rem;
 
         margin-bottom: 1.5rem;
     }
 
-    h1{  
+    >h1{  
         font-weight: 700;
         font-size: 2.4rem;
         line-height: 100%;
@@ -103,7 +102,15 @@ export const Container = styled.div`
         margin-bottom:1.5rem;
     }
 
-    span{
+    p{
+        font-family: 'Roboto';
+        font-size: 1.4rem;
+        line-height: 160%;
+
+        text-align: center;
+    }
+
+    >span{
         font-size: 3.2rem;
         line-height: 100%;
 
@@ -111,7 +118,7 @@ export const Container = styled.div`
         margin-bottom: 1.5rem;
     }
 
-    #Buttons-Wrapper{
+    >#Buttons-Wrapper{
         width: 100%;
 
         display: flex;
@@ -120,7 +127,7 @@ export const Container = styled.div`
 
         gap: 1.6rem;
 
-        #input-Wrapper{
+        >#input-Wrapper{
             height: 4.8rem;
 
             >div{
@@ -128,7 +135,7 @@ export const Container = styled.div`
                 height: 3.2rem; 
             }
         }
-        #buttonAdd{      
+        >#buttonAdd{      
             height:4.8rem;
 
             border-radius: 5px;

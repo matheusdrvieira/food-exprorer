@@ -8,7 +8,7 @@ export const Container = styled.button`
     border: none;
     background:none;
 
-    svg{
+    >svg{
         color: ${({ theme }) => theme.COLORS.WHITE};
     }
 `;

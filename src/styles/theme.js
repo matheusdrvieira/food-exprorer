@@ -9,6 +9,7 @@ export default {
         BACKGROUND_TAG: "#192227",
 
         COLOR_PRICE: "#82F3FF",
+        BORDER_CARD: "#000204",
 
 
         WHITE: "#FFFFFF",

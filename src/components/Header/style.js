@@ -20,23 +20,23 @@ export const LogoTextDesktop = styled.div`
     
     color: ${({ theme }) => theme.COLORS.WHITE};
 
-    div{
+    >div{
         display: flex;
         gap: 1.0rem;
 
-        h1{
+        >h1{
             font-family: 'Roboto';
             font-weight: 700;
             font-size: 2.4rem;
         }
     
-        img{ 
+        >img{ 
             width:3.0rem;
             height:3.0rem;
         }
     }
 
-    button{
+    >button{
         width: 21.6rem;
         
         gap: 8px;
@@ -44,7 +44,7 @@ export const LogoTextDesktop = styled.div`
 
         border-radius: 5px;
 
-        svg{
+        >svg{
             font-size: 2.4rem;
         }
     }
@@ -60,26 +60,26 @@ export const LogoTextMobile = styled.div`
 
     color: ${({ theme }) => theme.COLORS.WHITE};
 
-    div{
+    >div{
         display: flex;
         gap: 8px;
 
-        img{ 
+        >img{ 
             width:2.4rem;
             height:2.4rem;
         }
 
-        h1{
+        >h1{
             font-family: 'Roboto';
             font-weight: 700;
             font-size: 2.1rem;
         }
     }
 
-    #buttonList{
+    >#buttonList{
         display: flex;
         
-        span{
+        >span{
             width: 2.0rem;
             height: 2.0rem;
 

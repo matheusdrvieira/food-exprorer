@@ -12,12 +12,12 @@ export const Container = styled.div`
     gap: 5rem;
     
     
-    #title{
+    >#title{
         display:flex;
         align-items:center;
         gap: 1rem;
 
-        img{
+        >img{
             width:4.3rem;
             height:4.3rem;
         }
@@ -29,11 +29,11 @@ export const Container = styled.div`
 
     gap: 0;
 
-    #title{
+    >#title{
     padding:0 1rem;
     gap: 2rem;
 
-        img{
+        >img{
             width:4.3rem;
             height:4.3rem;
         }
@@ -50,7 +50,7 @@ export const Form = styled.form`
 
     border-radius: 1.6rem;
     
-    label{
+    >label{
         margin-top:3.2rem;
         margin-bottom:8px;
         
@@ -59,11 +59,11 @@ export const Form = styled.form`
         color:${({ theme }) => theme.COLORS.GRAY};
     }
 
-    button{
+    >button{
         margin-top:3.2rem;
     }
 
-    div{
+    >div{
         width:100%;
         display:flex;
         justify-content: center;

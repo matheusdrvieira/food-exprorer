@@ -13,13 +13,13 @@ export const Container = styled.div`
    
    color:${({ theme }) => theme.COLORS.WHITE};
 
-    img{
+   >img{
         width: 26.4rem;
         height: 26.4rem;
         border-radius: 50%;
         margin-bottom:1.2rem;
     }
-    #box{
+    >#box{
         >h1{
             margin-bottom:1.2rem;
     
@@ -31,7 +31,7 @@ export const Container = styled.div`
             color:${({ theme }) => theme.COLORS.WHITE};
         }
     
-        p{
+        >p{
             font-family: 'Poppins';
             font-size: 1.6rem;
             line-height: 140%;
@@ -41,7 +41,7 @@ export const Container = styled.div`
             color:${({ theme }) => theme.COLORS.SVG};
         }
     
-        #tags{
+        >#tags{
             margin-bottom:4.8rem;
             width: 100%;
             display:flex;
@@ -50,18 +50,18 @@ export const Container = styled.div`
             gap: 8px;
         }
     
-        h4{
+        >h4{
         color:${({ theme }) => theme.COLORS.COLOR_PRICE};
         margin-bottom:1.2rem;
         }
     
-        #Buttons-Wrapper{
+        >#Buttons-Wrapper{
         width: 100%;
         display: flex;
         align-items: center;
         gap: 1.6rem;
     
-            #input-Wrapper{
+            >#input-Wrapper{
                 display: flex;
                 align-items:center;
                 
@@ -72,8 +72,8 @@ export const Container = styled.div`
                     color: white;
                     text-align: center;
                     
-                    input[type="number"]::-webkit-outer-spin-button,
-                    input[type="number"]::-webkit-inner-spin-button {
+                    >input[type="number"]::-webkit-outer-spin-button,
+                    >input[type="number"]::-webkit-inner-spin-button {
                         -webkit-appearance: none;
                         margin: 0;
                     }
@@ -101,11 +101,11 @@ export const Container = styled.div`
     flex-direction: row;
     gap: 4.0rem;
 
-    img{
+    >img{
         width: 39.0rem;
         height: 38.9rem;
     }
-    #box{
+    >#box{
         text-align: left;
 
         >h1{  
@@ -115,25 +115,25 @@ export const Container = styled.div`
             margin-bottom: 2.4rem;
         }
 
-        p{
+        >p{
             font-weight: 400;
             font-size: 2.4rem;
     
             margin-bottom: 2.8rem;
         }
-        #tags{
+        >#tags{
             justify-content: flex-start;
             gap: 1.2rem;
         }
 
-        #Buttons-Wrapper{
+        >#Buttons-Wrapper{
             width: 100%;
             display: flex;
             flex-direction: row;
             align-items: center;
             gap: 1.6rem;
 
-            #input-Wrapper{
+            >#input-Wrapper{
                 height: 4.8rem;
 
                 >div{

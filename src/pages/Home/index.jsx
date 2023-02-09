@@ -70,6 +70,96 @@ export function Home() {
                         <ButtonSvg id="buttonSvg" icon={AiOutlineDoubleRight} onClick={handleRightClick} />
                     </div>
                 </section>
+
+                <section>
+                    <h1>Sobremesas</h1>
+
+                    <div id="buttonsCarousel">
+                        <ButtonSvg id="buttonSvg" icon={AiOutlineDoubleLeft} onClick={handleLeftClick} />
+
+                        <div id="carousel">
+                            <Card data={{
+                                nameProduct: "Salada Ravanello",
+                                description: "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+                                price: "49,97",
+                            }} />
+
+                            <Card data={{
+                                nameProduct: "Salada Ravanello",
+                                description: "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+                                price: "49,97",
+                            }} />
+
+                            <Card data={{
+                                nameProduct: "Salada Ravanello",
+                                description: "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+                                price: "49,97",
+                            }} />
+
+                            <Card data={{
+                                nameProduct: "Salada Ravanello",
+                                description: "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+                                price: "49,97",
+                            }} />
+                            <Card data={{
+                                nameProduct: "Salada Ravanello",
+                                description: "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+                                price: "49,97",
+                            }} />
+                            <Card data={{
+                                nameProduct: "Salada Ravanello",
+                                description: "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+                                price: "49,97",
+                            }} />
+                        </div>
+                        <ButtonSvg id="buttonSvg" icon={AiOutlineDoubleRight} onClick={handleRightClick} />
+                    </div>
+                </section>
+
+                <section>
+                    <h1>Bebidas</h1>
+
+                    <div id="buttonsCarousel">
+                        <ButtonSvg id="buttonSvg" icon={AiOutlineDoubleLeft} onClick={handleLeftClick} />
+
+                        <div id="carousel">
+                            <Card data={{
+                                nameProduct: "Salada Ravanello",
+                                description: "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+                                price: "49,97",
+                            }} />
+
+                            <Card data={{
+                                nameProduct: "Salada Ravanello",
+                                description: "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+                                price: "49,97",
+                            }} />
+
+                            <Card data={{
+                                nameProduct: "Salada Ravanello",
+                                description: "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+                                price: "49,97",
+                            }} />
+
+                            <Card data={{
+                                nameProduct: "Salada Ravanello",
+                                description: "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+                                price: "49,97",
+                            }} />
+                            <Card data={{
+                                nameProduct: "Salada Ravanello",
+                                description: "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+                                price: "49,97",
+                            }} />
+                            <Card data={{
+                                nameProduct: "Salada Ravanello",
+                                description: "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+                                price: "49,97",
+                            }} />
+                        </div>
+                        <ButtonSvg id="buttonSvg" icon={AiOutlineDoubleRight} onClick={handleRightClick} />
+                    </div>
+                </section>
             </main>
         </Container>
 
