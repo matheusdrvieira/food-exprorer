@@ -7,6 +7,8 @@ export const Container = styled.div`
         padding: 0 3.6rem;
 
         section{
+            margin-bottom: 1.0rem;
+
             h1{
                 margin-bottom: 2.4rem;
             }
@@ -14,7 +16,8 @@ export const Container = styled.div`
             #buttonsCarousel{
                 display: flex;
                 align-items: center;
-                margin-bottom: 1.0rem;
+
+                gap: 5px;
 
                 #carousel{
                     width: 100%;
@@ -22,7 +25,6 @@ export const Container = styled.div`
                     overflow-x: auto;
                     scroll-behavior: smooth;
                     gap: 1.6rem; 
-                    padding:0 5px;
                 }
                 #carousel::-webkit-scrollbar{
                     display: none;

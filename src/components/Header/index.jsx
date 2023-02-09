@@ -29,41 +29,32 @@ export function Header() {
 
     return (
         <Container>
-
             {
                 isMobile > WINDOW_MOBILE_WIDTH ?
                     <LogoTextDesktop>
-                        <img src={titleBg} alt="logo" />
-                        <h1>food_Explorer</h1>
+                        <div>
+                            <img src={titleBg} alt="logo" />
+                            <h1>food_Explorer</h1>
+                        </div>
+                        <Input type="text" placeholder="Busque por pratos ou ingredientes" icon={FiSearch} />
+                        <Button icon={RiFileListLine} title={`Pedidos(${"0"})`} />
+                        <ButtonSvg id="buttonExit" icon={RxExit} />
                     </LogoTextDesktop>
 
                     :
 
                     <LogoTextMobile>
-                        <ButtonSvg id="buttonSvg" icon={BsList} />
-                        <img src={titleBg} alt="logo" />
-                        <h1>food_Explorer</h1>
+                        <ButtonSvg icon={BsList} />
+                        <div>
+                            <img src={titleBg} alt="logo" />
+                            <h1>food_Explorer</h1>
+                        </div>
+
+                        <div id="buttonList">
+                            <ButtonSvg icon={RiFileListLine} />
+                            <span>{0}</span>
+                        </div>
                     </LogoTextMobile >
-            }
-
-            {
-                isMobile > WINDOW_MOBILE_WIDTH ?
-                    <Input id="user" type="text" placeholder="Busque por pratos ou ingredientes" icon={FiSearch} /> : null
-            }
-
-            {
-                isMobile > WINDOW_MOBILE_WIDTH ?
-                    <Button id="buttonRequests" icon={RiFileListLine} title={`Pedidos(${"0"})`} />
-                    :
-                    <button id="alou">
-                        <div id="buttonSvg"> <RiFileListLine /></div>
-                        <span>{0}</span>
-                    </button>
-            }
-
-            {
-                isMobile > WINDOW_MOBILE_WIDTH ?
-                    <ButtonSvg id="buttonExit" icon={RxExit} /> : null
             }
         </Container >
     )

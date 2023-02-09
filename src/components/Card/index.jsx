@@ -1,11 +1,11 @@
 import { Container } from "./style";
-import { ButtonSvg } from "../ButtonSvg"
-import { Button } from "../Button"
-import Image2 from "../../assets/image2.png"
+import { ButtonSvg } from "../ButtonSvg";
+import { Button } from "../Button";
+import Image2 from "../../assets/image2.png";
 import { Input } from "../Input";
-import { FiMinus, FiPlus, FiHeart, FiEdit2 } from "react-icons/fi"
+import { FiMinus, FiPlus, FiHeart, FiEdit } from "react-icons/fi";
 import { useEffect, useState } from "react";
-import { WINDOW_MOBILE_DESCRIPTION } from "../../utils/constants"
+import { WINDOW_MOBILE_DESCRIPTION } from "../../utils/constants";
 
 export function Card({ data, isAdm, ...rest }) {
     const [isMobile, setIsMobile] = useState([
@@ -28,13 +28,11 @@ export function Card({ data, isAdm, ...rest }) {
             {
                 isAdm = 1 ?
                     <div id="favoriteAdd"><ButtonSvg icon={FiHeart} /></div>
-
                     :
-
-                    <div id="favoriteAdd"><ButtonSvg icon={FiEdit2} /></div>
+                    <div id="favoriteAdd"><ButtonSvg icon={FiEdit} /></div>
             }
 
-            <img src={Image2} alt="Foto de um prato" />
+            <img src={Image2} alt={`Foto de um prato ${data.nameProduct}`} />
 
             <h1>{data.nameProduct}</h1>
 

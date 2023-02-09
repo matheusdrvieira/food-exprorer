@@ -5,7 +5,6 @@ import Image2 from "../../assets/image2.png";
 import { Input } from "../Input";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { Tags } from "../Tags";
-import { BsList } from "react-icons/bs";
 import { RiFileListLine } from "react-icons/ri";
 
 export function CardDetails({ data, isAdm, ...rest }) {
@@ -20,9 +19,7 @@ export function CardDetails({ data, isAdm, ...rest }) {
                 <p>{data.description ? data.description : "Nenhuma descricao disponivel"}</p>
 
                 <div id="tags">
-                    {
-                        data.tags.map(tag => <Tags key={tag.id} title={tag.name} />)
-                    }
+                    {data.tags.map(tag => <Tags key={tag.id} title={tag.name} />)}
                 </div>
 
                 <div id="Buttons-Wrapper">
@@ -33,10 +30,8 @@ export function CardDetails({ data, isAdm, ...rest }) {
                     </div>
 
                     <Button id="buttonAdd" title="Pedir" price={` R$ ${data.price}`} icon={RiFileListLine} />
-
                 </div>
             </div>
-
         </Container >
     )
 }
