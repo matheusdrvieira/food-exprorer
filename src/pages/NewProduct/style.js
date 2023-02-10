@@ -4,83 +4,83 @@ export const Container = styled.div`
     width: 100%;
     height: 100vh;
 
-    main{
+    >main{
         width: 100%;
         padding: 0 3.2rem;
         margin-top: 1rem;
-        padding-bottom: 53px;
+        padding-bottom: 5.3rem;
 
-        #buttonText{
+        >#buttonText{
             font-family: 'Poppins';
             font-size: 1.6rem;
 
             margin-bottom: 3.5rem;
             
-            svg{
+            >svg{
                 font-size: 2.4rem;
             }
         }
 
-        h1{
+        >h1{
             font-family: 'Poppins';
             font-weight: 500;
-            font-size: 32px;
+            font-size: 3.2rem;
 
             margin-bottom: 2.4rem;
 
             color: ${({ theme }) => theme.COLORS.WHITE};
         }
 
-        label{
+        >label{
                 color: ${({ theme }) => theme.COLORS.GRAY};
             }
 
-        #boxOne{
-            #inputFile{
+        >#boxOne{
+            >#inputFile{
                 width: 100%;
-                margin-bottom: 24px;
+                margin-bottom: 2.4rem;
                 
-                label{
-                    margin-top: 16px;
+                >label{
+                    margin-top: 1.6rem;
                 }
             }
 
-            #inputName{
+            >#inputName{
                 width: 100%;
-                div{
-                    margin-top: 16px;
-                    margin-bottom: 24px;
+                >div{
+                    margin-top: 1.6rem;
+                    margin-bottom: 2.4rem;
                 }
             }
 
-            #inputCategory{
+            >#inputCategory{
                 width: 100%;
                 display: flex;
                 flex-direction: column;
 
-                gap: 16px;
+                gap: 1.6rem;
 
-                #select{
+                >#select{
                     width: 100%;
-                    height: 56px;
+                    height: 5.6rem;
                         
-                    padding: 0 16px;
+                    padding: 0 1.6rem;
 
-                    margin-bottom: 24px;
+                    margin-bottom: 2.4rem;
 
-                    border-radius: 10px;
+                    border-radius: 1.0rem;
                     background:${({ theme }) => theme.COLORS.BACKGROUND_SELECT};
 
-                    select{   
+                    >select{   
                         width: 100%;
-                        height: 56px;
+                        height: 5.6rem;
         
                         border: none;
                         outline: none;
         
                         font-family: 'Roboto';
                         font-weight: 400;
-                        font-size: 14px;
+                        font-size: 1.4rem;
         
                         cursor: pointer;
         
@@ -115,19 +115,19 @@ export const Container = styled.div`
             
             background:${({ theme }) => theme.COLORS.BACKGROUND_INPUT};
             
-            svg{
+            >svg{
                 font-size: 2.4rem; 
             }
         }
         
-        #boxTwo{
-            margin-bottom:24px;
+        >#boxTwo{
+            margin-bottom:2.4rem;
 
-            #inputTag{
+            >#inputTag{
                 width: 100%;
-                margin-bottom: 32px;
+                margin-bottom: 3.2rem;
                
-                #inputBg{
+                >#inputBg{
                     width: 100%;
                     
                     display:flex;
@@ -136,29 +136,29 @@ export const Container = styled.div`
                     
                     gap: 8px;
                     padding: 8px;
-                    margin-top: 16px;
+                    margin-top: 1.6rem;
     
                     border-radius: 8px;
                     background:${({ theme }) => theme.COLORS.BACKGROUND_INPUT};
     
-                    div{
+                    >div{
                         width: 48%;
                     }
                 }
             } 
 
-            #inputPrice{
-                div{
-                    margin-top: 16px;
+            >#inputPrice{
+                >div{
+                    margin-top: 1.6rem;
                 }
             }
         }
 
-        #boxThree{
-            #inputTextArea{
-                textarea{
-                    margin-top:16px;
-                    margin-bottom: 24px;
+        >#boxThree{
+            >#inputTextArea{
+                >textarea{
+                    margin-top:1.6rem;
+                    margin-bottom: 2.4rem;
                 }
 
             }
@@ -167,61 +167,58 @@ export const Container = styled.div`
     
 @media (min-width: 1000px) {
 
-    main{
-        padding: 0 123px;
-        margin-top: 39px;
+    >main{
+        padding: 0 12.3rem;
+        margin-top: 3.9rem;
 
-        #buttonText{
-            font-size: 22px;
+        >#buttonText{
+            font-size: 2.2rem;
             font-weight: 700;
             
-            svg{
+            >svg{
                 font-size: 3.2rem;
             }
         }
 
-        h1{
+        >h1{
             margin-bottom: 3.2rem;
         }
 
-        #boxOne{
+        >#boxOne{
             width: 100%;
             display: flex;
             justify-content: space-between;
-            gap: 32px;
+            gap: 3.2rem;
             margin-bottom: 8px;
         }
 
-        #boxTwo{
+        >#boxTwo{
             width: 100%;
             
             display: flex;
             justify-content: space-between;
 
-            gap: 32px;
+            gap: 3.2rem;
 
-            #inputTag{
+            >#inputTag{
                 margin-bottom: 8px;
             }
         }
 
-        #boxThree{
+        >#boxThree{
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
 
-            #inputTextArea{
+            >#inputTextArea{
                 width: 100%;
             }
 
-            button{
-                width: 200px;
+            >button{
+                width: 20.0rem;
                 border-radius: 5px;
             }
         }
     }
-
-
-
 }`;

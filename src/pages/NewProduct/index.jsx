@@ -3,8 +3,8 @@ import { ButtonText } from "../../components/ButtonText";
 import { Input } from "../../components/Input";
 import { TagsInput } from "../../components/TagsInput";
 import { TextArea } from "../../components/TextArea";
-import { Button } from "../../components/Button"
-import { Header } from "../../components/Header"
+import { Button } from "../../components/Button";
+import { Header } from "../../components/Header";
 import { RiArrowLeftSLine, RiUpload2Fill } from "react-icons/ri";
 
 export function NewProduct() {
@@ -30,8 +30,8 @@ export function NewProduct() {
                     </div>
 
                     <div id="inputCategory">
-                        <label htmlFor="category">Categoria</label>
 
+                        <label htmlFor="category">Categoria</label>
                         <div id="select">
                             <select name="input" id="inputSelect">
                                 <option value="Refeição">Refeição</option>
@@ -40,7 +40,6 @@ export function NewProduct() {
                             </select>
                         </div>
                     </div>
-
                 </div>
 
                 <div id="boxTwo">
