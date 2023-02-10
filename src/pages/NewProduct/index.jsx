@@ -5,13 +5,12 @@ import { TagsInput } from "../../components/TagsInput";
 import { TextArea } from "../../components/TextArea";
 import { Button } from "../../components/Button"
 import { Header } from "../../components/Header"
-import { RiArrowLeftSLine, RiUpload2Fill, RiArrowDownSLine } from "react-icons/ri";
+import { RiArrowLeftSLine, RiUpload2Fill } from "react-icons/ri";
 
 export function NewProduct() {
     return (
         <Container>
             <Header />
-
             <main>
                 <ButtonText id="buttonText" title="Voltar" icon={RiArrowLeftSLine} />
 
@@ -43,7 +42,6 @@ export function NewProduct() {
                     </div>
 
                 </div>
-
 
                 <div id="boxTwo">
 

@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import { RiArrowDownSLine } from "react-icons/ri";
-
 
 export const Container = styled.div`
     width: 100%;
     height: 100vh;
 
     main{
+        width: 100%;
         padding: 0 3.2rem;
         margin-top: 1rem;
         padding-bottom: 53px;
@@ -28,17 +27,26 @@ export const Container = styled.div`
             font-size: 32px;
 
             margin-bottom: 2.4rem;
+
+            color: ${({ theme }) => theme.COLORS.WHITE};
         }
+
+        label{
+                color: ${({ theme }) => theme.COLORS.GRAY};
+            }
 
         #boxOne{
             #inputFile{
+                width: 100%;
                 margin-bottom: 24px;
+                
                 label{
                     margin-top: 16px;
                 }
             }
 
             #inputName{
+                width: 100%;
                 div{
                     margin-top: 16px;
                     margin-bottom: 24px;
@@ -46,6 +54,7 @@ export const Container = styled.div`
             }
 
             #inputCategory{
+                width: 100%;
                 display: flex;
                 flex-direction: column;
 
@@ -110,7 +119,6 @@ export const Container = styled.div`
                 font-size: 2.4rem; 
             }
         }
-
         
         #boxTwo{
             margin-bottom:24px;
@@ -120,9 +128,12 @@ export const Container = styled.div`
                 margin-bottom: 32px;
                
                 #inputBg{
-                    display: flex;
-                    flex-wrap: wrap;
-    
+                    width: 100%;
+                    
+                    display:flex;
+                    flex-wrap:wrap;
+                    justify-content: center;
+                    
                     gap: 8px;
                     padding: 8px;
                     margin-top: 16px;
@@ -133,7 +144,6 @@ export const Container = styled.div`
                     div{
                         width: 48%;
                     }
-    
                 }
             } 
 
@@ -153,5 +163,65 @@ export const Container = styled.div`
 
             }
         }
-    }      
-`;
+    }
+    
+@media (min-width: 1000px) {
+
+    main{
+        padding: 0 123px;
+        margin-top: 39px;
+
+        #buttonText{
+            font-size: 22px;
+            font-weight: 700;
+            
+            svg{
+                font-size: 3.2rem;
+            }
+        }
+
+        h1{
+            margin-bottom: 3.2rem;
+        }
+
+        #boxOne{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            gap: 32px;
+            margin-bottom: 8px;
+        }
+
+        #boxTwo{
+            width: 100%;
+            
+            display: flex;
+            justify-content: space-between;
+
+            gap: 32px;
+
+            #inputTag{
+                margin-bottom: 8px;
+            }
+        }
+
+        #boxThree{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            #inputTextArea{
+                width: 100%;
+            }
+
+            button{
+                width: 200px;
+                border-radius: 5px;
+            }
+        }
+    }
+
+
+
+}`;

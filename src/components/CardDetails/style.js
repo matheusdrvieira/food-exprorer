@@ -51,15 +51,15 @@ export const Container = styled.div`
         }
     
         >h4{
-        color:${({ theme }) => theme.COLORS.COLOR_PRICE};
-        margin-bottom:1.2rem;
+            color:${({ theme }) => theme.COLORS.COLOR_PRICE};
+            margin-bottom:1.2rem;
         }
     
         >#Buttons-Wrapper{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        gap: 1.6rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 1.6rem;
     
             >#input-Wrapper{
                 display: flex;

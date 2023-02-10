@@ -21,7 +21,6 @@ export const Container = styled.div`
 
         &::placeholder{
             font-family: 'Roboto';
-            
             font-weight: 400;
             font-size: 16px;
             line-height: 100%;
