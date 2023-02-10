@@ -7,6 +7,8 @@ export default {
         BACKGROUND_HEADER: "#00111A",
         BACKGROUND_CARD: "#00070A",
         BACKGROUND_TAG: "#192227",
+        BACKGROUND_SELECT: "#0D161B",
+
 
         INPUT_TAG: "#76797B",
         INPUT_DASHED: "#7C7C8A",
