@@ -22,14 +22,25 @@ export const LogoTextDesktop = styled.div`
 
     >div{
         display: flex;
+        align-items: center;
         gap: 1.0rem;
 
-        >h1{
-            font-family: 'Roboto';
-            font-weight: 700;
-            font-size: 2.4rem;
-        }
+        >div{   
+            text-align: end;
+            >h1{
+                font-family: 'Roboto';
+                font-weight: 700;
+                font-size: 2.4rem;
     
+            }
+            span{
+                font-weight: 400;
+                font-size: 12px;
+    
+                color: #82F3FF;
+            }
+        }
+
         >img{ 
             width:3.0rem;
             height:3.0rem;
@@ -73,6 +84,14 @@ export const LogoTextMobile = styled.div`
             font-family: 'Roboto';
             font-weight: 700;
             font-size: 2.1rem;
+
+            span{
+                font-weight: 400;
+                font-size: 12px;
+                
+                margin-left:4px;
+                color: #82F3FF;
+            }
         }
     }
 
@@ -85,7 +104,7 @@ export const LogoTextMobile = styled.div`
 
             position: relative;
 
-            right: 1.5rem;
+            right: 2rem;
             bottom: 8px;
 
             border-radius: 50%;

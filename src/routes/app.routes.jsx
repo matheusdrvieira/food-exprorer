@@ -1,15 +1,18 @@
 import { Routes, Route } from "react-router-dom";
 
 import { Home } from "../pages/Home";
-import { NewProduct } from "../pages/NewProduct";
+import { Dish } from "../pages/Dish";
 import { Details } from "../pages/Details";
+import { MyOrder } from "../pages/MyOrder";
 
 export function AppRoutes() {
     return (
         <Routes>
             <Route path="/home" element={<Home />} />
-            <Route path="/new" element={<NewProduct />} />
+            <Route path="/dish/:id" element={<Dish />} />
+            <Route path="/dish" element={<Dish />} />
             <Route path="/details" element={<Details />} />
+            <Route path="/order" element={<MyOrder />} />
         </Routes>
     )
 }

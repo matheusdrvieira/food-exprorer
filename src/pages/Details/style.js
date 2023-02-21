@@ -4,7 +4,7 @@ export const Container = styled.div`
     height: 100vh;
 
     >main{
-        padding:0 5.6rem;
+        padding:0 5.6rem 5rem;
     }
 
     >#buttonText{
@@ -33,5 +33,10 @@ export const Container = styled.div`
         margin-top: 2.4rem;
         margin-bottom: 4.2rem;
         margin-left: 11.0rem;
-    } 
+    }
+    
+    footer{
+        position: absolute;
+        bottom: 0px;
+    }
 }`;

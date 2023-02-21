@@ -6,8 +6,15 @@ import { Input } from "../Input";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { Tags } from "../Tags";
 import { RiFileListLine } from "react-icons/ri";
+import { useEffect, useState } from "react";
 
-export function CardDetails({ data, isAdm, ...rest }) {
+export function CardDetails({ data, ...rest }) {
+    const [isToEdit, setIsToEdit] = useState("")
+
+    useEffect(() => {
+        setIsToEdit(true)
+    })
+
     return (
         < Container {...rest}>
 
@@ -29,7 +36,12 @@ export function CardDetails({ data, isAdm, ...rest }) {
                         <ButtonSvg id="ButtonSvg" icon={FiPlus} />
                     </div>
 
-                    <Button id="buttonAdd" title="Pedir" price={` R$ ${data.price}`} icon={RiFileListLine} />
+                    {
+                        isToEdit ?
+                            <Button id="buttonAdd" title="Pedir" price={` R$ ${data.price}`} icon={RiFileListLine} />
+                            :
+                            <Button id="buttonAdd" title="Editar prato" />
+                    }
                 </div>
             </div>
         </Container >

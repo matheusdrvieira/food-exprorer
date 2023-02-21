@@ -123,26 +123,22 @@ export const Container = styled.div`
         >#boxTwo{
             margin-bottom:2.4rem;
 
-            >#inputTag{
-                width: 100%;
-                margin-bottom: 3.2rem;
-               
+            >#inputTag{           
                 >#inputBg{
-                    width: 100%;
-                    
                     display:flex;
+                    justify-content:flex-start;
                     flex-wrap:wrap;
-                    justify-content: center;
                     
-                    gap: 8px;
+                    gap: 10px;
+                    margin-top: 16px;
+                    margin-bottom: 16px;
+
                     padding: 8px;
-                    margin-top: 1.6rem;
-    
-                    border-radius: 8px;
-                    background:${({ theme }) => theme.COLORS.BACKGROUND_INPUT};
-    
-                    >div{
-                        width: 48%;
+                    border-radius:10px;
+                    background-color:${({ theme }) => theme.COLORS.BACKGROUND_INPUT};
+
+                    div{
+                        width: 150px;
                     }
                 }
             } 
@@ -160,7 +156,15 @@ export const Container = styled.div`
                     margin-top:1.6rem;
                     margin-bottom: 2.4rem;
                 }
+            }
 
+            #buttons{
+                display: flex;
+                gap: 32px;
+
+                #buttonDelete{
+                    background:${({ theme }) => theme.COLORS.BACKGROUND_INPUT};
+                }
             }
         }
     }
@@ -201,6 +205,7 @@ export const Container = styled.div`
             gap: 3.2rem;
 
             >#inputTag{
+                width: 100%;
                 margin-bottom: 8px;
             }
         }
@@ -220,5 +225,15 @@ export const Container = styled.div`
                 border-radius: 5px;
             }
         }
+        #buttons{
+            width: 50%;
+            display: flex;
+            gap: 32px;
+        }
+    }
+
+    footer{
+        position: absolute;
+        bottom: 0;
     }
 }`;

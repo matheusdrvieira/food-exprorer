@@ -7,7 +7,13 @@ import { FiMinus, FiPlus, FiHeart, FiEdit } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { WINDOW_MOBILE_DESCRIPTION } from "../../utils/constants";
 
-export function Card({ data, isAdm, ...rest }) {
+export function Card({ data, ...rest }) {
+    const [isToEdit, setIsToEdit] = useState("")
+
+    useEffect(() => {
+        setIsToEdit(false)
+    })
+
     const [isMobile, setIsMobile] = useState([
         window.innerWidth
     ]);
@@ -26,7 +32,7 @@ export function Card({ data, isAdm, ...rest }) {
     return (
         < Container {...rest}>
             {
-                isAdm = 1 ?
+                isToEdit ?
                     <div id="favoriteAdd"><ButtonSvg icon={FiHeart} /></div>
                     :
                     <div id="favoriteAdd"><ButtonSvg icon={FiEdit} /></div>

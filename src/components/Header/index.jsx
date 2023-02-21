@@ -11,6 +11,19 @@ import { WINDOW_MOBILE_WIDTH } from "../../utils/constants"
 import { ButtonSvg } from "../ButtonSvg";
 
 export function Header() {
+    const [isAdm, setIsAdm] = useState("")
+    const [showMenu, setShowMenu] = useState(false)
+
+    const handleMenu = () => {
+        setShowMenu(!showMenu)
+    }
+
+    useEffect(() => {
+        setIsAdm(true)
+
+
+    })
+
     const [isMobile, setIsMobile] = useState([
         window.innerWidth
     ]);
@@ -34,7 +47,15 @@ export function Header() {
                     <LogoTextDesktop>
                         <div>
                             <img src={titleBg} alt="logo" />
-                            <h1>food_Explorer</h1>
+                            {
+                                isAdm ?
+                                    <div>
+                                        <h1>food_Explorer</h1>
+                                        <span>admin</span>
+                                    </div>
+                                    :
+                                    <h1>food_Explorer</h1>
+                            }
                         </div>
                         <Input type="text" placeholder="Busque por pratos ou ingredientes" icon={FiSearch} />
                         <Button icon={RiFileListLine} title={`Pedidos(${"0"})`} />
@@ -42,19 +63,32 @@ export function Header() {
                     </LogoTextDesktop>
 
                     :
+                    <>
+                        <LogoTextMobile>
+                            <ButtonSvg icon={BsList} onClick={handleMenu} />
+                            <div>
+                                <img src={titleBg} alt="logo" />
+                                {
+                                    isAdm ?
+                                        <h1>food_Explorer <span>admin</span></h1> : <h1>food_Explorer</h1>
+                                }
+                            </div>
 
-                    <LogoTextMobile>
-                        <ButtonSvg icon={BsList} />
-                        <div>
-                            <img src={titleBg} alt="logo" />
-                            <h1>food_Explorer</h1>
-                        </div>
+                            <div id="buttonList">
+                                <ButtonSvg icon={RiFileListLine} />
+                                <span>{0}</span>
+                            </div>
+                        </LogoTextMobile >
 
-                        <div id="buttonList">
-                            <ButtonSvg icon={RiFileListLine} />
-                            <span>{0}</span>
-                        </div>
-                    </LogoTextMobile >
+                        {
+                            showMenu ?
+                                <div>
+                                    menu
+                                </div>
+                                :
+                                null
+                        }
+                    </>
             }
         </Container >
     )

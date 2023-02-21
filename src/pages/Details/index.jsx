@@ -2,6 +2,7 @@ import { Container } from "./style";
 import { Header } from "../../components/Header";
 import { CardDetails } from "../../components/CardDetails";
 import { ButtonText } from "../../components/ButtonText";
+import { Footer } from "../../components/Footer";
 import { RiArrowLeftSLine } from "react-icons/ri";
 
 export function Details() {
@@ -26,6 +27,7 @@ export function Details() {
                     price: "49,97",
                 }} />
             </main>
+            <Footer />
         </Container >
     )
 }

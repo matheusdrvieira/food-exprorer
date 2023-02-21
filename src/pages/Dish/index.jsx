@@ -5,16 +5,34 @@ import { TagsInput } from "../../components/TagsInput";
 import { TextArea } from "../../components/TextArea";
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
 import { RiArrowLeftSLine, RiUpload2Fill } from "react-icons/ri";
+import { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 
-export function NewProduct() {
+export function Dish() {
+    const [isToEdit, setIsToEdit] = useState("")
+    const { id } = useParams();
+
+    useEffect(() => {
+        if (id) {
+            setIsToEdit(true)
+        } else {
+            setIsToEdit(false)
+        }
+
+    })
+
     return (
         <Container>
             <Header />
             <main>
                 <ButtonText id="buttonText" title="Voltar" icon={RiArrowLeftSLine} />
 
-                <h1>Novo Prato</h1>
+                {
+                    isToEdit ?
+                        < h1 > Editar Prato</h1> : < h1 > Novo Prato</h1>
+                }
 
                 <div id="boxOne">
 
@@ -47,8 +65,14 @@ export function NewProduct() {
                     <div id="inputTag">
                         <label htmlFor="addTag" id="label">Ingredientes</label>
                         <div id="inputBg">
-                            <TagsInput value="opa" />
-                            <TagsInput id="addTag" isNew placeholder="Adicionar" />
+                            <TagsInput
+                                value="opa"
+                            />
+
+                            <TagsInput
+                                isNew
+                                placeholder="Adicionar"
+                            />
                         </div>
                     </div>
 
@@ -63,9 +87,18 @@ export function NewProduct() {
                         <label htmlFor="description">Descrição</label>
                         <TextArea id="description" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" />
                     </div>
-                    <Button title="Salvar alterações" />
+                    {
+                        isToEdit ?
+                            <div id="buttons">
+                                < Button id="buttonDelete" title="Excluir prato" />
+                                < Button title="Salvar alterações" />
+                            </div>
+                            :
+                            < Button title="Salvar alterações" />
+                    }
                 </div>
             </main>
+            <Footer />
         </Container >
     )
 }
