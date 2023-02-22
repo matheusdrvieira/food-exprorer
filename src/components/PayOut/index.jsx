@@ -5,11 +5,9 @@ import QRCODE from "../../assets/Vector.png";
 import { useState, useEffect } from "react";
 import { Input } from "../Input";
 import { RiFileListLine } from "react-icons/ri";
-import styled from "styled-components";
 
 export function PayOut() {
     const [payment, setPayment] = useState(false)
-    const [toggle, setToggle] = useState(false);
 
     const handlePayment = () => {
         setPayment(!payment)
