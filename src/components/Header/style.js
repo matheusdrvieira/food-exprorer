@@ -47,7 +47,7 @@ export const LogoTextDesktop = styled.div`
         }
     }
 
-    >button{
+    >#buttonRequest{
         width: 21.6rem;
         
         gap: 8px;

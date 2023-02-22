@@ -7,17 +7,18 @@ export const Container = styled.div`
         padding: 0 35px;
         min-height: 100vh;
 
-        h2{
-            margin-top: 56px;
-            margin-bottom: 27px;
-
-            font-family: 'Poppins';
-            font-weight: 500;
-            font-size: 32px;
-        }
-
+        
         section{
             margin-bottom: 18px;
+
+            h2{
+                margin-top: 56px;
+                margin-bottom: 27px;
+    
+                font-family: 'Poppins';
+                font-weight: 500;
+                font-size: 32px;
+            }
         }
 
         span{
@@ -36,12 +37,16 @@ export const Container = styled.div`
         }
     }
 
-    footer{
-        position: fixed;
-        bottom: 0;
-    }
-
 @media(min-width: 1000px) {
-    
+
+    main{
+        padding: 0 123px;
+
+        display: flex;
+        
+        justify-content: space-between;
+
+        gap: 20px;
+    } 
 }
 `;

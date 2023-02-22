@@ -20,8 +20,6 @@ export function Header() {
 
     useEffect(() => {
         setIsAdm(true)
-
-
     })
 
     const [isMobile, setIsMobile] = useState([
@@ -58,7 +56,7 @@ export function Header() {
                             }
                         </div>
                         <Input type="text" placeholder="Busque por pratos ou ingredientes" icon={FiSearch} />
-                        <Button icon={RiFileListLine} title={`Pedidos(${"0"})`} />
+                        <Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${"0"})`} />
                         <ButtonSvg id="buttonExit" icon={RxExit} />
                     </LogoTextDesktop>
 
