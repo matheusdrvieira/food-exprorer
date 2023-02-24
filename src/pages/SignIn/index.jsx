@@ -27,7 +27,7 @@ export function SignIn() {
         <Container>
             <div id="title">
                 <img src={titleBg} alt="logo" />
-                <h1>food_Explorer</h1>
+                <h1>food Explorer</h1>
             </div>
 
             <form>

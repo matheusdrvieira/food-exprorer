@@ -1,9 +1,10 @@
 import { Container } from "./style";
 
-export function Button({ title, price, icon: Icon, ...rest }) {
+export function Button({ title, price, onClick, icon: Icon, ...rest }) {
     return (
         < Container
             type="button"
+            onClick={onClick}
             {...rest}
         >
             {Icon && <Icon />}

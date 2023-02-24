@@ -125,6 +125,11 @@ export const LogoTextDesktop = styled.div`
         }
     }
 
+    p{
+        display: flex;
+        white-space: nowrap;
+    }
+
     >#buttonRequest{
         width: 21.6rem;
         

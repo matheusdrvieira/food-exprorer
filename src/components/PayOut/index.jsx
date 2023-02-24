@@ -13,9 +13,8 @@ export function PayOut() {
         setPayment(!payment)
 
         if (payment) {
-
+        } else {
         }
-        console.log(payment);
     }
 
     return (

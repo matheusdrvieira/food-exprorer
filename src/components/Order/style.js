@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    width: 100%;
-
     display: flex;
     align-items: center;
 
@@ -10,10 +8,25 @@ export const Container = styled.div`
     gap: 12px;
     
     div{
-        h1{
-            font-family: 'Poppins';
-            font-weight: 500;
-            font-size: 20px;
+        div{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            h1{
+                font-family: 'Poppins';
+                font-weight: 500;
+                font-size: 20px;
+                white-space: nowrap;
+            }
+    
+            p{
+                font-family: 'Roboto';
+                font-weight: 400;
+                font-size: 12px;
+                white-space: nowrap;
+                color: #C4C4CC;
+            }
         }
 
         button{    

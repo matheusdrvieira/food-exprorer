@@ -85,6 +85,7 @@ export const Container = styled.div`
             font-weight: 700;
             font-size: 4.2rem;
             line-height: 4.9rem;
+            white-space: nowrap;
         }
     }
  

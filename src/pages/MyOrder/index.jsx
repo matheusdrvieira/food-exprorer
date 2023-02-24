@@ -1,5 +1,5 @@
 import { Container } from "./style"
-import { Header } from "../../components/Header"
+import { NewHeader } from "../../components/NewHeader"
 import { Order } from "../../components/Order"
 import { Footer } from "../../components/Footer"
 import { Button } from "../../components/Button"
@@ -8,6 +8,7 @@ import { useState, useEffect } from "react"
 import { WINDOW_MOBILE_WIDTH } from "../../utils/constants"
 
 export function MyOrder() {
+
     const [isMobile, setIsMobile] = useState([
         window.innerWidth
     ]);
@@ -25,30 +26,41 @@ export function MyOrder() {
     })
     return (
         <Container>
-            <Header />
+            <NewHeader />
             <main>
                 <section>
                     <h2>Meu Pedido</h2>
                     <Order data={{
-                        name: "Salada Radish"
+                        name: "Salada Radish",
+                        price: 50.99
                     }} />
                     <Order data={{
-                        name: "Salada Radish"
+                        name: "Salada Radish",
+                        price: 50.99
                     }} />
                     <Order data={{
-                        name: "Salada Radish"
+                        name: "Salada Radish",
+                        price: 50.99
                     }} />
                     <Order data={{
-                        name: "Salada Radish"
+                        name: "Salada Radish",
+                        price: 50.99
                     }} />
                     <Order data={{
-                        name: "Salada Radish"
+                        name: "Salada Radish",
+                        price: 50.99
                     }} />
                     <Order data={{
-                        name: "Salada Radish"
+                        name: "Salada Radish",
+                        price: 50.99
                     }} />
-                    <span>Total: R$ {103.88}</span>
-                    <Button id="buttonConfirm" title="Avançar" />
+                    <span>Total: R$ {0}</span>
+                    {
+                        isMobile < WINDOW_MOBILE_WIDTH ?
+                            <Button id="buttonConfirm" title="Avançar" />
+                            :
+                            null
+                    }
                 </section>
                 {
                     isMobile > WINDOW_MOBILE_WIDTH ?

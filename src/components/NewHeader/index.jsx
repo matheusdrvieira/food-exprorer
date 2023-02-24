@@ -12,7 +12,7 @@ import { WINDOW_MOBILE_WIDTH } from "../../utils/constants"
 import { ButtonSvg } from "../ButtonSvg";
 import { Footer } from "../Footer"
 
-export function Header() {
+export function NewHeader() {
     const [isAdm, setIsAdm] = useState("")
     const [showMenu, setShowMenu] = useState(false)
 
@@ -59,12 +59,14 @@ export function Header() {
                                     <div id="logoTitle">
                                         <img src={titleBg} alt="logo" />
                                         <div>
-                                            <h1>food Explorer</h1>
+                                            <h1>food_Explorer</h1>
                                         </div>
                                     </div>
                             }
                         </div>
                         <Input type="text" placeholder="Busque por pratos ou ingredientes" icon={FiSearch} />
+                        <p>Meus favoritos</p>
+                        <p>Histórico de pedidos</p>
                         <Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${"0"})`} />
                         <ButtonSvg id="buttonExit" icon={RxExit} />
                     </LogoTextDesktop>
@@ -107,6 +109,8 @@ export function Header() {
                                                     :
                                                     null
                                             }
+                                            <ButtonText title="Meus favoritos" />
+                                            <hr />
                                             <ButtonText title="Sair" />
                                             <hr />
                                         </div>

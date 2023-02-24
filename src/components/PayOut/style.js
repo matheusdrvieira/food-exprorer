@@ -26,6 +26,10 @@ export const Container = styled.div`
         border-radius: 8px;
 
         gap: 45px;
+
+        img{
+           margin-top: 10px;
+        }
   
         #buttonPayments{
             width: 100%;
