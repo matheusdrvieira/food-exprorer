@@ -65,8 +65,8 @@ export function NewHeader() {
                             }
                         </div>
                         <Input type="text" placeholder="Busque por pratos ou ingredientes" icon={FiSearch} />
-                        <p>Meus favoritos</p>
-                        <p>Histórico de pedidos</p>
+                        <ButtonText className="buttonsHeader" title="Meus favoritos" />
+                        <ButtonText className="buttonsHeader" title="Histórico de pedidos" />
                         <Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${"0"})`} />
                         <ButtonSvg id="buttonExit" icon={RxExit} />
                     </LogoTextDesktop>

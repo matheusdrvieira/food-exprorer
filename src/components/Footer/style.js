@@ -10,6 +10,9 @@ export const Container = styled.footer`
 
     padding: 0 2.7rem;
 
+    position: fixed;
+    bottom: 0;
+
     background:${({ theme }) => theme.COLORS.BACKGROUND_HEADER};
 
     p{

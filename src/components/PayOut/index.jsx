@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { Input } from "../Input";
 import { RiFileListLine } from "react-icons/ri";
 
-export function PayOut() {
+export function PayOut(isAdm = true) {
     const [payment, setPayment] = useState(false)
 
     const handlePayment = () => {
@@ -49,7 +49,14 @@ export function PayOut() {
                             <Button title="Finalizar pagamento" icon={RiFileListLine} />
                         </div>
                 }
+                {
+                    isAdm ?
+                        < p > alou</p>
+                        :
+                        <p>aloi</p>
+                }
+
             </div>
-        </Container>
+        </Container >
     )
 }

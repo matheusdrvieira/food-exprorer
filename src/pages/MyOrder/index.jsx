@@ -8,12 +8,45 @@ import { useState, useEffect } from "react"
 import { WINDOW_MOBILE_WIDTH } from "../../utils/constants"
 
 export function MyOrder() {
+    const orders = [
+        {
+            id: 1,
+            name: "Salada Radish",
+            price: 100.99
+        },
+        {
+            id: 2,
+            name: "Salada Radish",
+            price: 50.99
+        },
+        {
+            id: 3,
+            name: "Salada Radish",
+            price: 10.99
+        },
+        {
+            id: 4,
+            name: "Salada Radish",
+            price: 35.99
+        }
+    ]
+
+    const [dishes, setDishes] = useState(orders);
+    const [total, setTotal] = useState()
 
     const [isMobile, setIsMobile] = useState([
         window.innerWidth
     ]);
 
     useEffect(() => {
+        let soma = 0
+
+        dishes.map(dish => (
+            soma += dish.price
+        ))
+
+        setTotal(soma)
+
         const handleWindowResize = () => {
             setIsMobile(window.innerWidth);
         };
@@ -30,31 +63,17 @@ export function MyOrder() {
             <main>
                 <section>
                     <h2>Meu Pedido</h2>
-                    <Order data={{
-                        name: "Salada Radish",
-                        price: 50.99
-                    }} />
-                    <Order data={{
-                        name: "Salada Radish",
-                        price: 50.99
-                    }} />
-                    <Order data={{
-                        name: "Salada Radish",
-                        price: 50.99
-                    }} />
-                    <Order data={{
-                        name: "Salada Radish",
-                        price: 50.99
-                    }} />
-                    <Order data={{
-                        name: "Salada Radish",
-                        price: 50.99
-                    }} />
-                    <Order data={{
-                        name: "Salada Radish",
-                        price: 50.99
-                    }} />
-                    <span>Total: R$ {0}</span>
+
+                    {
+                        dishes.map(dish => (
+                            <Order
+                                key={dish.id}
+                                data={dish} />
+                        ))
+                    }
+
+                    <span>Total: R$ {total}</span>
+
                     {
                         isMobile < WINDOW_MOBILE_WIDTH ?
                             <Button id="buttonConfirm" title="Avançar" />
