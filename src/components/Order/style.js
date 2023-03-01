@@ -4,42 +4,45 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
 
-    margin-bottom: 18px;
-    gap: 12px;
+    margin-bottom: 1.8rem;
+    gap: 1.2rem;
     
-    div{
-        div{
+    >div{
+        >div{
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 1rem;
 
             h1{
                 font-family: 'Poppins';
                 font-weight: 500;
-                font-size: 20px;
+                font-size: 2rem;
+
                 white-space: nowrap;
             }
     
             p{
                 font-family: 'Roboto';
                 font-weight: 400;
-                font-size: 12px;
+                font-size: 1.2rem;
+
                 white-space: nowrap;
+
                 color: #C4C4CC;
             }
         }
 
         button{    
             font-weight: 400;
-            font-size: 12px;
+            font-size: 1.2rem;
 
             color: red;
         }
     }
 
     img{
-        width:72px;
-        height: 72px;
+        width:7.2rem;
+        height: 7.2rem;
         border-radius: 50%;
     }
 

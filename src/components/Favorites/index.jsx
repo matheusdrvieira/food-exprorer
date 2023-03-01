@@ -1,6 +1,6 @@
 import { Container } from "./style"
 import { ButtonText } from "../ButtonText";
-import exemple from "../../assets/image2.png"
+import exemple from "../../assets/image2.png";
 
 export function Favorites({ data, ...rest }) {
     return (

@@ -1,5 +1,5 @@
 import { Container } from "./style";
-import { FiPlus, FiX } from "react-icons/fi"
+import { FiPlus, FiX } from "react-icons/fi";
 
 export function TagsInput({ isNew, value, onClick, ...rest }) {
     return (

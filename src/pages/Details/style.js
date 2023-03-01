@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    height: 100vh;
+    position: relative;
+    min-height: 100vh;
 
-    >main{
-        padding:0 5.6rem 5rem;
+    main{
+        padding:0 5.6rem 10rem 5rem;
+        padding-bottom: 10rem;
     }
 
-    >#buttonText{
+    #buttonText{
         margin-top: 3.5rem;
         margin-bottom: 1.6rem;
         margin-left: 4.0rem;
@@ -25,18 +27,14 @@ export const Container = styled.div`
 
 @media (min-width: 1000px) {
 
-    >main{
+    main{
         padding:0 12.1rem;
     }
 
-    >#buttonText{
+    #buttonText{
         margin-top: 2.4rem;
         margin-bottom: 4.2rem;
         margin-left: 11.0rem;
-    }
-    
-    footer{
-        position: absolute;
-        bottom: 0px;
-    }
-}`;
+    }  
+}
+`;

@@ -1,11 +1,11 @@
+import { useRef } from 'react';
 import { Container } from "./style";
-import { Header } from "../../components/Header";
 import { Card } from "../../components/Card";
+import { Header } from "../../components/Header";
 import { Banner } from "../../components/Banner";
 import { Footer } from "../../components/Footer";
 import { ButtonSvg } from "../../components/ButtonSvg";
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from "react-icons/ai";
-import { useRef } from 'react';
 
 export function Home() {
     const carousel = useRef(null);
@@ -21,10 +21,10 @@ export function Home() {
 
         carousel.current.scrollLeft += carousel.current.offsetWidth;
     };
+
     return (
         <Container>
             <Header />
-
             <main>
                 <Banner />
                 <section>

@@ -1,13 +1,16 @@
-import { Container } from "./style"
-import { NewHeader } from "../../components/NewHeader"
-import { Order } from "../../components/Order"
-import { Footer } from "../../components/Footer"
-import { Button } from "../../components/Button"
-import { PayOut } from "../../components/PayOut"
-import { useState, useEffect } from "react"
-import { WINDOW_MOBILE_WIDTH } from "../../utils/constants"
+import { Container } from "./style";
+import { useState, useEffect } from "react";
+import { Resize } from "../../utils/index";
+import { Order } from "../../components/Order";
+import { Footer } from "../../components/Footer";
+import { Button } from "../../components/Button";
+import { PayOut } from "../../components/PayOut";
+import { NewHeader } from "../../components/NewHeader";
+import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
 
 export function MyOrder() {
+    const isMobile = Resize()
+
     const orders = [
         {
             id: 1,
@@ -34,10 +37,6 @@ export function MyOrder() {
     const [dishes, setDishes] = useState(orders);
     const [total, setTotal] = useState()
 
-    const [isMobile, setIsMobile] = useState([
-        window.innerWidth
-    ]);
-
     useEffect(() => {
         let soma = 0
 
@@ -46,16 +45,6 @@ export function MyOrder() {
         ))
 
         setTotal(soma)
-
-        const handleWindowResize = () => {
-            setIsMobile(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleWindowResize);
-
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
     })
     return (
         <Container>

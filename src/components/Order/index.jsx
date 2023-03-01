@@ -1,11 +1,11 @@
-import { Container } from "./style"
+import { Container } from "./style";
 import { ButtonText } from "../ButtonText";
-import exemple from "../../assets/image2.png"
+import exemple from "../../assets/image2.png";
 
-export function Order({ data }) {
+export function Order({ data, ...rest }) {
 
     return (
-        <Container>
+        <Container {...rest}>
             <img src={exemple} alt="Prato" />
             <div>
                 <div>

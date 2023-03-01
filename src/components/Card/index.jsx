@@ -1,41 +1,23 @@
+import { Input } from "../Input";
+import { Button } from "../Button";
 import { Container } from "./style";
 import { ButtonSvg } from "../ButtonSvg";
-import { Button } from "../Button";
 import Image2 from "../../assets/image2.png";
-import { Input } from "../Input";
+import { Resize, IsAdm } from "../../utils/index";
 import { FiMinus, FiPlus, FiHeart, FiEdit } from "react-icons/fi";
-import { useEffect, useState } from "react";
 import { WINDOW_MOBILE_DESCRIPTION } from "../../utils/constants";
 
 export function Card({ data, ...rest }) {
-    const [isToEdit, setIsToEdit] = useState("")
+    const isMobile = Resize()
+    const isAdm = IsAdm()
 
-    useEffect(() => {
-        setIsToEdit(false)
-    })
-
-    const [isMobile, setIsMobile] = useState([
-        window.innerWidth
-    ]);
-
-    useEffect(() => {
-        const handleWindowResize = () => {
-            setIsMobile(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleWindowResize);
-
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
-    })
     return (
         < Container {...rest}>
             {
-                isToEdit ?
-                    <div id="favoriteAdd"><ButtonSvg icon={FiHeart} /></div>
+                isAdm ?
+                    <div className="edit"><ButtonSvg icon={FiEdit} /></div>
                     :
-                    <div id="favoriteAdd"><ButtonSvg icon={FiEdit} /></div>
+                    <div className="favorite"><ButtonSvg icon={FiHeart} /></div>
             }
 
             <img src={Image2} alt={`Foto de um prato ${data.nameProduct}`} />
@@ -44,7 +26,7 @@ export function Card({ data, ...rest }) {
 
             {
                 isMobile > WINDOW_MOBILE_DESCRIPTION ?
-                    <p>{data.description ? data.description : "Nenhuma descricao disponivel"}</p>
+                    <p>{data.description ? data.description : "Nenhuma descricao disponivel!"}</p>
                     :
                     null
             }

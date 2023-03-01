@@ -3,18 +3,18 @@ import styled from "styled-components";
 export const Container = styled.div`
     width: 100%;
     min-height: 100vh;
+    position: relative;
 
     main{
-        min-height: 100vh;
-        padding:3.5rem 3rem;
+        padding:3.5rem 3rem 10rem;
     }
     
     h2{
-        margin-bottom: 24px;
+        margin-bottom: 2.4rem;
         white-space: nowrap;
         font-family: 'Poppins';
         font-weight: 500;
-        font-size: 28px;    
+        font-size: 2.8rem;    
     }
 
 @media(min-width: 400px) {
@@ -28,7 +28,7 @@ export const Container = styled.div`
         padding:3.5rem 18rem 0 12.2rem;
 
         h2{
-            font-size: 32px;    
+            font-size: 3.2rem;    
         }
     }
 }
@@ -39,24 +39,24 @@ export const BoxOrderMobile = styled.div`
 
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 1.6rem;
 
-    padding: 24px;
+    padding: 2.4rem;
     border: 1px solid #192227;
     border-radius: 8px;
 
-    margin-bottom: 17px;
+    margin-bottom: 1.7rem;
 
     .boxHeade{
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 1rem;
     }
 
     span{
         font-family: 'Roboto';
         font-weight: 400;
-        font-size: 14px;
+        font-size: 1.4rem;
 
         color: #C4C4CC;
 
@@ -66,7 +66,7 @@ export const BoxOrderMobile = styled.div`
     p{
         font-family: 'Roboto';  
         font-weight: 400;
-        font-size: 14px;
+        font-size: 1.4rem;
 
         color: #C4C4CC;
     }
@@ -80,7 +80,7 @@ export const BoxOrderMobile = styled.div`
         border-radius: 1.0rem;
         background:${({ theme }) => theme.COLORS.BACKGROUND_SELECT};
 
-        >select{   
+        select{   
             width: 100%;
             height: 5.6rem;
         
@@ -104,15 +104,14 @@ export const BoxOrderDesktop = styled.div`
         width: 100%;
         border-collapse: collapse;
         position: relative;
-        margin-bottom: 122px;
+        margin-bottom: 12.2rem;
     }
 
     table * {
         font-family: 'Roboto';
-        font-size: 14px; 
+        font-size: 1.4rem; 
         border: 2px solid #192227;
         color: #C4C4CC;
-
     }
 
     table th {
@@ -120,7 +119,7 @@ export const BoxOrderDesktop = styled.div`
         padding: 1.6rem;
   
         font-weight: 700;
-        font-size: 14px;
+        font-size: 1.4rem;
         
     }
 
@@ -141,7 +140,7 @@ export const BoxOrderDesktop = styled.div`
         border-radius: 1.0rem;
         background:#0D1D25;
 
-        >select{   
+        select{   
             width: 100%;
         
             border: none;
@@ -149,7 +148,7 @@ export const BoxOrderDesktop = styled.div`
         
             font-family: 'Roboto';
             font-weight: 400;
-            font-size: 14px;
+            font-size: 1.4rem;
             
         
             cursor: pointer;

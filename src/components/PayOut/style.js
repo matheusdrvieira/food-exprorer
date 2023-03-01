@@ -4,19 +4,19 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
 
-    gap: 32px;
+    gap: 3.2rem;
 
     h1{
         font-family: 'Poppins';  
         font-weight: 500;
-        font-size: 32px; 
+        font-size: 3.2rem; 
 
-        margin-top: 56px;
+        margin-top: 5.6rem;
     }
 
     #box{
-        width: 530px;
-        height: 445px;
+        width: 53.0rem;
+        height: 44.5rem;
 
         display: flex;
         align-items: center;
@@ -25,10 +25,8 @@ export const Container = styled.div`
         border: solid 1px #76797B;
         border-radius: 8px;
 
-        gap: 45px;
-
         img{
-           margin-top: 10px;
+           margin-top: 1rem;
         }
   
         #buttonPayments{
@@ -40,7 +38,7 @@ export const Container = styled.div`
                 background: #000C12;
 
                 svg{
-                    font-size: 22px;
+                    font-size: 2.2rem;
                 }
             }
 
@@ -59,20 +57,22 @@ export const Container = styled.div`
         }
         
         img{
-           width: 270px;
-           height: 270px;
+           width: 27.0rem;
+           height: 27.0rem;
+           margin-top: 4.5rem;
         }
 
         #boxPayment{
             display: flex;
             flex-direction: column;
 
-            gap: 37px;
-            padding: 0 91px;
+            gap: 3.7rem;
+            padding: 0 9.1rem;
+            margin-top: 4.5rem;
 
             #inputPayments{
                 display: flex;
-                gap: 17px;
+                gap: 1.7rem;
             }
 
             input{
@@ -90,10 +90,36 @@ export const Container = styled.div`
                 border-radius: 5px;
 
                 svg{
-                    font-size:30px;
+                    font-size:3.0rem;
                     margin-right: 8px;
                 }
             }
+        }
+
+        .paymentProcess{
+            height: 100%;
+
+            .processOne{
+                width: 100%;
+                height: 100%;
+
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;         
+                
+                p{
+                    font-family: 'Roboto';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 2rem;
+                }
+
+                svg{
+                    font-size: 10.0rem;
+                }
+            }
+
         }
     }
 `;

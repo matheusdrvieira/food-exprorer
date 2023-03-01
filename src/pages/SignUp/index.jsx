@@ -1,28 +1,15 @@
 import { Container } from "./style";
+import { Resize } from "../../utils/index";
 import titleBg from "../../assets/Polygon.png";
-import { FiMail, FiUser, FiLock } from "react-icons/fi";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
+import { FiMail, FiUser, FiLock } from "react-icons/fi";
 import { ButtonText } from "../../components/ButtonText";
-import { useEffect, useState } from "react";
 import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
 
 export function SignUp() {
-    const [isMobile, setIsMobile] = useState([
-        window.innerWidth
-    ]);
+    const isMobile = Resize()
 
-    useEffect(() => {
-        const handleWindowResize = () => {
-            setIsMobile(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleWindowResize);
-
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
-    })
     return (
         <Container>
 

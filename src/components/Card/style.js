@@ -17,7 +17,7 @@ export const Container = styled.div`
    color:${({ theme }) => theme.COLORS.WHITE};
    background-color:${({ theme }) => theme.COLORS.BACKGROUND_CARD};
      
-   >#favoriteAdd{
+   .favorite, .edit{
        width: 100%;
        height: 0;
 
@@ -40,7 +40,7 @@ export const Container = styled.div`
         color:${({ theme }) => theme.COLORS.COLOR_PRICE};
    }
 
-   >#Buttons-Wrapper{
+   #Buttons-Wrapper{
         width: 100%;
 
         display: flex;
@@ -49,7 +49,7 @@ export const Container = styled.div`
 
         gap: 1.4rem;
 
-        >#input-Wrapper{
+        #input-Wrapper{
             display: flex;
             align-items:center;
             
@@ -60,8 +60,8 @@ export const Container = styled.div`
                 background:none; 
                 text-align: center;
                  
-                >input[type="number"]::-webkit-outer-spin-button,
-                >input[type="number"]::-webkit-inner-spin-button {
+                input[type="number"]::-webkit-outer-spin-button,
+                input[type="number"]::-webkit-inner-spin-button {
                     -webkit-appearance: none;
                     margin: 0;
                 }
@@ -102,10 +102,9 @@ export const Container = styled.div`
         margin-bottom:1.5rem;
     }
 
-    p{
+    >p{
         font-family: 'Roboto';
         font-size: 1.4rem;
-        line-height: 160%;
 
         text-align: center;
     }
@@ -118,7 +117,7 @@ export const Container = styled.div`
         margin-bottom: 1.5rem;
     }
 
-    >#Buttons-Wrapper{
+    #Buttons-Wrapper{
         width: 100%;
 
         display: flex;
@@ -127,7 +126,7 @@ export const Container = styled.div`
 
         gap: 1.6rem;
 
-        >#input-Wrapper{
+        #input-Wrapper{
             height: 4.8rem;
 
             >div{
@@ -135,7 +134,7 @@ export const Container = styled.div`
                 height: 3.2rem; 
             }
         }
-        >#buttonAdd{      
+        #buttonAdd{      
             height:4.8rem;
 
             border-radius: 5px;

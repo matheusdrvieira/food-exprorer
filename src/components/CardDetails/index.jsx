@@ -1,19 +1,15 @@
+import { Tags } from "../Tags";
+import { Input } from "../Input";
+import { Button } from "../Button";
 import { Container } from "./style";
 import { ButtonSvg } from "../ButtonSvg";
-import { Button } from "../Button";
+import { IsAdm } from "../../utils/index";
 import Image2 from "../../assets/image2.png";
-import { Input } from "../Input";
 import { FiMinus, FiPlus } from "react-icons/fi";
-import { Tags } from "../Tags";
 import { RiFileListLine } from "react-icons/ri";
-import { useEffect, useState } from "react";
 
 export function CardDetails({ data, ...rest }) {
-    const [isToEdit, setIsToEdit] = useState("")
-
-    useEffect(() => {
-        setIsToEdit(true)
-    })
+    const isAdm = IsAdm()
 
     return (
         < Container {...rest}>
@@ -23,7 +19,7 @@ export function CardDetails({ data, ...rest }) {
             <div id="box">
                 <h1>{data.nameProduct}</h1>
 
-                <p>{data.description ? data.description : "Nenhuma descricao disponivel"}</p>
+                <p>{data.description ? data.description : "Nenhuma descricao disponivel!"}</p>
 
                 <div id="tags">
                     {data.tags.map(tag => <Tags key={tag.id} title={tag.name} />)}
@@ -37,10 +33,10 @@ export function CardDetails({ data, ...rest }) {
                     </div>
 
                     {
-                        isToEdit ?
-                            <Button id="buttonAdd" title="Pedir" price={` R$ ${data.price}`} icon={RiFileListLine} />
+                        isAdm ?
+                            <Button className="buttonEdit" title="Editar prato" />
                             :
-                            <Button id="buttonAdd" title="Editar prato" />
+                            <Button className="buttonAdd" title="Pedir" price={` R$ ${data.price}`} icon={RiFileListLine} />
                     }
                 </div>
             </div>

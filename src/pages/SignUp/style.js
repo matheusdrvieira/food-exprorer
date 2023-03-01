@@ -9,7 +9,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
 
-    >#title{
+    #title{
         width: 100%;
 
         display: flex;
@@ -17,12 +17,12 @@ export const Container = styled.div`
 
         gap: 1.0rem;
 
-        >img{
+        img{
             width:4.3rem;
             height:4.3rem;
         }
 
-        >h1{ 
+        h1{ 
             font-family: 'Roboto';
             font-style: normal;
             font-weight: 700;
@@ -33,13 +33,13 @@ export const Container = styled.div`
         }
     }
  
-    >form{
+    form{
         width: 33.0rem;
         height: 41.6rem;
 
         padding: 1.2rem 1.4rem;
 
-        >label{
+        label{
             color:${({ theme }) => theme.COLORS.GRAY};
         }
 
@@ -47,12 +47,12 @@ export const Container = styled.div`
             margin: 8px 0 3.2rem;
         }
             
-        >#buttonText{
+        #buttonText{
             width: 100%;
             display: flex;
             justify-content: center;
 
-            margin-top: 32px;
+            margin-top: 3.2rem;
 
             font-family: 'Poppins';
             font-weight: 500;
@@ -69,16 +69,16 @@ export const Container = styled.div`
     gap: 2.0rem;
     padding: 0 10.8rem;
 
-    >#title{
+    #title{
         
         width: 32.0rem;
 
-        >img{
+        img{
             width: 4.9rem;
             height: 4.7rem;
         }
 
-        >h1{ 
+        h1{ 
             font-family: 'Roboto';
             font-style: normal;
             font-weight: 700;
@@ -88,7 +88,7 @@ export const Container = styled.div`
         }
     }
  
-    >form{
+    form{
         width: 47.6rem;
         height: 62.1rem;
 
@@ -99,7 +99,7 @@ export const Container = styled.div`
         background:${({ theme }) => theme.COLORS.BACKGROUND_002};
            
 
-        >h2{
+        h2{
             width: 100%;
 
             display: flex;
@@ -113,7 +113,7 @@ export const Container = styled.div`
             line-height: 100%;
         }
 
-        >button{
+        button{
             border-radius: 5px;
         }
     }

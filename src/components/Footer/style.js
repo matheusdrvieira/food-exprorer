@@ -10,28 +10,28 @@ export const Container = styled.footer`
 
     padding: 0 2.7rem;
 
-    position: fixed;
+    position: absolute;
     bottom: 0;
 
     background:${({ theme }) => theme.COLORS.BACKGROUND_HEADER};
 
     p{
         font-weight: 700;
-        font-size: 12px;
+        font-size: 1.2rem;
     }
 
     div{
         display: flex;
         align-items: center;
         
-        gap: 10px;
+        gap: 1rem;
 
         font-weight: 700;
-        font-size: 16px;
+        font-size: 1.6rem;
 
         img{
-            width: 18px;
-            height: 18px;
+            width: 1.8rem;
+            height: 1.8rem;
         }
     }
 
@@ -40,16 +40,16 @@ export const Container = styled.footer`
 
     p{
         font-weight: 700;
-        font-size: 14px;
+        font-size: 1.4rem;
     }
 
     div{
         font-weight: 700;
-        font-size: 24px;
+        font-size: 2.4rem;
 
         img{
-            width: 30px;
-            height: 30px;
+            width: 3.0rem;
+            height: 3.0rem;
         }
     }
 }

@@ -1,30 +1,12 @@
+import { Footer } from "../../components/Footer";
+import { Resize, IsAdm } from "../../utils/index";
+import { NewHeader } from "../../components/NewHeader";
+import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
 import { Container, BoxOrderMobile, BoxOrderDesktop } from "./style";
-import { NewHeader } from "../../components/NewHeader"
-import { Footer } from "../../components/Footer"
-import { useState, useEffect } from "react"
-import { WINDOW_MOBILE_WIDTH } from "../../utils/constants"
 
 export function OrderHistory() {
-    const [isAdm, setIsAdm] = useState("")
-    const [isMobile, setIsMobile] = useState([
-        window.innerWidth
-    ]);
-
-    useEffect(() => {
-        setIsAdm(false)
-    })
-
-    useEffect(() => {
-        const handleWindowResize = () => {
-            setIsMobile(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleWindowResize);
-
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
-    })
+    const isMobile = Resize()
+    const isAdm = IsAdm()
 
     return (
         <Container>

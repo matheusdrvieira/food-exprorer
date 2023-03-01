@@ -1,44 +1,26 @@
-import { Container, LogoTextDesktop, LogoTextMobile } from "./style"
-import titleBg from "../../assets/Polygon.png";
 import { Input } from "../Input";
+import { useState } from "react";
 import { Button } from "../Button";
-import { ButtonText } from "../ButtonText";
-import { FiSearch } from "react-icons/fi";
-import { RxExit } from "react-icons/rx";
-import { RiFileListLine, RiCloseLine } from "react-icons/ri";
 import { BsList } from "react-icons/bs";
-import { useEffect, useState } from "react";
-import { WINDOW_MOBILE_WIDTH } from "../../utils/constants"
+import { RxExit } from "react-icons/rx";
 import { ButtonSvg } from "../ButtonSvg";
-import { Footer } from "../Footer"
+import { FiSearch } from "react-icons/fi";
+import { ButtonText } from "../ButtonText";
+import titleBg from "../../assets/Polygon.png";
+import { Resize, IsAdm } from "../../utils/index";
+import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
+import { RiFileListLine, RiCloseLine } from "react-icons/ri";
+import { Container, LogoTextDesktop, LogoTextMobile } from "./style";
 
 export function Header() {
-    const [isAdm, setIsAdm] = useState("")
+    const isMobile = Resize()
+    const isAdm = IsAdm()
+
     const [showMenu, setShowMenu] = useState(false)
 
     const handleMenu = () => {
         setShowMenu(!showMenu)
     }
-
-    useEffect(() => {
-        setIsAdm(true)
-    })
-
-    const [isMobile, setIsMobile] = useState([
-        window.innerWidth
-    ]);
-
-    useEffect(() => {
-        const handleWindowResize = () => {
-            setIsMobile(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleWindowResize);
-
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
-    })
 
     return (
         <Container>

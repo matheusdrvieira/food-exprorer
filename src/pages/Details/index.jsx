@@ -1,15 +1,14 @@
 import { Container } from "./style";
 import { Header } from "../../components/Header";
-import { CardDetails } from "../../components/CardDetails";
-import { ButtonText } from "../../components/ButtonText";
 import { Footer } from "../../components/Footer";
 import { RiArrowLeftSLine } from "react-icons/ri";
+import { ButtonText } from "../../components/ButtonText";
+import { CardDetails } from "../../components/CardDetails";
 
 export function Details() {
     return (
         <Container>
             <Header />
-
             <ButtonText id="buttonText" title="Voltar" icon={RiArrowLeftSLine} />
 
             <main>

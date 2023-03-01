@@ -16,12 +16,12 @@ export const Container = styled.header`
         background: #000A0F;
         
         #header{
-            height: 104px;
+            height: 10.4rem;
 
             display: flex;
             align-items: center;
 
-            padding-left: 28px;
+            padding-left: 2.8rem;
 
             background: #001119;
 
@@ -30,33 +30,33 @@ export const Container = styled.header`
 
                 font-family: 'Roboto';
                 font-weight: 400;
-                font-size: 22px;
+                font-size: 2.2rem;
 
                 svg{
-                    margin-right: 16px;
+                    margin-right: 1.6rem;
                 }
             }
         }
 
         #main{
-            padding: 36px 28px;
+            padding: 3.6rem 2.8rem;
             
             #section{
                 display: flex;
                 flex-direction: column;
 
-                gap: 10px;
-                margin-top: 36px;
+                gap: 1rem;
+                margin-top: 3.6rem;
 
                 button{
                     font-family: 'Poppins';
                     font-weight: 300;
-                    font-size: 24px;
+                    font-size: 2.4rem;
 
                     color: #E1E1E6;
 
                     svg{
-                        margin-right: 16px;
+                        margin-right: 1.6rem;
                     }
                 }
 
@@ -86,28 +86,28 @@ export const LogoTextDesktop = styled.div`
             display: flex;
             gap: 1rem;
 
-            >div{
+            div{
                 display: flex;
                 flex-direction: column;
-                text-align: end;
-                
+                text-align: end;  
 
-                >h1{
+                h1{
                     font-family: 'Roboto';
                     font-weight: 700;
                     font-size: 2.4rem;
+
                     white-space: nowrap;
                 }
 
                 span{
                     font-weight: 400;
-                    font-size: 12px;
+                    font-size: 1.2rem;
         
                     color: #82F3FF;
                 }
             }
     
-            >img{ 
+            img{ 
                 width:3.0rem;
                 height:3.0rem;
             }
@@ -118,14 +118,22 @@ export const LogoTextDesktop = styled.div`
             align-items: center;
             gap: 1rem;
 
-            >img{ 
+            h1{
+                    font-family: 'Roboto';
+                    font-weight: 700;
+                    font-size: 2.4rem;
+
+                    white-space: nowrap;
+                }
+
+            img{ 
                 width:3.0rem;
                 height:3.0rem;
             }
         }
     }
 
-    >#buttonRequest{
+    #buttonRequest{
         width: 21.6rem;
         
         gap: 8px;
@@ -133,7 +141,7 @@ export const LogoTextDesktop = styled.div`
 
         border-radius: 5px;
 
-        >svg{
+        svg{
             font-size: 2.4rem;
         }
     }
@@ -141,6 +149,7 @@ export const LogoTextDesktop = styled.div`
 
 export const LogoTextMobile = styled.div`
     width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -153,28 +162,30 @@ export const LogoTextMobile = styled.div`
         display: flex;
         gap: 8px;
 
-        >img{ 
+        img{ 
             width:2.4rem;
             height:2.4rem;
         }
 
-        >h1{
+        h1{
             font-family: 'Roboto';
-            font-weight: 700;
             font-size: 2.1rem;
+            font-weight: 700;
+
             white-space: nowrap;
 
             span{
+                font-size: 1.2rem;
                 font-weight: 400;
-                font-size: 12px;
                 
                 margin-left:4px;
+
                 color: #82F3FF;
             }
         }
     }
 
-    >#buttonList{
+    #buttonList{
         display: flex;
         
         >span{

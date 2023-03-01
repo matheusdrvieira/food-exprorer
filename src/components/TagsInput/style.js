@@ -12,7 +12,8 @@ export const Container = styled.div`
     color:${({ theme }) => theme.COLORS.WHITE};
     background-color:${({ theme, isNew }) => isNew ? "transparent" : theme.COLORS.INPUT_TAG};
    
-    >button{
+    button{
+        height: 1.6rem;
         background:none;
         border:none;
 
@@ -21,7 +22,7 @@ export const Container = styled.div`
         }
     }
 
-    >input{
+    input{
         width:100%;
         height:3.8rem;
         border:none;

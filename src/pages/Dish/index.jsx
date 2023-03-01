@@ -1,17 +1,18 @@
 import { Container } from "./style";
-import { ButtonText } from "../../components/ButtonText";
-import { Input } from "../../components/Input";
-import { TagsInput } from "../../components/TagsInput";
-import { TextArea } from "../../components/TextArea";
-import { Button } from "../../components/Button";
-import { Header } from "../../components/Header";
-import { Footer } from "../../components/Footer";
-import { RiArrowLeftSLine, RiUpload2Fill } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
+import { Input } from "../../components/Input";
+import { Footer } from "../../components/Footer";
+import { Button } from "../../components/Button";
+import { Header } from "../../components/Header";
+import { TextArea } from "../../components/TextArea";
+import { TagsInput } from "../../components/TagsInput";
+import { ButtonText } from "../../components/ButtonText";
+import { RiArrowLeftSLine, RiUpload2Fill } from "react-icons/ri";
 
 export function Dish() {
     const [isToEdit, setIsToEdit] = useState("")
+
     const { id } = useParams();
 
     useEffect(() => {
@@ -20,7 +21,6 @@ export function Dish() {
         } else {
             setIsToEdit(false)
         }
-
     })
 
     return (
@@ -48,7 +48,6 @@ export function Dish() {
                     </div>
 
                     <div id="inputCategory">
-
                         <label htmlFor="category">Categoria</label>
                         <div id="select">
                             <select name="input" id="inputSelect">
@@ -80,6 +79,7 @@ export function Dish() {
                         <label htmlFor="price">Preço</label>
                         <Input type="number" id="price" placeholder="R$ 00,00" />
                     </div>
+
                 </div>
 
                 <div id="boxThree">

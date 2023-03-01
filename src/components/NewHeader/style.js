@@ -70,6 +70,7 @@ export const Container = styled.header`
 
 export const LogoTextDesktop = styled.div`
     width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -86,16 +87,17 @@ export const LogoTextDesktop = styled.div`
             display: flex;
             gap: 1rem;
 
-            >div{
+            div{
                 display: flex;
                 flex-direction: column;
                 text-align: end;
                 
 
-                >h1{
+                h1{
                     font-family: 'Roboto';
                     font-weight: 700;
                     font-size: 2.4rem;
+
                     white-space: nowrap;
                 }
 
@@ -107,7 +109,7 @@ export const LogoTextDesktop = styled.div`
                 }
             }
     
-            >img{ 
+            img{ 
                 width:3.0rem;
                 height:3.0rem;
             }
@@ -117,6 +119,14 @@ export const LogoTextDesktop = styled.div`
             display: flex;
             align-items: center;
             gap: 1rem;
+
+            h1{
+                font-family: 'Roboto';
+                font-weight: 700;
+                font-size: 2.4rem;
+
+                white-space: nowrap;
+            }
 
             >img{ 
                 width:3.0rem;
@@ -146,6 +156,7 @@ export const LogoTextDesktop = styled.div`
 
 export const LogoTextMobile = styled.div`
     width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -158,20 +169,21 @@ export const LogoTextMobile = styled.div`
         display: flex;
         gap: 8px;
 
-        >img{ 
+        img{ 
             width:2.4rem;
             height:2.4rem;
         }
 
-        >h1{
+        h1{
             font-family: 'Roboto';
             font-weight: 700;
             font-size: 2.1rem;
+
             white-space: nowrap;
 
             span{
                 font-weight: 400;
-                font-size: 12px;
+                font-size: 1.2rem;
                 
                 margin-left:4px;
                 color: #82F3FF;
@@ -179,7 +191,7 @@ export const LogoTextMobile = styled.div`
         }
     }
 
-    >#buttonList{
+    #buttonList{
         display: flex;
         
         >span{

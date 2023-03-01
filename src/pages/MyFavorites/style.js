@@ -1,48 +1,40 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    height: 100vh;
+    position: relative;
+    min-height: 100vh;
 
     main{
-        padding: 0 35px;
+        padding: 0 3.5rem 10rem;
 
         h2{
-            margin-top: 56px;
-            margin-bottom: 27px;
+            margin-top: 5.6rem;
+            margin-bottom: 2.7rem;
     
             font-family: 'Poppins';
             font-weight: 500;
-            font-size: 32px;
+            font-size: 3.2rem;
         }
     }
-
-    footer{
-        position: fixed;
-        bottom: 0;
-    }
-
 
 @media(min-width: 1000px) {
 
     main{
         width: 100%;
-        padding: 0 123px;
+        padding: 0 12.3rem;
 
         h2{
-            margin-bottom: 32px;
+            margin-bottom: 3.2rem;
         }
         
         #section{ 
             width: 100%;
+
             display: flex;
-            gap:48px;
-            flex-wrap:wrap ;
+            flex-wrap:wrap;
+
+            gap:4.8rem;
         }
     } 
-
-    footer{
-        position: fixed;
-        bottom: 0;
-    }
 }
 `;

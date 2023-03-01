@@ -34,7 +34,6 @@ export const Container = styled.div`
         >p{
             font-family: 'Poppins';
             font-size: 1.6rem;
-            line-height: 140%;
     
             margin-bottom: 2.4rem;
     
@@ -42,23 +41,27 @@ export const Container = styled.div`
         }
     
         >#tags{
-            margin-bottom:4.8rem;
             width: 100%;
+            
             display:flex;
             flex-wrap:wrap;
             justify-content: center;
+            
             gap: 8px;
+            margin-bottom:4.8rem;
         }
     
         >h4{
-            color:${({ theme }) => theme.COLORS.COLOR_PRICE};
             margin-bottom:1.2rem;
+            color:${({ theme }) => theme.COLORS.COLOR_PRICE};
         }
     
         >#Buttons-Wrapper{
             width: 100%;
+
             display: flex;
             align-items: center;
+
             gap: 1.6rem;
     
             >#input-Wrapper{
@@ -68,6 +71,7 @@ export const Container = styled.div`
                 >div{
                     width: 5.0rem;
                     height: 3.2rem;
+
                     background:none; 
                     color: white;
                     text-align: center;
@@ -79,7 +83,7 @@ export const Container = styled.div`
                     }
                 }
             }
-                >#buttonAdd{      
+                .buttonEdit, .buttonAdd{      
                     height:3.2rem;
     
                     border-radius: 8px;
@@ -105,12 +109,11 @@ export const Container = styled.div`
         width: 39.0rem;
         height: 38.9rem;
     }
-    >#box{
+    #box{
         text-align: left;
 
         >h1{  
             font-size: 4.0rem;
-            line-height: 140%;
 
             margin-bottom: 2.4rem;
         }
@@ -121,19 +124,21 @@ export const Container = styled.div`
     
             margin-bottom: 2.8rem;
         }
-        >#tags{
+        #tags{
             justify-content: flex-start;
             gap: 1.2rem;
         }
 
-        >#Buttons-Wrapper{
+        #Buttons-Wrapper{
             width: 100%;
+
             display: flex;
             flex-direction: row;
             align-items: center;
+
             gap: 1.6rem;
 
-            >#input-Wrapper{
+            #input-Wrapper{
                 height: 4.8rem;
 
                 >div{
@@ -141,9 +146,11 @@ export const Container = styled.div`
                     height: 3.2rem; 
                 }
             }
-            >#buttonAdd{      
+
+            .buttonEdit, .buttonAdd{      
                 height:4.8rem;
                 width: 16.2rem;
+                
                 border-radius: 8px;
         
                 font-size: 1.4rem;

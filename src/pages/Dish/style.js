@@ -2,15 +2,16 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    position: relative;
 
-    >main{
+    main{
         width: 100%;
-        padding: 0 3.2rem;
+        padding: 0 3.2rem 15rem;
         margin-top: 1rem;
-        padding-bottom: 5.3rem;
+        
 
-        >#buttonText{
+        #buttonText{
             font-family: 'Poppins';
             font-size: 1.6rem;
 
@@ -35,32 +36,34 @@ export const Container = styled.div`
                 color: ${({ theme }) => theme.COLORS.GRAY};
             }
 
-        >#boxOne{
-            >#inputFile{
+        #boxOne{
+            #inputFile{
                 width: 100%;
                 margin-bottom: 2.4rem;
                 
-                >label{
+                label{
                     margin-top: 1.6rem;
                 }
             }
 
-            >#inputName{
+            #inputName{
                 width: 100%;
+
                 >div{
                     margin-top: 1.6rem;
                     margin-bottom: 2.4rem;
                 }
             }
 
-            >#inputCategory{
+            #inputCategory{
                 width: 100%;
+
                 display: flex;
                 flex-direction: column;
 
                 gap: 1.6rem;
 
-                >#select{
+                #select{
                     width: 100%;
                     height: 5.6rem;
                         
@@ -71,7 +74,7 @@ export const Container = styled.div`
                     border-radius: 1.0rem;
                     background:${({ theme }) => theme.COLORS.BACKGROUND_SELECT};
 
-                    >select{   
+                    select{   
                         width: 100%;
                         height: 5.6rem;
         
@@ -108,7 +111,6 @@ export const Container = styled.div`
             border-radius: 1.0rem;
             
             font-family: 'Poppins';
-            font-style: normal;
             font-weight: 500;
             font-size: 1.4rem;
             line-height: 2.4rem;
@@ -120,39 +122,39 @@ export const Container = styled.div`
             }
         }
         
-        >#boxTwo{
+        #boxTwo{
             margin-bottom:2.4rem;
 
-            >#inputTag{           
-                >#inputBg{
+            #inputTag{           
+                #inputBg{
                     display:flex;
                     justify-content:flex-start;
                     flex-wrap:wrap;
                     
-                    gap: 10px;
-                    margin-top: 16px;
-                    margin-bottom: 16px;
+                    gap: 1rem;
+                    margin-top: 1.6rem;
+                    margin-bottom: 1.6rem;
 
                     padding: 8px;
-                    border-radius:10px;
+                    border-radius:1rem;
                     background-color:${({ theme }) => theme.COLORS.BACKGROUND_INPUT};
 
-                    div{
-                        width: 150px;
+                    >div{
+                        width: 15.0rem;
                     }
                 }
             } 
 
-            >#inputPrice{
+            #inputPrice{
                 >div{
                     margin-top: 1.6rem;
                 }
             }
         }
 
-        >#boxThree{
-            >#inputTextArea{
-                >textarea{
+        #boxThree{
+            #inputTextArea{
+                textarea{
                     margin-top:1.6rem;
                     margin-bottom: 2.4rem;
                 }
@@ -160,7 +162,7 @@ export const Container = styled.div`
 
             #buttons{
                 display: flex;
-                gap: 32px;
+                gap: 3.2rem;
 
                 #buttonDelete{
                     background:${({ theme }) => theme.COLORS.BACKGROUND_INPUT};
@@ -171,11 +173,11 @@ export const Container = styled.div`
     
 @media (min-width: 1000px) {
 
-    >main{
-        padding: 0 12.3rem;
+    main{
+        padding: 0 12.3rem 15rem;
         margin-top: 3.9rem;
 
-        >#buttonText{
+        #buttonText{
             font-size: 2.2rem;
             font-weight: 700;
             
@@ -188,7 +190,7 @@ export const Container = styled.div`
             margin-bottom: 3.2rem;
         }
 
-        >#boxOne{
+        #boxOne{
             width: 100%;
             display: flex;
             justify-content: space-between;
@@ -196,7 +198,7 @@ export const Container = styled.div`
             margin-bottom: 8px;
         }
 
-        >#boxTwo{
+        #boxTwo{
             width: 100%;
             
             display: flex;
@@ -204,36 +206,33 @@ export const Container = styled.div`
 
             gap: 3.2rem;
 
-            >#inputTag{
+            #inputTag{
                 width: 100%;
                 margin-bottom: 8px;
             }
         }
 
-        >#boxThree{
+        #boxThree{
             width: 100%;
+
             display: flex;
             flex-direction: column;
             align-items: flex-end;
 
-            >#inputTextArea{
+            #inputTextArea{
                 width: 100%;
             }
 
-            >button{
+            button{
                 width: 20.0rem;
                 border-radius: 5px;
             }
         }
+        
         #buttons{
-            width: 50%;
             display: flex;
-            gap: 32px;
+            gap: 3.2rem;
         }
     }
-
-    footer{
-        position: absolute;
-        bottom: 0;
-    }
-}`;
+}
+`;
