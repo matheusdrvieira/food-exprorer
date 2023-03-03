@@ -69,8 +69,7 @@ export const Container = styled.div`
     gap: 2.0rem;
     padding: 0 10.8rem;
 
-    #title{
-        
+    #title{  
         width: 32.0rem;
 
         img{

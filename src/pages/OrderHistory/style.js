@@ -42,7 +42,7 @@ export const BoxOrderMobile = styled.div`
     gap: 1.6rem;
 
     padding: 2.4rem;
-    border: 1px solid #192227;
+    border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_TAG};
     border-radius: 8px;
 
     margin-bottom: 1.7rem;
@@ -58,7 +58,7 @@ export const BoxOrderMobile = styled.div`
         font-weight: 400;
         font-size: 1.4rem;
 
-        color: #C4C4CC;
+        color: ${({ theme }) => theme.COLORS.SVG};
 
         white-space: nowrap;
     }
@@ -68,7 +68,7 @@ export const BoxOrderMobile = styled.div`
         font-weight: 400;
         font-size: 1.4rem;
 
-        color: #C4C4CC;
+        color: ${({ theme }) => theme.COLORS.SVG};
     }
 
     .select{
@@ -110,8 +110,8 @@ export const BoxOrderDesktop = styled.div`
     table * {
         font-family: 'Roboto';
         font-size: 1.4rem; 
-        border: 2px solid #192227;
-        color: #C4C4CC;
+        border: 2px solid  ${({ theme }) => theme.COLORS.BACKGROUND_TAG};
+        color: ${({ theme }) => theme.COLORS.SVG};
     }
 
     table th {
@@ -138,7 +138,7 @@ export const BoxOrderDesktop = styled.div`
         padding: 0 1.6rem;
 
         border-radius: 1.0rem;
-        background:#0D1D25;
+        background: ${({ theme }) => theme.COLORS.BACKGROUND_SELECT};
 
         select{   
             width: 100%;
@@ -153,8 +153,8 @@ export const BoxOrderDesktop = styled.div`
         
             cursor: pointer;
         
-            color: #C4C4CC;
-            background:#0D1D25;
+            color: ${({ theme }) => theme.COLORS.SVG};
+            background: ${({ theme }) => theme.COLORS.BACKGROUND_SELECT};
         }
     }
 `;

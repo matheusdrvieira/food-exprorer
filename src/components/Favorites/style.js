@@ -21,14 +21,14 @@ export const Container = styled.div`
             font-weight: 400;
             font-size: 1.2rem;
 
-            color: #C4C4CC;
+            color: ${({ theme }) => theme.COLORS.GRAY};
         }
 
         button{    
             font-weight: 400;
             font-size: 1.2rem;
 
-            color: red;
+            color: ${({ theme }) => theme.COLORS.BACKGROUND_BUTTON};
         }
     }
 

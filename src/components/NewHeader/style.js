@@ -13,7 +13,7 @@ export const Container = styled.header`
 
         position: absolute;
 
-        background: #000A0F;
+        background:${({ theme }) => theme.COLORS.BACKGROUND_001};
         
         #header{
             height: 104px;
@@ -23,7 +23,7 @@ export const Container = styled.header`
 
             padding-left: 28px;
 
-            background: #001119;
+            background: ${({ theme }) => theme.COLORS.BACKGROUND_HEADER};
 
             button{
                 background: transparent;
@@ -53,7 +53,7 @@ export const Container = styled.header`
                     font-weight: 300;
                     font-size: 24px;
 
-                    color: #E1E1E6;
+                    color: ${({ theme }) => theme.COLORS.SVG};
 
                     svg{
                         margin-right: 16px;
@@ -61,7 +61,7 @@ export const Container = styled.header`
                 }
 
                 hr{
-                    border: 1px solid #192227;
+                    border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_TAG};
                 }
             }
         }
@@ -105,7 +105,7 @@ export const LogoTextDesktop = styled.div`
                     font-weight: 400;
                     font-size: 12px;
         
-                    color: #82F3FF;
+                    color: ${({ theme }) => theme.COLORS.COLOR_PRICE};
                 }
             }
     
@@ -186,7 +186,7 @@ export const LogoTextMobile = styled.div`
                 font-size: 1.2rem;
                 
                 margin-left:4px;
-                color: #82F3FF;
+                color: ${({ theme }) => theme.COLORS.COLOR_PRICE};
             }
         }
     }

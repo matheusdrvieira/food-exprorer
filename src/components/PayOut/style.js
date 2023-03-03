@@ -22,7 +22,7 @@ export const Container = styled.div`
         align-items: center;
         flex-direction: column;
     
-        border: solid 1px #76797B;
+        border: solid 1px ${({ theme }) => theme.COLORS.INPUT_TAG};
         border-radius: 8px;
     
         img{
@@ -35,15 +35,15 @@ export const Container = styled.div`
                 
             button{
                 border-radius: 0;
-                background: #000C12;
+                background:${({ theme }) => theme.COLORS.BACKGROUND_BUTTON_PAYMENT};
     
                 svg{
-                        font-size: 2.2rem;
+                    font-size: 2.2rem;
                 }
             }
     
             button:hover{
-                background: #0D161B;
+                background: ${({ theme }) => theme.COLORS.BACKGROUND_SELECT};
             }
     
             #buttonQrcode{
@@ -76,7 +76,7 @@ export const Container = styled.div`
             }
                     
             input{
-                border: solid 1px #fff;
+                border: solid 1px ${({ theme }) => theme.COLORS.INPUT_TAG};
                 border-radius: 5px;
                             
             }

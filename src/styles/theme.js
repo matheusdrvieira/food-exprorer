@@ -8,6 +8,7 @@ export default {
         BACKGROUND_CARD: "#00070A",
         BACKGROUND_TAG: "#192227",
         BACKGROUND_SELECT: "#0D161B",
+        BACKGROUND_BUTTON_PAYMENT: "#000C12",
 
 
         INPUT_TAG: "#76797B",
