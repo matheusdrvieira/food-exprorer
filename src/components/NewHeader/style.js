@@ -140,7 +140,7 @@ export const LogoTextDesktop = styled.div`
         white-space: nowrap;
     }
 
-    >#buttonRequest{
+    #buttonRequest{
         width: 21.6rem;
         
         gap: 8px;
@@ -165,7 +165,7 @@ export const LogoTextMobile = styled.div`
 
     color: ${({ theme }) => theme.COLORS.WHITE};
 
-    >div{
+    div{
         display: flex;
         gap: 8px;
 

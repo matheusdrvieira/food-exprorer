@@ -6,6 +6,7 @@ import { Details } from "../pages/Details";
 import { MyOrder } from "../pages/MyOrder";
 import { OrderHistory } from "../pages/OrderHistory";
 import { MyFavorites } from "../pages/MyFavorites";
+import { Payment } from "../pages/Payment";
 
 export function AppRoutes() {
     return (
@@ -17,6 +18,7 @@ export function AppRoutes() {
             <Route path="/order" element={<MyOrder />} />
             <Route path="/history" element={<OrderHistory />} />
             <Route path="/favorites" element={<MyFavorites />} />
+            <Route path="/payment" element={<Payment />} />
         </Routes>
     )
 }

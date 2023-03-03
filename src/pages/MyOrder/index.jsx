@@ -1,6 +1,7 @@
 import { Container } from "./style";
 import { useState, useEffect } from "react";
 import { Resize } from "../../utils/index";
+import { useNavigate } from "react-router-dom";
 import { Order } from "../../components/Order";
 import { Footer } from "../../components/Footer";
 import { Button } from "../../components/Button";
@@ -10,6 +11,7 @@ import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
 
 export function MyOrder() {
     const isMobile = Resize()
+    const navigate = useNavigate();
 
     const orders = [
         {
@@ -46,6 +48,13 @@ export function MyOrder() {
 
         setTotal(soma)
     })
+
+    const [process, setProcess] = useState();
+
+    const handleProcess = () => {
+        navigate("/payment")
+    }
+
     return (
         <Container>
             <NewHeader />
@@ -65,7 +74,7 @@ export function MyOrder() {
 
                     {
                         isMobile < WINDOW_MOBILE_WIDTH ?
-                            <Button id="buttonConfirm" title="Avançar" />
+                            <Button id="buttonConfirm" title="Avançar" onClick={handleProcess} />
                             :
                             null
                     }

@@ -15,7 +15,9 @@ export function Card({ data, ...rest }) {
         < Container {...rest}>
             {
                 isAdm ?
+
                     <div className="edit"><ButtonSvg icon={FiEdit} /></div>
+
                     :
                     <div className="favorite"><ButtonSvg icon={FiHeart} /></div>
             }

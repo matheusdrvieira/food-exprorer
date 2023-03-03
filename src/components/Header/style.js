@@ -158,7 +158,7 @@ export const LogoTextMobile = styled.div`
 
     color: ${({ theme }) => theme.COLORS.WHITE};
 
-    >div{
+    div{
         display: flex;
         gap: 8px;
 

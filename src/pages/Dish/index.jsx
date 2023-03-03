@@ -1,4 +1,5 @@
 import { Container } from "./style";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import { Input } from "../../components/Input";
@@ -27,8 +28,9 @@ export function Dish() {
         <Container>
             <Header />
             <main>
-                <ButtonText id="buttonText" title="Voltar" icon={RiArrowLeftSLine} />
-
+                <Link to="/home">
+                    <ButtonText id="buttonText" title="Voltar" icon={RiArrowLeftSLine} />
+                </Link>
                 {
                     isToEdit ?
                         < h1 > Editar Prato</h1> : < h1 > Novo Prato</h1>

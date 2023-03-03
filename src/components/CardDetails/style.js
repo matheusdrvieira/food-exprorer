@@ -19,8 +19,9 @@ export const Container = styled.div`
         border-radius: 50%;
         margin-bottom:1.2rem;
     }
-    >#box{
-        >h1{
+    
+    #box{
+        h1{
             margin-bottom:1.2rem;
     
             font-family: 'Poppins';
@@ -31,7 +32,7 @@ export const Container = styled.div`
             color:${({ theme }) => theme.COLORS.WHITE};
         }
     
-        >p{
+        p{
             font-family: 'Poppins';
             font-size: 1.6rem;
     
@@ -40,7 +41,7 @@ export const Container = styled.div`
             color:${({ theme }) => theme.COLORS.SVG};
         }
     
-        >#tags{
+        #tags{
             width: 100%;
             
             display:flex;
@@ -51,12 +52,12 @@ export const Container = styled.div`
             margin-bottom:4.8rem;
         }
     
-        >h4{
+        h4{
             margin-bottom:1.2rem;
             color:${({ theme }) => theme.COLORS.COLOR_PRICE};
         }
     
-        >#Buttons-Wrapper{
+        #Buttons-Wrapper{
             width: 100%;
 
             display: flex;
@@ -64,7 +65,7 @@ export const Container = styled.div`
 
             gap: 1.6rem;
     
-            >#input-Wrapper{
+            #input-Wrapper{
                 display: flex;
                 align-items:center;
                 
@@ -83,21 +84,22 @@ export const Container = styled.div`
                     }
                 }
             }
-                .buttonEdit, .buttonAdd{      
-                    height:3.2rem;
+
+            .buttonEdit, .buttonAdd{      
+                height:3.2rem;
     
-                    border-radius: 8px;
+                border-radius: 8px;
     
-                    font-family: 'Poppins';
-                    font-weight: 500;
-                    font-size: 1.0rem;
-                    line-height: 1.6rem;
+                font-family: 'Poppins';
+                font-weight: 500;
+                font-size: 1.0rem;
+                line-height: 1.6rem;
         
-                    >svg{
-                        font-size: 1.8rem;
-                        margin-right: 5px;
-                    }
+                svg{
+                    font-size: 1.8rem;
+                    margin-right: 5px;
                 }
+            }  
         }
     }
 
@@ -150,15 +152,16 @@ export const Container = styled.div`
             .buttonEdit, .buttonAdd{      
                 height:4.8rem;
                 width: 16.2rem;
-                
+                    
                 border-radius: 8px;
-        
+
                 font-size: 1.4rem;
-            
+                
                 >svg{
-                    display: none;
+                        display: none;
                 }
             }
+            
         }    
     }
 }`;

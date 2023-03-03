@@ -1,16 +1,19 @@
 import { Container } from "./style";
+import { Link } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { RiArrowLeftSLine } from "react-icons/ri";
 import { ButtonText } from "../../components/ButtonText";
 import { CardDetails } from "../../components/CardDetails";
 
+
 export function Details() {
     return (
         <Container>
             <Header />
-            <ButtonText id="buttonText" title="Voltar" icon={RiArrowLeftSLine} />
-
+            <Link to="/home">
+                <ButtonText id="buttonText" title="Voltar" icon={RiArrowLeftSLine} />
+            </Link>
             <main>
                 <CardDetails data={{
                     nameProduct: "Salada Ravanello",

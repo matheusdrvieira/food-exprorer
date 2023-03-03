@@ -2,6 +2,7 @@ import { Input } from "../Input";
 import { useState } from "react";
 import { Button } from "../Button";
 import { BsList } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import { RxExit } from "react-icons/rx";
 import { ButtonSvg } from "../ButtonSvg";
 import { FiSearch } from "react-icons/fi";
@@ -11,6 +12,7 @@ import { Resize, IsAdm } from "../../utils/index";
 import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
 import { RiFileListLine, RiCloseLine } from "react-icons/ri";
 import { Container, LogoTextDesktop, LogoTextMobile } from "./style";
+
 
 export function Header() {
     const isMobile = Resize()
@@ -30,43 +32,51 @@ export function Header() {
                         <div>
                             {
                                 isAdm ?
-                                    <div id="logoTitleAdm">
-                                        <img src={titleBg} alt="logo" />
-                                        <div>
-                                            <h1>food Explorer</h1>
-                                            <span>admin</span>
+                                    <Link to="/home">
+                                        <div id="logoTitleAdm">
+                                            <img src={titleBg} alt="logo" />
+                                            <div>
+                                                <h1>food Explorer</h1>
+                                                <span>admin</span>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </Link>
                                     :
-                                    <div id="logoTitle">
-                                        <img src={titleBg} alt="logo" />
-                                        <div>
-                                            <h1>food Explorer</h1>
+                                    <Link to="/home">
+                                        <div id="logoTitle">
+                                            <img src={titleBg} alt="logo" />
+                                            <div>
+                                                <h1>food Explorer</h1>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </Link>
                             }
                         </div>
                         <Input type="text" placeholder="Busque por pratos ou ingredientes" icon={FiSearch} />
-                        <Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${"0"})`} />
+                        <Link to="/order"><Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${"0"})`} /></Link>
                         <ButtonSvg id="buttonExit" icon={RxExit} />
                     </LogoTextDesktop>
 
                     :
+
                     <>
                         <LogoTextMobile>
                             <ButtonSvg icon={BsList} onClick={handleMenu} />
-                            <div>
-                                <img src={titleBg} alt="logo" />
-                                {
-                                    isAdm ?
-                                        <h1>food Explorer <span>admin</span></h1> : <h1>food_Explorer</h1>
-                                }
-                            </div>
-
-                            <div id="buttonList">
-                                <ButtonSvg icon={RiFileListLine} />
-                                <span>{0}</span>
-                            </div>
+                            <Link to="/home">
+                                <div>
+                                    <img src={titleBg} alt="logo" />
+                                    {
+                                        isAdm ?
+                                            <h1>food Explorer <span>admin</span></h1> : <h1>food_Explorer</h1>
+                                    }
+                                </div>
+                            </Link>
+                            <Link to="/order">
+                                <div id="buttonList">
+                                    <ButtonSvg icon={RiFileListLine} />
+                                    <span>{0}</span>
+                                </div>
+                            </Link>
                         </LogoTextMobile >
 
                         {
@@ -83,7 +93,7 @@ export function Header() {
                                             {
                                                 isAdm ?
                                                     <>
-                                                        <ButtonText title="Novo Prato" />
+                                                        <Link to="/dish"><ButtonText title="Novo Prato" /></Link>
                                                         <hr />
                                                     </>
                                                     :

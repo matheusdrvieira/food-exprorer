@@ -6,7 +6,6 @@ export const Container = styled.div`
 
     main{
         padding:0 5.6rem 10rem 5rem;
-        padding-bottom: 10rem;
     }
 
     #buttonText{
@@ -28,7 +27,7 @@ export const Container = styled.div`
 @media (min-width: 1000px) {
 
     main{
-        padding:0 12.1rem;
+        padding:0 12.1rem 10rem;
     }
 
     #buttonText{

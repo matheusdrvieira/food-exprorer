@@ -2,6 +2,7 @@ import { Tags } from "../Tags";
 import { Input } from "../Input";
 import { Button } from "../Button";
 import { Container } from "./style";
+import { Link } from "react-router-dom";
 import { ButtonSvg } from "../ButtonSvg";
 import { IsAdm } from "../../utils/index";
 import Image2 from "../../assets/image2.png";

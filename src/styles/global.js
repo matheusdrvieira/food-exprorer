@@ -26,6 +26,7 @@ body, input, button, textarea {
 
 a{
     text-decoration:none;
+    color: white;
 }
 
 button, a{

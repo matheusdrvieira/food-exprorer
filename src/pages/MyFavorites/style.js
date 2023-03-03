@@ -21,7 +21,7 @@ export const Container = styled.div`
 
     main{
         width: 100%;
-        padding: 0 12.3rem;
+        padding: 0 12.3rem 15rem;
 
         h2{
             margin-bottom: 3.2rem;

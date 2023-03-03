@@ -1,4 +1,5 @@
 import { Container } from "./style";
+import { Link } from "react-router-dom";
 import { Resize } from "../../utils/index";
 import titleBg from "../../assets/Polygon.png";
 import { Input } from "../../components/Input";
@@ -9,6 +10,10 @@ import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
 
 export function SignIn() {
     const isMobile = Resize()
+
+    function login() {
+        window.localStorage.setItem("@role", "admin")
+    }
 
     return (
         <Container>
@@ -29,9 +34,9 @@ export function SignIn() {
                 <label htmlFor="password">Senha</label>
                 <Input id="password" type="password" placeholder="No mínimo 6 caracteres" icon={FiLock} />
 
-                <Button title="Entrar" />
+                <Button title="Entrar" onClick={login} />
 
-                <ButtonText id="buttonText" title="Criar uma conta" />
+                <Link to="/register"><ButtonText id="buttonText" title="Criar uma conta" /></Link>
             </form>
         </Container>
     )
