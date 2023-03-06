@@ -10,7 +10,7 @@ import { ButtonText } from "../ButtonText";
 import titleBg from "../../assets/Polygon.png";
 import { Resize, IsAdm } from "../../utils/index";
 import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
-import { RiFileListLine, RiCloseLine } from "react-icons/ri";
+import { RiFileListLine, RiCloseLine, RiUserLine } from "react-icons/ri";
 import { Container, LogoTextDesktop, LogoTextMobile } from "./style";
 
 
@@ -54,6 +54,7 @@ export function Header() {
                         </div>
                         <Input type="text" placeholder="Busque por pratos ou ingredientes" icon={FiSearch} />
                         <Link to="/order"><Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${"0"})`} /></Link>
+                        <Link to="/profile"><ButtonSvg icon={RiUserLine} /></Link>
                         <ButtonSvg id="buttonExit" icon={RxExit} />
                     </LogoTextDesktop>
 
@@ -71,10 +72,13 @@ export function Header() {
                                     }
                                 </div>
                             </Link>
+
                             <Link to="/order">
                                 <div id="buttonList">
+
                                     <ButtonSvg icon={RiFileListLine} />
                                     <span>{0}</span>
+                                    <Link to="/profile"><ButtonSvg icon={RiUserLine} /></Link>
                                 </div>
                             </Link>
                         </LogoTextMobile >
