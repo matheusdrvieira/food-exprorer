@@ -6,7 +6,7 @@ export function Footer() {
         <Container>
             <div>
                 <img src={logo} alt="" />
-                <h5>food_Explorer</h5>
+                <h5>food Explorer</h5>
             </div>
             <p>© 2023 - Todos os direitos reservados.</p>
         </Container>

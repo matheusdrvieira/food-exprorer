@@ -28,6 +28,7 @@ export const Container = styled.footer`
 
         font-weight: 700;
         font-size: 1.6rem;
+        white-space: nowrap;
 
         img{
             width: 1.8rem;
