@@ -6,10 +6,13 @@ import Image2 from "../../assets/image2.png";
 import { Resize, IsAdm } from "../../utils/index";
 import { FiMinus, FiPlus, FiHeart, FiEdit } from "react-icons/fi";
 import { WINDOW_MOBILE_DESCRIPTION } from "../../utils/constants";
+import { useEffect, useState } from 'react';
 
 export function Card({ data, ...rest }) {
     const isMobile = Resize()
     const isAdm = IsAdm()
+
+    const [count, setCount] = useState(0);
 
     return (
         < Container {...rest}>
@@ -24,7 +27,7 @@ export function Card({ data, ...rest }) {
 
             <img src={Image2} alt={`Foto de um prato ${data.nameProduct}`} />
 
-            <h1>{data.nameProduct}</h1>
+            <h1>{data.name}</h1>
 
             {
                 isMobile > WINDOW_MOBILE_DESCRIPTION ?
@@ -39,9 +42,9 @@ export function Card({ data, ...rest }) {
 
             <div id="Buttons-Wrapper">
                 <div id="input-Wrapper">
-                    <ButtonSvg id="ButtonSvg" icon={FiMinus} />
-                    <Input id="inputNumber" type="number" defaultValue={"01"} />
-                    <ButtonSvg id="ButtonSvg" icon={FiPlus} />
+                    <ButtonSvg id="ButtonSvg" icon={FiMinus} onClick={() => setCount(count <= 1 ? 1 : count - 1)} />
+                    <Input id="inputNumber" type="number" value={count} onChange={e => setCount(e.target.value)} />
+                    <ButtonSvg id="ButtonSvg" icon={FiPlus} onClick={() => setCount(count + 1)} />
                 </div>
 
                 <Button id="buttonAdd" title="incluir" />

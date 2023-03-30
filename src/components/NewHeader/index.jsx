@@ -12,10 +12,14 @@ import { Resize, IsAdm } from "../../utils/index";
 import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
 import { RiFileListLine, RiCloseLine } from "react-icons/ri";
 import { Container, LogoTextDesktop, LogoTextMobile } from "./style";
+import { useAuth } from "../../hooks/auth";
+import { api } from "../../services/api";
 
 export function NewHeader() {
-    const isMobile = Resize()
-    const isAdm = IsAdm()
+    const isMobile = Resize();
+    const isAdm = IsAdm();
+    const { signOut, user } = useAuth();
+    const [search, setSearch] = useState("");
 
     const [showMenu, setShowMenu] = useState(false)
 
@@ -51,11 +55,18 @@ export function NewHeader() {
                                     </Link>
                             }
                         </div>
-                        <Input type="text" placeholder="Busque por pratos ou ingredientes" icon={FiSearch} />
+                        <Input
+                            type="text"
+                            placeholder="Busque por pratos ou ingredientes"
+                            icon={FiSearch}
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
+
                         <Link to="/favorites"><ButtonText className="buttonsHeader" title="Meus favoritos" /></Link>
                         <Link to="/history"><ButtonText className="buttonsHeader" title="Histórico de pedidos" /></Link>
                         <Link to="/order"><Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${"0"})`} /></Link>
-                        <ButtonSvg id="buttonExit" icon={RxExit} />
+
+                        <ButtonSvg id="buttonExit" icon={RxExit} onClick={signOut} />
                     </LogoTextDesktop>
                     :
                     <>
@@ -100,7 +111,7 @@ export function NewHeader() {
                                             }
                                             <Link to="/favorites"><ButtonText title="Meus favoritos" /></Link>
                                             <hr />
-                                            <ButtonText title="Sair" />
+                                            <ButtonText title="Sair" onClick={signOut} />
                                             <hr />
                                         </div>
                                     </div>

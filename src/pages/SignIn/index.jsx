@@ -7,12 +7,19 @@ import { FiMail, FiLock } from "react-icons/fi";
 import { Button } from "../../components/Button";
 import { ButtonText } from "../../components/ButtonText";
 import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
+import { useAuth } from "../../hooks/auth";
+import { useState } from "react";
 
 export function SignIn() {
-    const isMobile = Resize()
+    const isMobile = Resize();
 
-    function login() {
-        window.localStorage.setItem("@role", "admin")
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+
+    const { signIn } = useAuth();
+
+    function handleSignIn() {
+        signIn({ email, password });
     }
 
     return (
@@ -29,12 +36,24 @@ export function SignIn() {
                 }
 
                 <label htmlFor="email">Email</label>
-                <Input id="email" type="email" placeholder="exemplo@exemplo.com.br" icon={FiMail} />
+                <Input
+                    id="email"
+                    type="email"
+                    placeholder="exemplo@exemplo.com.br"
+                    icon={FiMail}
+                    onChange={e => setEmail(e.target.value)}
+                />
 
                 <label htmlFor="password">Senha</label>
-                <Input id="password" type="password" placeholder="No mínimo 6 caracteres" icon={FiLock} />
+                <Input
+                    id="password"
+                    type="password"
+                    placeholder="No mínimo 6 caracteres"
+                    icon={FiLock}
+                    onChange={e => setPassword(e.target.value)}
+                />
 
-                <Button title="Entrar" onClick={login} />
+                <Button title="Entrar" onClick={handleSignIn} />
 
                 <Link to="/register"><ButtonText id="buttonText" title="Criar uma conta" /></Link>
             </form>

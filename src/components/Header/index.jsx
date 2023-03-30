@@ -1,5 +1,5 @@
 import { Input } from "../Input";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../Button";
 import { BsList } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -12,17 +12,28 @@ import { Resize, IsAdm } from "../../utils/index";
 import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
 import { RiFileListLine, RiCloseLine, RiUserLine } from "react-icons/ri";
 import { Container, LogoTextDesktop, LogoTextMobile } from "./style";
+import { useAuth } from "../../hooks/auth";
 
-
-export function Header() {
-    const isMobile = Resize()
-    const isAdm = IsAdm()
+export function Header({ handleCallback }) {
+    const isMobile = Resize();
+    const isAdm = IsAdm();
 
     const [showMenu, setShowMenu] = useState(false)
 
     const handleMenu = () => {
         setShowMenu(!showMenu)
     }
+
+    const { signOut } = useAuth();
+    const [search, setSearch] = useState("");
+
+    useEffect(() => {
+
+        if (handleCallback != null) {
+            handleCallback(search)
+        }
+
+    }, [search]);
 
     return (
         <Container>
@@ -52,10 +63,21 @@ export function Header() {
                                     </Link>
                             }
                         </div>
-                        <Input type="text" placeholder="Busque por pratos ou ingredientes" icon={FiSearch} />
+                        <Input
+                            type="text"
+                            placeholder="Busque por pratos ou ingredientes"
+                            icon={FiSearch}
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
+
                         <Link to="/order"><Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${"0"})`} /></Link>
                         <Link to="/profile"><ButtonSvg icon={RiUserLine} /></Link>
-                        <ButtonSvg id="buttonExit" icon={RxExit} />
+
+                        <ButtonSvg
+                            id="buttonExit"
+                            icon={RxExit}
+                            onClick={signOut}
+                        />
                     </LogoTextDesktop>
 
                     :
@@ -92,7 +114,12 @@ export function Header() {
                                     </div>
 
                                     <div id="main">
-                                        <Input type="text" placeholder="Busque por pratos ou ingredientes" icon={FiSearch} />
+                                        <Input
+                                            type="text"
+                                            placeholder="Busque por pratos ou ingredientes"
+                                            icon={FiSearch}
+                                            onChange={(e) => setSearch(e.target.value)}
+                                        />
                                         <div id="section">
                                             {
                                                 isAdm ?
@@ -103,7 +130,7 @@ export function Header() {
                                                     :
                                                     null
                                             }
-                                            <ButtonText title="Sair" />
+                                            <ButtonText title="Sair" onClick={signOut} />
                                             <hr />
                                         </div>
                                     </div>
