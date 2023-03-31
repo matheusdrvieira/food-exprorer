@@ -8,7 +8,6 @@ import { ButtonSvg } from "../../components/ButtonSvg";
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
-import { useSearchParams } from "react-router-dom";
 
 export function Home() {
 
@@ -28,21 +27,16 @@ export function Home() {
 
     const [search, setSearch] = useState("");
     const [dishes, setDishes] = useState([]);
-    const [searchParams] = useSearchParams();
 
     const handleCallback = search => {
         setSearch(search)
     }
 
     useEffect(() => {
-        const searchParam = searchParams.get("search")
-
-        if (searchParam) {
-            setSearch(searchParam)
-        }
-
         async function fetchDishes() {
-            const response = await api.get(`/dishes?name=&ingredient=${search}`)
+            const response = await api.get(`/dishes?name=${search}&ingredient=${search}`)
+            console.log(search);
+            console.log(response);
             setDishes(response.data)
         }
 

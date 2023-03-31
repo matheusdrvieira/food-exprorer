@@ -10,7 +10,6 @@ export const Container = styled.div`
         section{
             h1{
                 margin-bottom: 2.4rem;
-                margin-left: 3.0rem;
             }
 
             #buttonsCarousel{

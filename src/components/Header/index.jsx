@@ -25,6 +25,7 @@ export function Header({ handleCallback }) {
     }
 
     const { signOut } = useAuth();
+
     const [search, setSearch] = useState("");
 
     useEffect(() => {
@@ -43,7 +44,7 @@ export function Header({ handleCallback }) {
                         <div>
                             {
                                 isAdm ?
-                                    <Link to="/home">
+                                    <Link to="/">
                                         <div id="logoTitleAdm">
                                             <img src={titleBg} alt="logo" />
                                             <div>
@@ -53,7 +54,7 @@ export function Header({ handleCallback }) {
                                         </div>
                                     </Link>
                                     :
-                                    <Link to="/home">
+                                    <Link to="/">
                                         <div id="logoTitle">
                                             <img src={titleBg} alt="logo" />
                                             <div>
@@ -100,7 +101,7 @@ export function Header({ handleCallback }) {
 
                                     <ButtonSvg icon={RiFileListLine} />
                                     <span>{0}</span>
-                                    <Link to="/profile"><ButtonSvg icon={RiUserLine} /></Link>
+                                    <ButtonSvg icon={RiUserLine} />
                                 </div>
                             </Link>
                         </LogoTextMobile >
@@ -119,6 +120,7 @@ export function Header({ handleCallback }) {
                                             placeholder="Busque por pratos ou ingredientes"
                                             icon={FiSearch}
                                             onChange={(e) => setSearch(e.target.value)}
+
                                         />
                                         <div id="section">
                                             {
