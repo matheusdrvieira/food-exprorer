@@ -9,8 +9,8 @@ import { WINDOW_MOBILE_DESCRIPTION } from "../../utils/constants";
 import { useEffect, useState } from 'react';
 
 export function Card({ data, ...rest }) {
-    const isMobile = Resize()
-    const isAdm = IsAdm()
+    const isMobile = Resize();
+    const isAdm = IsAdm();
 
     const [count, setCount] = useState(0);
 

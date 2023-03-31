@@ -27,13 +27,9 @@ export function Resize() {
 export function IsAdm() {
     const [isAdm, setIsAdm] = useState("")
 
-
-
     useEffect(() => {
-        const role = window.localStorage.getItem("@role")
-
-        setIsAdm(role == "admin")
-
+        const user = window.localStorage.getItem("@rocketMovies:user")
+        setIsAdm(JSON.parse(user).is_admin)
     })
 
     return isAdm;
