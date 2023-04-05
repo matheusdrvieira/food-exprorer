@@ -8,12 +8,16 @@ import { FiMinus, FiPlus, FiHeart, FiEdit } from "react-icons/fi";
 import { WINDOW_MOBILE_DESCRIPTION } from "../../utils/constants";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
+import { api } from "../../services/api";
+import dishPlaceholder from "../../assets/dish.png"
 
 export function Card({ data, ...rest }) {
     const isMobile = Resize();
     const isAdm = IsAdm();
 
     const [count, setCount] = useState(0);
+
+    const imageUrl = data.image ? `${api.defaults.baseURL}/image/${data.image}` : dishPlaceholder;
 
     return (
         < Container {...rest}>
@@ -27,7 +31,7 @@ export function Card({ data, ...rest }) {
             }
             <Link to={`/details/${data.id}`}>
 
-                <img src={Image2} alt={`Foto de um prato ${data.name}`} />
+                <img src={imageUrl} alt={`Foto de um prato ${data.name}`} />
 
                 <h1>{data.name}</h1>
 
