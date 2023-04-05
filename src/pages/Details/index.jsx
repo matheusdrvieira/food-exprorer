@@ -5,29 +5,31 @@ import { Footer } from "../../components/Footer";
 import { RiArrowLeftSLine } from "react-icons/ri";
 import { ButtonText } from "../../components/ButtonText";
 import { CardDetails } from "../../components/CardDetails";
-
+import { useState, useEffect } from "react";
+import { api } from "../../services/api";
+import { useParams } from 'react-router-dom';
 
 export function Details() {
+    const [dish, setDish] = useState({});
+    const { id } = useParams();
+
+    useEffect(() => {
+        async function fetchDishById() {
+            const response = await api.get(`/dishes/${id}`)
+            setDish(response.data)
+        }
+
+        fetchDishById();
+    }, []);
+
     return (
         <Container>
             <Header />
-            <Link to="/home">
+            <Link to="/">
                 <ButtonText id="buttonText" title="Voltar" icon={RiArrowLeftSLine} />
             </Link>
             <main>
-                <CardDetails data={{
-                    nameProduct: "Salada Ravanello",
-                    description: "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
-                    tags: [
-                        { id: "1", name: "FALA" },
-                        { id: "2", name: "GAROTINHO" },
-                        { id: "3", name: "ZECA" },
-                        { id: "4", name: "URUBU" },
-                        { id: "5", name: "TODDYNHO" },
-                        { id: "6", name: "VAGABUNDO" },
-                    ],
-                    price: "49,97",
-                }} />
+                <CardDetails data={dish} />
             </main>
             <Footer />
         </Container >

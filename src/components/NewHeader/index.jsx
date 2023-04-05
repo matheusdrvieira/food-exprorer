@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "../Input";
 import { Button } from "../Button";
 import { BsList } from "react-icons/bs";
@@ -13,19 +13,30 @@ import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
 import { RiFileListLine, RiCloseLine } from "react-icons/ri";
 import { Container, LogoTextDesktop, LogoTextMobile } from "./style";
 import { useAuth } from "../../hooks/auth";
-import { api } from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 export function NewHeader() {
     const isMobile = Resize();
     const isAdm = IsAdm();
-    const { signOut, user } = useAuth();
-    const [search, setSearch] = useState("");
+
+    const { signOut } = useAuth();
 
     const [showMenu, setShowMenu] = useState(false)
+    const [search, setSearch] = useState("");
+
+    const navigate = useNavigate();
 
     const handleMenu = () => {
         setShowMenu(!showMenu)
     }
+
+    useEffect(() => {
+
+        if (!search == " ") {
+            navigate("/")
+        }
+
+    }, [search]);
 
     return (
         <Container>
@@ -35,7 +46,7 @@ export function NewHeader() {
                         <div>
                             {
                                 isAdm ?
-                                    <Link to="/home">
+                                    <Link to="/">
                                         <div id="logoTitleAdm">
                                             <img src={titleBg} alt="logo" />
                                             <div>
@@ -45,7 +56,7 @@ export function NewHeader() {
                                         </div>
                                     </Link>
                                     :
-                                    <Link to="/home">
+                                    <Link to="/">
                                         <div id="logoTitle">
                                             <img src={titleBg} alt="logo" />
                                             <div>
@@ -72,7 +83,7 @@ export function NewHeader() {
                     <>
                         <LogoTextMobile>
                             <ButtonSvg icon={BsList} onClick={handleMenu} />
-                            <Link to="/home">
+                            <Link to="/">
                                 <div>
                                     <img src={titleBg} alt="logo" />
                                     {
@@ -98,7 +109,13 @@ export function NewHeader() {
                                     </div>
 
                                     <div id="main">
-                                        <Input type="text" placeholder="Busque por pratos ou ingredientes" icon={FiSearch} />
+                                        <Input
+                                            type="text"
+                                            placeholder="Busque por pratos ou ingredientes"
+                                            icon={FiSearch}
+                                            onChange={(e) => setSearch(e.target.value)}
+                                        />
+
                                         <div id="section">
                                             {
                                                 isAdm ?

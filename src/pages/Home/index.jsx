@@ -11,18 +11,16 @@ import { api } from "../../services/api";
 
 export function Home() {
 
-    const carousel = useRef(null);
+    const carousel = useRef([]);
 
-    const handleLeftClick = (event) => {
+    const handleLeftClick = (event, index) => {
         event.preventDefault();
-
-        carousel.current.scrollLeft -= carousel.current.offsetWidth;
+        carousel.current[index].scrollLeft -= carousel.current[index].offsetWidth;
     };
 
-    const handleRightClick = (event) => {
+    const handleRightClick = (event, index) => {
         event.preventDefault();
-
-        carousel.current.scrollLeft += carousel.current.offsetWidth;
+        carousel.current[index].scrollLeft += carousel.current[index].offsetWidth;
     };
 
     const [search, setSearch] = useState("");
@@ -32,87 +30,72 @@ export function Home() {
         setSearch(search)
     }
 
+    const [categories, setCategories] = useState([]);
+    const [categoriesResponse, setCategoriesResponse] = useState([]);
+
     useEffect(() => {
         async function fetchDishes() {
-            const response = await api.get(`/dishes?name=${search}&ingredient=${search}`)
-            console.log(search);
-            console.log(response);
-            setDishes(response.data)
+            const response = await api.get(`/dishes?name=${search}&ingredient=${search}`);
+            setDishes(response.data);
         }
 
         fetchDishes()
-    }, [search]);
+    }, [search, categoriesResponse]);
+
+    useEffect(() => {
+        async function fetchCategories() {
+            const response = await api.get(`/categories`);
+            setCategoriesResponse(response.data);
+        }
+
+        fetchCategories();
+    }, []);
+
+    useEffect(() => {
+        if (categoriesResponse.length > 0 && dishes.length > 0) {
+            const newCategories = categoriesResponse.filter(category => {
+                return dishes.some(dish => dish.category_id == category.id)
+            })
+
+            setCategories(newCategories)
+        }
+    }, [dishes]);
 
     return (
         <Container>
             <Header handleCallback={handleCallback} />
             <main>
                 <Banner />
-                <section>
-                    <h1>Refeições</h1>
 
-                    <div id="buttonsCarousel">
-                        <ButtonSvg id="buttonSvg" icon={AiOutlineDoubleLeft} onClick={handleLeftClick} />
+                {
+                    categories.map((category, index) => (
+                        <section key={category.id}>
+                            <h1>{category.name}</h1>
 
-                        <div id="carousel" ref={carousel}>
+                            <div id="buttonsCarousel">
+                                <ButtonSvg id="buttonSvg" icon={AiOutlineDoubleLeft} onClick={event => handleLeftClick(event, index)} />
 
-                            {
-                                dishes.map(dish => (
-                                    < Card
-                                        key={dish.id}
-                                        data={dish} />
-                                ))
-                            }
+                                <div className="carousel" id={category.id} ref={ref => { carousel.current.push(ref) }}>
 
-                        </div>
-                        <ButtonSvg id="buttonSvg" icon={AiOutlineDoubleRight} onClick={handleRightClick} />
-                    </div>
-                </section>
+                                    {
+                                        dishes.map(dish => (
+                                            dish.category_id == category.id ?
+                                                < Card
+                                                    key={dish.id}
+                                                    data={dish} /> : null
+                                        ))
+                                    }
 
-                <section>
-                    <h1>Sobremesas</h1>
+                                </div>
+                                <ButtonSvg id="buttonSvg" icon={AiOutlineDoubleRight} onClick={event => handleRightClick(event, index)} />
+                            </div>
+                        </section>
+                    ))
+                }
 
-                    <div id="buttonsCarousel">
-                        <ButtonSvg id="buttonSvg" icon={AiOutlineDoubleLeft} onClick={handleLeftClick} />
-
-                        <div id="carousel">
-
-                            {
-                                dishes.map(dish => (
-                                    < Card
-                                        key={dish.id}
-                                        data={dish} />
-                                ))
-                            }
-
-                        </div>
-                        <ButtonSvg id="buttonSvg" icon={AiOutlineDoubleRight} onClick={handleRightClick} />
-                    </div>
-                </section>
-
-                <section>
-                    <h1>Bebidas</h1>
-
-                    <div id="buttonsCarousel">
-                        <ButtonSvg id="buttonSvg" icon={AiOutlineDoubleLeft} onClick={handleLeftClick} />
-
-                        <div id="carousel">
-
-                            {
-                                dishes.map(dish => (
-                                    < Card
-                                        key={dish.id}
-                                        data={dish} />
-                                ))
-                            }
-
-                        </div>
-                        <ButtonSvg id="buttonSvg" icon={AiOutlineDoubleRight} onClick={handleRightClick} />
-                    </div>
-                </section>
             </main>
             <Footer />
-        </Container>
+        </Container >
 
     )
 }

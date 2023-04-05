@@ -18,10 +18,10 @@ export function AppRoutes() {
             <Route path="/" element={<Home />} />
             <Route path="/dish/:id" element={<Dish />} />
 
-            {isAdm ? <Route path="/dish" element={<Dish />} /> :
-                <Route path="/dish" element={<Home />} />}
+            <Route path="/dish" element={<Dish />} />
 
-            <Route path="/details" element={<Details />} />
+
+            < Route path="/details/:id" element={<Details />} />
             <Route path="/order" element={<MyOrder />} />
             <Route path="/history" element={<OrderHistory />} />
             <Route path="/favorites" element={<MyFavorites />} />

@@ -6,7 +6,8 @@ import Image2 from "../../assets/image2.png";
 import { Resize, IsAdm } from "../../utils/index";
 import { FiMinus, FiPlus, FiHeart, FiEdit } from "react-icons/fi";
 import { WINDOW_MOBILE_DESCRIPTION } from "../../utils/constants";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { Link } from "react-router-dom";
 
 export function Card({ data, ...rest }) {
     const isMobile = Resize();
@@ -19,16 +20,18 @@ export function Card({ data, ...rest }) {
             {
                 isAdm ?
 
-                    <div className="edit"><ButtonSvg icon={FiEdit} /></div>
+                    <div className="edit"><Link to={`/dish/${data.id}`}><ButtonSvg icon={FiEdit} /></Link> </div>
 
                     :
                     <div className="favorite"><ButtonSvg icon={FiHeart} /></div>
             }
+            <Link to={`/details/${data.id}`}>
 
-            <img src={Image2} alt={`Foto de um prato ${data.nameProduct}`} />
+                <img src={Image2} alt={`Foto de um prato ${data.name}`} />
 
-            <h1>{data.name}</h1>
+                <h1>{data.name}</h1>
 
+            </Link>
             {
                 isMobile > WINDOW_MOBILE_DESCRIPTION ?
                     <p>{data.description ? data.description : "Nenhuma descricao disponivel!"}</p>

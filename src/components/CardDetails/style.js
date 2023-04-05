@@ -59,24 +59,25 @@ export const Container = styled.div`
     
         #Buttons-Wrapper{
             width: 100%;
-
             display: flex;
             align-items: center;
-
-            gap: 1.6rem;
-    
+            gap: 1.2rem;
+            
             #input-Wrapper{
                 display: flex;
                 align-items:center;
-                
+        
                 >div{
-                    width: 5.0rem;
                     height: 3.2rem;
-
+                    width: 5rem;
                     background:none; 
                     color: white;
                     text-align: center;
                     
+                    input{
+                        text-align: center;
+                    }
+
                     >input[type="number"]::-webkit-outer-spin-button,
                     >input[type="number"]::-webkit-inner-spin-button {
                         -webkit-appearance: none;
@@ -86,13 +87,13 @@ export const Container = styled.div`
             }
 
             .buttonEdit, .buttonAdd{      
-                height:3.2rem;
-    
+                height:4rem;
+                width: 18.8rem;
                 border-radius: 8px;
     
                 font-family: 'Poppins';
                 font-weight: 500;
-                font-size: 1.0rem;
+                font-size: 1.2rem;
                 line-height: 1.6rem;
         
                 svg{
@@ -142,6 +143,7 @@ export const Container = styled.div`
 
             #input-Wrapper{
                 height: 4.8rem;
+                gap:1rem;
 
                 >div{
                     width: 5.0rem;
@@ -158,7 +160,7 @@ export const Container = styled.div`
                 font-size: 1.4rem;
                 
                 >svg{
-                        display: none;
+                    display: none;
                 }
             }
             

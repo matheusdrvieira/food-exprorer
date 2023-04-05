@@ -86,7 +86,7 @@ export function Header({ handleCallback }) {
                     <>
                         <LogoTextMobile>
                             <ButtonSvg icon={BsList} onClick={handleMenu} />
-                            <Link to="/home">
+                            <Link to="/">
                                 <div>
                                     <img src={titleBg} alt="logo" />
                                     {

@@ -25,15 +25,6 @@ export const Container = styled.div`
        justify-content: flex-end;
    }
 
-   >img{
-        width: 8.8rem;
-        height: 8.8rem;
-
-        border-radius: 50%;
-        
-        margin-bottom:1.2rem;
-    }
-
     >span{
         margin-bottom:1.2rem;
 
@@ -73,33 +64,47 @@ export const Container = styled.div`
         }
     }
 
-    >h1{
-        font-family: 'Poppins';
-        font-weight: 500;
-        font-size: 1.4rem;
-        line-height: 2.4rem;
+    a{
+        >img{
+            width: 8.8rem;
+            height: 8.8rem;
 
-        margin-bottom:1.2rem;
+            border-radius: 50%;
+            
+            margin-bottom:1.2rem;
+        }
 
-        color:${({ theme }) => theme.COLORS.WHITE};
+        >h1{
+            font-family: 'Poppins';
+            font-weight: 500;
+            font-size: 1.4rem;
+            line-height: 2.4rem;
+        
+            margin-bottom:1.2rem;
+        
+            color:${({ theme }) => theme.COLORS.WHITE};
+        }
     }
+
 
 @media (min-width: 1000px) {
     width:30.4rem;
 
-    >img{
-        width: 17.6rem;
-        height: 17.6rem;
-
-        margin-bottom: 1.5rem;
-    }
-
-    >h1{  
-        font-weight: 700;
-        font-size: 2.4rem;
-        line-height: 100%;
-
-        margin-bottom:1.5rem;
+    a{
+        >img{
+            width: 17.6rem;
+            height: 17.6rem;
+    
+            margin-bottom: 1.5rem;
+        }
+    
+        >h1{  
+            font-weight: 700;
+            font-size: 2.4rem;
+            line-height: 100%;
+    
+            margin-bottom:1.5rem;
+        }
     }
 
     >p{

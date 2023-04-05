@@ -11,12 +11,23 @@ import { TagsInput } from "../../components/TagsInput";
 import { ButtonText } from "../../components/ButtonText";
 import { RiArrowLeftSLine, RiUpload2Fill } from "react-icons/ri";
 import { api } from "../../services/api";
-import { useNavigate } from "react-router-dom";
 
 export function Dish() {
     const [isToEdit, setIsToEdit] = useState("")
-
     const { id } = useParams();
+
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [price, setPrice] = useState();
+
+    const [categories, setCategories] = useState([]);
+    const [newCategories, setNewCategories] = useState("");
+
+    const [ingredients, setIngredients] = useState([]);
+    const [newIngredients, setNewIngredients] = useState("");
+
+    const [image, setImage] = useState();
+    const [imageFile, setImageFile] = useState(null);
 
     useEffect(() => {
         if (id) {
@@ -26,15 +37,22 @@ export function Dish() {
         }
     }, [id])
 
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
-    const [category, setCategory] = useState();
-    const [price, setPrice] = useState();
+    useEffect(() => {
+        async function fetchCategory() {
+            const response = await api.get(`/categories`)
+            setCategories(response.data)
+        }
 
-    const [ingredients, setIngredients] = useState([]);
-    const [newIngredients, setNewIngredients] = useState("");
+        fetchCategory()
+    }, []);
 
-    const navigate = useNavigate();
+    function handleChangeImage(event) {
+        const file = event.target.files[0];
+        setImageFile(file);
+
+        const imagePreview = URL.createObjectURL(file);
+        setImage(imagePreview);
+    }
 
     function handleAddIngredient() {
         setIngredients(prevState => [...prevState, newIngredients]);
@@ -50,11 +68,9 @@ export function Dish() {
             return alert("Voce esqueceu de adicianar um nome para seu prato.")
         }
 
-        /*  
-            if (!category) {
-                  return alert("Voce esqueceu de adicianar uma categoria para seu prato.")
-              }
-        */
+        if (!categories) {
+            return alert("Voce esqueceu de adicianar uma categoria para seu prato.")
+        }
 
         if (!price) {
             return alert("Voce esqueceu de adicianar uma preço para seu prato.")
@@ -64,16 +80,30 @@ export function Dish() {
             return alert("Voce esqueceu de adicianar os ingredientes do seu prato.")
         }
 
-        await api.post("/dishes", {
-            name,
-            description,
-            category: 1,
-            price,
-            ingredients
-        });
+        let body = new FormData();
+
+        body.append("image", imageFile)
+        body.append("name", name)
+        body.append("description", description)
+        body.append("category", newCategories)
+        body.append("price", price)
+        body.append("ingredients[]", ingredients)
+
+        if (isToEdit) {
+            await api.put(`/dishes/${id}`, body, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+        } else {
+            await api.post("/dishes", body, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+        }
 
         alert("Prato criado com sucesso!");
-        navigate("/");
     }
 
     return (
@@ -93,7 +123,13 @@ export function Dish() {
                     <div id="inputFile">
                         <label htmlFor="file">Imagem do prato</label>
                         <label htmlFor="arquivo" id="labelFile"><RiUpload2Fill />selecione uma imagem</label>
-                        <input type="file" name="arquivo" id="arquivo" placeholder="Selecione imagem" />
+                        <input
+                            type="file"
+                            name="arquivo"
+                            id="arquivo"
+                            placeholder="Selecione imagem"
+                            onChange={handleChangeImage}
+                        />
                     </div>
 
                     <div id="inputName">
@@ -109,14 +145,17 @@ export function Dish() {
                     <div id="inputCategory">
                         <label htmlFor="category">Categoria</label>
                         <div id="select">
-
-                            <select name="input" id="inputSelect">
-                                <option value="Refeição">Refeição</option>
-                                <option value="Sobremesas">Sobremesas</option>
-                                <option value="Bebidas">Bebidas</option>
-
-
-
+                            <select name="input" id="inputSelect" onChange={e => setNewCategories(e.target.value)}>
+                                <option value="Selecione uma categoria">Selecione uma categoria</option>
+                                {
+                                    categories.map((category) => (
+                                        <option
+                                            key={category.id}
+                                            value={category.id}>
+                                            {category.name}
+                                        </option>
+                                    ))
+                                }
                             </select>
                         </div>
                     </div>

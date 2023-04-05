@@ -19,7 +19,7 @@ export const Container = styled.div`
                 gap: 5px;
                 padding-bottom: 4.6rem;
 
-                #carousel{
+               .carousel{
                     width: 100%;
                     display: flex;
                     overflow-x: auto;
@@ -27,7 +27,7 @@ export const Container = styled.div`
                     gap: 1.6rem; 
                 }
                 
-                #carousel::-webkit-scrollbar{
+                .carousel::-webkit-scrollbar{
                     display: none;
                 }
             }
@@ -42,7 +42,7 @@ export const Container = styled.div`
             #buttonsCarousel{
                 display: flex;
 
-                #carousel{
+                .carousel{
                     display: flex;
                     gap: 2.7rem;     
                 }
