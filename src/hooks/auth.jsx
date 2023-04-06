@@ -10,7 +10,6 @@ function AuthProvider({ children }) {
         try {
             const response = await api.post("/sessions", { email, password })
             const { user, token } = response.data;
-            console.log(user, token);
 
             localStorage.setItem("@rocketMovies:user", JSON.stringify(user));
             localStorage.setItem("@rocketMovies:token", token);

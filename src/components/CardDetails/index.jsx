@@ -5,19 +5,22 @@ import { Container } from "./style";
 import { Link } from "react-router-dom";
 import { ButtonSvg } from "../ButtonSvg";
 import { IsAdm } from "../../utils/index";
-import Image2 from "../../assets/image2.png";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { RiFileListLine } from "react-icons/ri";
 import { useState } from 'react';
+import dishPlaceholder from "../../assets/dish.png"
+import { api } from "../../services/api";
 
 export function CardDetails({ data, ...rest }) {
     const isAdm = IsAdm();
     const [count, setCount] = useState(0);
 
+    const imageUrl = data.image ? `${api.defaults.baseURL}/image/${data.image}` : dishPlaceholder;
+
     return (
         < Container {...rest}>
 
-            <img src={Image2} alt="Foto de um prato" />
+            <img src={imageUrl} alt="Foto de um prato" />
 
             <div id="box">
                 <h1>{data.name}</h1>

@@ -127,6 +127,7 @@ export function Dish() {
             })
 
             alert("Prato atualizado com sucesso!");
+            navigate("/")
 
         } else {
             await api.post("/dishes", body, {

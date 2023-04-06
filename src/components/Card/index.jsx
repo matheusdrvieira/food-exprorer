@@ -2,7 +2,7 @@ import { Input } from "../Input";
 import { Button } from "../Button";
 import { Container } from "./style";
 import { ButtonSvg } from "../ButtonSvg";
-import Image2 from "../../assets/image2.png";
+import { FaHeart } from "react-icons/fa";
 import { Resize, IsAdm } from "../../utils/index";
 import { FiMinus, FiPlus, FiHeart, FiEdit } from "react-icons/fi";
 import { WINDOW_MOBILE_DESCRIPTION } from "../../utils/constants";
@@ -16,6 +16,17 @@ export function Card({ data, ...rest }) {
     const isAdm = IsAdm();
 
     const [count, setCount] = useState(0);
+    const [isFavorite, setIsFavorite] = useState(data.is_favorite);
+
+    async function handleAddFavorite(id) {
+        await api.post("/favorites", { dish_id: id });
+        setIsFavorite(true);
+    }
+
+    async function handleRemoveFavorite(id) {
+        await api.delete(`/favorites/${id}`);
+        setIsFavorite(false);
+    }
 
     const imageUrl = data.image ? `${api.defaults.baseURL}/image/${data.image}` : dishPlaceholder;
 
@@ -27,7 +38,12 @@ export function Card({ data, ...rest }) {
                     <div className="edit"><Link to={`/dish/${data.id}`}><ButtonSvg icon={FiEdit} /></Link> </div>
 
                     :
-                    <div className="favorite"><ButtonSvg icon={FiHeart} /></div>
+                    <div className="favorite">
+                        <ButtonSvg
+                            icon={isFavorite ? FaHeart : FiHeart}
+                            onClick={() => (isFavorite ? handleRemoveFavorite(data.id) : handleAddFavorite(data.id))}
+                        />
+                    </div>
             }
             <Link to={`/details/${data.id}`}>
 
