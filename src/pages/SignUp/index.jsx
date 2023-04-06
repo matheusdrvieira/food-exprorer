@@ -20,7 +20,6 @@ export function SignUp() {
     const navigate = useNavigate();
 
     function handleSignUp() {
-        console.log(name, email, password);
         if (!name || !email || !password) {
             return alert("Preencha todos os campos!")
         }

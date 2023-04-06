@@ -71,7 +71,12 @@ export function Header({ handleCallback }) {
                             onChange={(e) => setSearch(e.target.value)}
                         />
 
-                        <Link to="/order"><Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${"0"})`} /></Link>
+                        {
+                            isAdm ?
+                                <Link to="/dish"><Button id="buttonRequest" title={`Novo prato`} /></Link>
+                                :
+                                <Link to="/order"><Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${"0"})`} /></Link>
+                        }
                         <Link to="/profile"><ButtonSvg icon={RiUserLine} /></Link>
 
                         <ButtonSvg

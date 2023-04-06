@@ -21,7 +21,7 @@ export function AppRoutes() {
             <Route path="/dish" element={<Dish />} />
 
 
-            < Route path="/details/:id" element={<Details />} />
+            <Route path="/details/:id" element={<Details />} />
             <Route path="/order" element={<MyOrder />} />
             <Route path="/history" element={<OrderHistory />} />
             <Route path="/favorites" element={<MyFavorites />} />
