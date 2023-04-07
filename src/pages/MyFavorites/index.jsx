@@ -15,7 +15,7 @@ export function MyFavorites() {
         }
 
         fetchDishById();
-    }, [dishes]);
+    }, []);
 
     function handleDeleteDish(id) {
         setDishes(dishes.filter(dish => dish.id !== id));

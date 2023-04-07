@@ -19,13 +19,13 @@ export const Container = styled.div`
 
 @media(min-width: 400px) {
     main{
-        padding:3.5rem 5.6rem;
+        padding:3.5rem 5rem 10rem;
     } 
 }
 
 @media(min-width: 1000px) {
     main{
-        padding:3.5rem 18rem 0 12.2rem;
+        padding:3.5rem 18rem 5rem;
 
         h2{
             font-size: 3.2rem;    

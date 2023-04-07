@@ -34,9 +34,7 @@ export function Card({ data, ...rest }) {
         < Container {...rest}>
             {
                 isAdm ?
-
                     <div className="edit"><Link to={`/dish/${data.id}`}><ButtonSvg icon={FiEdit} /></Link> </div>
-
                     :
                     <div className="favorite">
                         <ButtonSvg

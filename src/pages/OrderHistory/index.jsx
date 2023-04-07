@@ -3,15 +3,36 @@ import { Resize, IsAdm } from "../../utils/index";
 import { NewHeader } from "../../components/NewHeader";
 import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
 import { Container, BoxOrderMobile, BoxOrderDesktop } from "./style";
+import { useState, useEffect } from "react";
+import { api } from "../../services/api";
 
 export function OrderHistory() {
-    const isMobile = Resize()
-    const isAdm = IsAdm()
+    const isMobile = Resize();
+    const isAdm = IsAdm();
+
+    const [orders, setOrders] = useState([]);
+    const [startDate, setStartDate] = useState("2023-04-07");
+    const [endDate, setEndDate] = useState("2023-04-08");
+    const [ordersAdm, setOrdersAdm] = useState([]);
+
+    useEffect(() => {
+        async function fetchOrders() {
+            const response = await api.get(`/orders`)
+            setOrders(response.data)
+        }
+
+        async function fetchOrdersAdm() {
+            const response = await api.get(`/users/orders?startDate=${startDate}&endDate=${endDate}`)
+            setOrdersAdm(response.data)
+        }
+
+        fetchOrders();
+        fetchOrdersAdm();
+    }, []);
 
     return (
         <Container>
             <NewHeader />
-
             {
                 isMobile < WINDOW_MOBILE_WIDTH ?
                     <main>
@@ -19,191 +40,72 @@ export function OrderHistory() {
                         {
                             isAdm ?
                                 <>
-                                    <BoxOrderMobile>
-                                        < div className="boxHeade">
-                                            <div>
-                                                <span>{`000004`}</span>
-                                            </div>
+                                    {
+                                        ordersAdm.map(orderAdm => (
+                                            <BoxOrderMobile>
+                                                < div className="boxHeade">
+                                                    <div>
+                                                        <span>{orderAdm.id}</span>
+                                                    </div>
 
-                                            <div>
-                                                <span>{`20/05 às 18h00`}</span>
-                                            </div>
-                                        </div>
+                                                    <div>
+                                                        <span>{orderAdm.created_at}</span>
+                                                    </div>
+                                                </div>
 
-                                        <div>
-                                            <p>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</p>
-                                        </div>
+                                                <div>
+                                                    <p>
+                                                        {
+                                                            orderAdm.dishes.map(dish => (
+                                                                <> {`${dish.quantity} x ${dish.name}, `} </>
+                                                            ))
+                                                        }
+                                                    </p>
+                                                </div>
 
-                                        <div className="select">
-                                            <select>
-                                                <option value="🟡 Pendente">🟡 Pendente</option>
-                                                <option value="🟠 Preparando">🟠 Preparando</option>
-                                                <option value="🟢 Entregue">🟢 Entregue</option>
-                                                <option value="🔴 Cancelado">🔴 Cancelado</option>
-                                            </select>
-                                        </div>
-                                    </BoxOrderMobile>
-                                    <BoxOrderMobile>
-                                        < div className="boxHeade">
-                                            <div>
-                                                <span>{`000004`}</span>
-                                            </div>
-
-                                            <div>
-                                                <span>{`20/05 às 18h00`}</span>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <p>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</p>
-                                        </div>
-
-                                        <div className="select">
-                                            <select>
-                                                <option value="🟡 Pendente">🟡 Pendente</option>
-                                                <option value="🟠 Preparando">🟠 Preparando</option>
-                                                <option value="🟢 Entregue">🟢 Entregue</option>
-                                                <option value="🔴 Cancelado">🔴 Cancelado</option>
-                                            </select>
-                                        </div>
-                                    </BoxOrderMobile>
-                                    <BoxOrderMobile>
-                                        < div className="boxHeade">
-                                            <div>
-                                                <span>{`000004`}</span>
-                                            </div>
-
-                                            <div>
-                                                <span>{`20/05 às 18h00`}</span>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <p>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</p>
-                                        </div>
-
-                                        <div className="select">
-                                            <select>
-                                                <option value="🟡 Pendente">🟡 Pendente</option>
-                                                <option value="🟠 Preparando">🟠 Preparando</option>
-                                                <option value="🟢 Entregue">🟢 Entregue</option>
-                                                <option value="🔴 Cancelado">🔴 Cancelado</option>
-                                            </select>
-                                        </div>
-                                    </BoxOrderMobile>
-                                    <BoxOrderMobile>
-                                        < div className="boxHeade">
-                                            <div>
-                                                <span>{`000004`}</span>
-                                            </div>
-
-                                            <div>
-                                                <span>{`20/05 às 18h00`}</span>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <p>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</p>
-                                        </div>
-
-                                        <div className="select">
-                                            <select>
-                                                <option value="🟡 Pendente">🟡 Pendente</option>
-                                                <option value="🟠 Preparando">🟠 Preparando</option>
-                                                <option value="🟢 Entregue">🟢 Entregue</option>
-                                                <option value="🔴 Cancelado">🔴 Cancelado</option>
-                                            </select>
-                                        </div>
-                                    </BoxOrderMobile>
+                                                <div className="select">
+                                                    <select>
+                                                        <option value="🟡 Pendente">🟡 Pendente</option>
+                                                        <option value="🟠 Preparando">🟠 Preparando</option>
+                                                        <option value="🟢 Entregue">🟢 Entregue</option>
+                                                        <option value="🔴 Cancelado">🔴 Cancelado</option>
+                                                    </select>
+                                                </div>
+                                            </BoxOrderMobile>
+                                        ))
+                                    }
                                 </>
                                 :
                                 <>
-                                    <BoxOrderMobile>
-                                        <div className="boxHeade">
-                                            <div>
-                                                <span>{`000004`}</span>
-                                            </div>
+                                    {
+                                        orders.map(order => (
+                                            <BoxOrderMobile>
+                                                <div className="boxHeade">
+                                                    <div>
+                                                        <span>{order.id}</span>
+                                                    </div>
 
-                                            <div>
-                                                <span>{`🟡 Pendentes`}</span>
-                                            </div>
+                                                    <div>
+                                                        <span>{`🟡 ${order.status}`}</span>
+                                                    </div>
 
-                                            <div>
-                                                <span>{`20/05 às 18h00`}</span>
-                                            </div>
+                                                    <div>
+                                                        <span>{order.created_at}</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <p>
+                                                        {
+                                                            order.dishes.map(dish => (
+                                                                <> {`${dish.quantity} x ${dish.name}, `} </>
+                                                            ))
+                                                        }
+                                                    </p>
+                                                </div>
 
-                                        </div>
-
-                                        <div>
-                                            <p>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</p>
-                                        </div>
-
-                                    </BoxOrderMobile>
-                                    <BoxOrderMobile>
-                                        <div className="boxHeade">
-                                            <div>
-                                                <span>{`000004`}</span>
-                                            </div>
-
-                                            <div>
-                                                <span>{`🟠 Preparando`}</span>
-                                            </div>
-
-                                            <div>
-                                                <span>{`20/05 às 18h00`}</span>
-                                            </div>
-
-                                        </div>
-
-                                        <div>
-                                            <p>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</p>
-                                        </div>
-
-                                    </BoxOrderMobile>
-                                    <BoxOrderMobile>
-                                        <div className="boxHeade">
-                                            <div>
-                                                <span>{`000004`}</span>
-                                            </div>
-
-                                            <div>
-                                                <span>{`🟢 Entregue`}</span>
-                                            </div>
-
-                                            <div>
-                                                <span>{`20/05 às 18h00`}</span>
-                                            </div>
-
-                                        </div>
-
-                                        <div>
-                                            <p>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</p>
-                                        </div>
-
-                                    </BoxOrderMobile>
-                                    <BoxOrderMobile>
-                                        <div className="boxHeade">
-                                            <div>
-                                                <span>{`000004`}</span>
-                                            </div>
-
-                                            <div>
-                                                <span>{`🔴 Cancelado`}</span>
-                                            </div>
-
-                                            <div>
-                                                <span>{`20/05 às 18h00`}</span>
-                                            </div>
-
-                                        </div>
-
-                                        <div>
-                                            <p>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</p>
-                                        </div>
-
-                                    </BoxOrderMobile>
-
-
+                                            </BoxOrderMobile>
+                                        ))
+                                    }
                                 </>
                         }
                     </main >
@@ -223,72 +125,35 @@ export function OrderHistory() {
                                             </tr>
                                         </thead>
                                         <tbody className="order">
-                                            <tr>
-                                                <td>
-                                                    <div id="select">
-                                                        <select>
-                                                            <option value="🟡 Pendente">🟡 Pendente</option>
-                                                            <option value="🟠 Preparando">🟠 Preparando</option>
-                                                            <option value="🟢 Entregue">🟢 Entregue</option>
-                                                            <option value="🔴 Cancelado">🔴 Cancelado</option>
-                                                        </select>
-                                                    </div>
-                                                </td>
-                                                <td>{`00000004`}</td>
-                                                <td>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</td>
-                                                <td>{`20/05 às 18h00`}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div id="select">
-                                                        <select>
-                                                            <option value="🟡 Pendente">🟡 Pendente</option>
-                                                            <option value="🟠 Preparando">🟠 Preparando</option>
-                                                            <option value="🟢 Entregue">🟢 Entregue</option>
-                                                            <option value="🔴 Cancelado">🔴 Cancelado</option>
-                                                        </select>
-                                                    </div>
-                                                </td>
-                                                <td>{`00000004`}</td>
-                                                <td>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</td>
-                                                <td>{`20/05 às 18h00`}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div id="select">
-                                                        <select>
-                                                            <option value="🟡 Pendente">🟡 Pendente</option>
-                                                            <option value="🟠 Preparando">🟠 Preparando</option>
-                                                            <option value="🟢 Entregue">🟢 Entregue</option>
-                                                            <option value="🔴 Cancelado">🔴 Cancelado</option>
-                                                        </select>
-                                                    </div>
-                                                </td>
-                                                <td>{`00000004`}</td>
-                                                <td>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</td>
-                                                <td>{`20/05 às 18h00`}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div id="select">
-                                                        <select>
-                                                            <option value="🟡 Pendente">🟡 Pendente</option>
-                                                            <option value="🟠 Preparando">🟠 Preparando</option>
-                                                            <option value="🟢 Entregue">🟢 Entregue</option>
-                                                            <option value="🔴 Cancelado">🔴 Cancelado</option>
-                                                        </select>
-                                                    </div>
-                                                </td>
-                                                <td>{`00000004`}</td>
-                                                <td>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</td>
-                                                <td>{`20/05 às 18h00`}</td>
-                                            </tr>
+                                            {
+                                                ordersAdm.map(orderAdm => (
+                                                    <tr>
+                                                        <td>
+                                                            <div id="select">
+                                                                <select>
+                                                                    <option value="🟡 Pendente">🟡 Pendente</option>
+                                                                    <option value="🟠 Preparando">🟠 Preparando</option>
+                                                                    <option value="🟢 Entregue">🟢 Entregue</option>
+                                                                    <option value="🔴 Cancelado">🔴 Cancelado</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                        <td>{orderAdm.id}</td>
+                                                        <td>
+                                                            {
+                                                                orderAdm.dishes.map(dish => (
+                                                                    <> {`${dish.quantity} x ${dish.name}, `} </>
+                                                                ))
+                                                            }
+                                                        </td>
+                                                        <td>{orderAdm.created_at}</td>
+                                                    </tr>
+                                                ))
+                                            }
                                         </tbody>
                                     </table>
                                 </BoxOrderDesktop>
-
                                 :
-
                                 <BoxOrderDesktop>
                                     <h2>Histórico de pedidos</h2>
                                     <table>
@@ -301,30 +166,22 @@ export function OrderHistory() {
                                             </tr>
                                         </thead>
                                         <tbody className="order">
-                                            <tr>
-                                                <td>{`🟡 Pendente`}</td>
-                                                <td>{`00000004`}</td>
-                                                <td>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</td>
-                                                <td>{`20/05 às 18h00`}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>{`🟠 Preparando`}</td>
-                                                <td>{`00000004`}</td>
-                                                <td>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</td>
-                                                <td>{`20/05 às 18h00`}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>{`🟢 Entregue`}</td>
-                                                <td>{`00000004`}</td>
-                                                <td>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</td>
-                                                <td>{`20/05 às 18h00`}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>{`🔴 Cancelado`}</td>
-                                                <td>{`00000004`}</td>
-                                                <td>{`1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá`}</td>
-                                                <td>{`20/05 às 18h00`}</td>
-                                            </tr>
+                                            {
+                                                orders.map(order => (
+                                                    <tr>
+                                                        <td>{`🟡 ${order.status}`}</td>
+                                                        <td>{order.id}</td>
+                                                        <td>
+                                                            {
+                                                                order.dishes.map(dish => (
+                                                                    <>{`${dish.quantity} x ${dish.name}, `}</>
+                                                                ))
+                                                            }
+                                                        </td>
+                                                        <td>{order.created_at}</td>
+                                                    </tr>
+                                                ))
+                                            }
                                         </tbody>
                                     </table>
                                 </BoxOrderDesktop>
