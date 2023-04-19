@@ -28,7 +28,7 @@ export function IsAdm() {
     const [isAdm, setIsAdm] = useState("")
 
     useEffect(() => {
-        const user = window.localStorage.getItem("@rocketMovies:user")
+        const user = window.localStorage.getItem("@foodExplorer:user")
         setIsAdm(JSON.parse(user).is_admin)
     })
 

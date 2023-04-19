@@ -42,8 +42,9 @@ export const Container = styled.div`
                 }
             }
     
-            button:hover{
-                background: ${({ theme }) => theme.COLORS.BACKGROUND_SELECT};
+            .active {
+                background-color:${({ theme }) => theme.COLORS.BACKGROUND_BUTTON};
+                color: #fff;
             }
     
             #buttonQrcode{

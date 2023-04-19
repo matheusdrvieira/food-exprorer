@@ -1,37 +1,47 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    display: flex;
-    align-items: center;
+    display: flex;    
+    flex-direction: column;
 
     margin-bottom: 1.8rem;
     gap: 1.2rem;
     
-    >div{
-        >div{
+    #modal{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+    #box{
+        display: flex;
+        flex-direction: column;
+
+        #boxInfo{
             display: flex;
             align-items: center;
             gap: 1rem;
-
+    
             h1{
                 font-family: 'Poppins';
                 font-weight: 500;
                 font-size: 2rem;
-
+    
                 white-space: nowrap;
             }
-    
+        
             p{
                 font-family: 'Roboto';
                 font-weight: 400;
                 font-size: 1.2rem;
-
+    
                 white-space: nowrap;
-
+    
                 color: ${({ theme }) => theme.COLORS.GRAY};
             }
         }
+    }
 
+       
         button{    
             font-weight: 400;
             font-size: 1.2rem;

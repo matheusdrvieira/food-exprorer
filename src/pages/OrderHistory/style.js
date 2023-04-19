@@ -7,15 +7,44 @@ export const Container = styled.div`
 
     main{
         padding:3.5rem 3rem 10rem;
-    }
+
+        #inputDate{
+            margin-bottom: 2rem;
+
+            gap: 1rem;
+            padding: 2rem;
     
+            border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_TAG};
+            border-radius: 8px;
+
+            #inputs{
+                display: flex;
+                gap: 1.5rem;
+            }
+    
+            label{
+                font-family: 'Poppins';
+                font-weight: 500;
+                font-size: 1.6rem;    
+            }
+    
+            div{
+                width: 100%;
+                div{
+                  
+                }
+            }
+        }
+    }
+
     h2{
-        margin-bottom: 2.4rem;
+        margin-bottom: 1rem;
         white-space: nowrap;
         font-family: 'Poppins';
         font-weight: 500;
         font-size: 2.8rem;    
     }
+    
 
 @media(min-width: 400px) {
     main{
@@ -27,9 +56,27 @@ export const Container = styled.div`
     main{
         padding:3.5rem 18rem 5rem;
 
-        h2{
-            font-size: 3.2rem;    
+        #inputDate{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+    
+            border: 2px solid ${({ theme }) => theme.COLORS.BACKGROUND_TAG};
+            border-radius: 5px;
+
+            gap: 3rem;
+
+            #inputs{
+                display: flex;
+                width: auto;
+                gap: 3rem;
+            }
         }
+    }
+
+    h2{
+        font-size: 3.2rem;
+        margin-bottom:0;
     }
 }
 `;

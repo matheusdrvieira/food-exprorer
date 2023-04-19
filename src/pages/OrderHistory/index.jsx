@@ -5,14 +5,13 @@ import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
 import { Container, BoxOrderMobile, BoxOrderDesktop } from "./style";
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
+import { Input } from "../../components/Input";
 
 export function OrderHistory() {
     const isMobile = Resize();
     const isAdm = IsAdm();
 
     const [orders, setOrders] = useState([]);
-    const [startDate, setStartDate] = useState("2023-04-07");
-    const [endDate, setEndDate] = useState("2023-04-08");
     const [ordersAdm, setOrdersAdm] = useState([]);
 
     useEffect(() => {
@@ -22,6 +21,8 @@ export function OrderHistory() {
         }
 
         async function fetchOrdersAdm() {
+            const startDate = "2023-04-10";
+            const endDate = "2023-04-20";
             const response = await api.get(`/users/orders?startDate=${startDate}&endDate=${endDate}`)
             setOrdersAdm(response.data)
         }
@@ -30,45 +31,91 @@ export function OrderHistory() {
         fetchOrdersAdm();
     }, []);
 
+    async function updateStatus(orderId, newStatus) {
+        const updatedOrdersAdm = ordersAdm.map(orderAdm => {
+            if (orderAdm.id === orderId) {
+                return { ...orderAdm, status: newStatus };
+            } else {
+                return orderAdm;
+            }
+        });
+
+        setOrdersAdm(updatedOrdersAdm);
+        await api.patch(`/orders/${orderId}`, { status: newStatus });
+
+        const order = { id: orderId, status: newStatus };
+        localStorage.setItem("orderStatus", JSON.stringify(order));
+        alert("Status atualizado com sucesso!")
+    }
+
+    function getStatusIcon(status) {
+        switch (status) {
+            case 'Pendente':
+                return '🟡';
+            case 'Aprovado':
+                return '🟠';
+            case 'Pedido Entregue':
+                return '🟢';
+            case 'Cancelado':
+                return '🔴';
+            default:
+                return '';
+        }
+    }
+
     return (
         <Container>
             <NewHeader />
             {
                 isMobile < WINDOW_MOBILE_WIDTH ?
                     <main>
-                        <h2>Histórico de pedidos</h2>
+                        {
+                            isAdm ?
+                                <>
+                                    <div id="inputDate">
+                                        <h2>Histórico de pedidos</h2>
+                                        <div id="inputs">
+                                            <div>
+                                                <label>de:</label>
+                                                <Input type="text" placeholder="Ex: 2023-01-01" />
+                                            </div>
+                                            <div>
+                                                <label>até:</label>
+                                                <Input type="text" placeholder="Ex: 2023-02-30" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </> :
+                                <h2>Histórico de pedidos</h2>
+                        }
                         {
                             isAdm ?
                                 <>
                                     {
                                         ordersAdm.map(orderAdm => (
-                                            <BoxOrderMobile>
+                                            <BoxOrderMobile key={orderAdm.id}>
                                                 < div className="boxHeade">
                                                     <div>
-                                                        <span>{orderAdm.id}</span>
+                                                        <span>{orderAdm.id.toString().padStart(6, '0')}</span>
                                                     </div>
 
                                                     <div>
-                                                        <span>{orderAdm.created_at}</span>
+                                                        <span>{new Date(orderAdm.created_at).toLocaleDateString('pt-BR')} às {new Date(orderAdm.created_at).toLocaleTimeString('pt-BR', { timeZone: 'America/Sao_Paulo', hour: 'numeric', minute: 'numeric' })}</span>
                                                     </div>
                                                 </div>
 
                                                 <div>
                                                     <p>
-                                                        {
-                                                            orderAdm.dishes.map(dish => (
-                                                                <> {`${dish.quantity} x ${dish.name}, `} </>
-                                                            ))
-                                                        }
+                                                        {orderAdm.dishes.map(dish => (`${dish.quantity} x ${dish.name}`)).join(", ")}
                                                     </p>
                                                 </div>
 
                                                 <div className="select">
-                                                    <select>
-                                                        <option value="🟡 Pendente">🟡 Pendente</option>
-                                                        <option value="🟠 Preparando">🟠 Preparando</option>
-                                                        <option value="🟢 Entregue">🟢 Entregue</option>
-                                                        <option value="🔴 Cancelado">🔴 Cancelado</option>
+                                                    <select value={orderAdm.status} onChange={(event) => updateStatus(orderAdm.id, event.target.value)}>
+                                                        <option value="Pendente">🟡 Pendente</option>
+                                                        <option value="Aprovado">🟠 Aprovado</option>
+                                                        <option value="Pedido Entregue">🟢 Pedido Entregue</option>
+                                                        <option value="Cancelado">🔴 Cancelado</option>
                                                     </select>
                                                 </div>
                                             </BoxOrderMobile>
@@ -79,27 +126,23 @@ export function OrderHistory() {
                                 <>
                                     {
                                         orders.map(order => (
-                                            <BoxOrderMobile>
+                                            <BoxOrderMobile key={order.id}>
                                                 <div className="boxHeade">
                                                     <div>
-                                                        <span>{order.id}</span>
+                                                        <span>{order.id.toString().padStart(6, '0')}</span>
                                                     </div>
 
                                                     <div>
-                                                        <span>{`🟡 ${order.status}`}</span>
+                                                        <span>{getStatusIcon(order.status)} {order.status}</span>
                                                     </div>
 
                                                     <div>
-                                                        <span>{order.created_at}</span>
+                                                        <span>{new Date(order.created_at).toLocaleDateString('pt-BR')} às {new Date(order.created_at).toLocaleTimeString('pt-BR', { timeZone: 'America/Sao_Paulo', hour: 'numeric', minute: 'numeric' })}</span>
                                                     </div>
                                                 </div>
                                                 <div>
                                                     <p>
-                                                        {
-                                                            order.dishes.map(dish => (
-                                                                <> {`${dish.quantity} x ${dish.name}, `} </>
-                                                            ))
-                                                        }
+                                                        {order.dishes.map(dish => (`${dish.quantity} x ${dish.name}`)).join(", ")}
                                                     </p>
                                                 </div>
 
@@ -113,8 +156,26 @@ export function OrderHistory() {
                     <main>
                         {
                             isAdm ?
+                                <>
+                                    <div id="inputDate">
+                                        <h2>Histórico de pedidos</h2>
+                                        <div id="inputs">
+                                            <div>
+                                                <label>de:</label>
+                                                <Input type="text" placeholder="Exemplo: 2023-01-01" />
+                                            </div>
+                                            <div>
+                                                <label>até:</label>
+                                                <Input type="text" placeholder="Exemplo: 2023-02-30" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </> :
+                                <h2>Histórico de pedidos</h2>
+                        }
+                        {
+                            isAdm ?
                                 <BoxOrderDesktop>
-                                    <h2>Histórico de pedidos</h2>
                                     <table>
                                         <thead>
                                             <tr>
@@ -126,27 +187,23 @@ export function OrderHistory() {
                                         </thead>
                                         <tbody className="order">
                                             {
-                                                ordersAdm.map(orderAdm => (
-                                                    <tr>
+                                                Array.isArray(ordersAdm) && ordersAdm.map(orderAdm => (
+                                                    <tr key={orderAdm.id}>
                                                         <td>
                                                             <div id="select">
-                                                                <select>
-                                                                    <option value="🟡 Pendente">🟡 Pendente</option>
-                                                                    <option value="🟠 Preparando">🟠 Preparando</option>
-                                                                    <option value="🟢 Entregue">🟢 Entregue</option>
-                                                                    <option value="🔴 Cancelado">🔴 Cancelado</option>
+                                                                <select value={orderAdm.status} onChange={(event) => updateStatus(orderAdm.id, event.target.value)}>
+                                                                    <option value="Pendente">🟡 Pendente</option>
+                                                                    <option value="Aprovado">🟠 Aprovado</option>
+                                                                    <option value="Pedido Entregue">🟢 Pedido Entregue</option>
+                                                                    <option value="Cancelado">🔴 Cancelado</option>
                                                                 </select>
                                                             </div>
                                                         </td>
-                                                        <td>{orderAdm.id}</td>
+                                                        <td>{orderAdm.id.toString().padStart(8, '0')}</td>
                                                         <td>
-                                                            {
-                                                                orderAdm.dishes.map(dish => (
-                                                                    <> {`${dish.quantity} x ${dish.name}, `} </>
-                                                                ))
-                                                            }
+                                                            {orderAdm.dishes.map(dish => (`${dish.quantity} x ${dish.name}`)).join(", ")}
                                                         </td>
-                                                        <td>{orderAdm.created_at}</td>
+                                                        <td>{new Date(orderAdm.created_at).toLocaleDateString('pt-BR')} às {new Date(orderAdm.created_at).toLocaleTimeString('pt-BR', { timeZone: 'America/Sao_Paulo', hour: 'numeric', minute: 'numeric' })}</td>
                                                     </tr>
                                                 ))
                                             }
@@ -168,17 +225,13 @@ export function OrderHistory() {
                                         <tbody className="order">
                                             {
                                                 orders.map(order => (
-                                                    <tr>
-                                                        <td>{`🟡 ${order.status}`}</td>
-                                                        <td>{order.id}</td>
+                                                    <tr key={order.id}>
+                                                        <td>{getStatusIcon(order.status)} {order.status}</td>
+                                                        <td>{order.id.toString().padStart(8, '0')}</td>
                                                         <td>
-                                                            {
-                                                                order.dishes.map(dish => (
-                                                                    <>{`${dish.quantity} x ${dish.name}, `}</>
-                                                                ))
-                                                            }
+                                                            {order.dishes.map(dish => (`${dish.quantity} x ${dish.name}`)).join(", ")}
                                                         </td>
-                                                        <td>{order.created_at}</td>
+                                                        <td>{new Date(order.created_at).toLocaleDateString('pt-BR')} às {new Date(order.created_at).toLocaleTimeString('pt-BR', { timeZone: 'America/Sao_Paulo', hour: 'numeric', minute: 'numeric' })}</td>
                                                     </tr>
                                                 ))
                                             }

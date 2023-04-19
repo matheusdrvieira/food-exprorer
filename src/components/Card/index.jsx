@@ -6,7 +6,7 @@ import { FaHeart } from "react-icons/fa";
 import { Resize, IsAdm } from "../../utils/index";
 import { FiMinus, FiPlus, FiHeart, FiEdit } from "react-icons/fi";
 import { WINDOW_MOBILE_DESCRIPTION } from "../../utils/constants";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { api } from "../../services/api";
 import dishPlaceholder from "../../assets/dish.png"
@@ -15,7 +15,7 @@ export function Card({ data, ...rest }) {
     const isMobile = Resize();
     const isAdm = IsAdm();
 
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
     const [isFavorite, setIsFavorite] = useState(data.is_favorite);
 
     async function handleAddFavorite(id) {
@@ -63,12 +63,16 @@ export function Card({ data, ...rest }) {
 
             <div id="Buttons-Wrapper">
                 <div id="input-Wrapper">
-                    <ButtonSvg id="ButtonSvg" icon={FiMinus} onClick={() => setCount(count <= 1 ? 1 : count - 1)} />
+                    <ButtonSvg id="ButtonSvg" icon={FiMinus} onClick={() => setCount(count <= 0 ? 0 : count - 1)} />
                     <Input id="inputNumber" type="number" value={count} onChange={e => setCount(e.target.value)} />
                     <ButtonSvg id="ButtonSvg" icon={FiPlus} onClick={() => setCount(count + 1)} />
                 </div>
 
-                <Button id="buttonAdd" title="incluir" />
+                {
+                    count > 0 ?
+                        <Button id="buttonAdd" title="incluir" onClick={() => createOrder(data)} /> :
+                        <Button id="buttonAdd" title="remover" onClick={() => removeDishToLocalStorage(data)} />
+                }
             </div>
         </Container >
     )

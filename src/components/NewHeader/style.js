@@ -76,7 +76,7 @@ export const LogoTextDesktop = styled.div`
     justify-content: space-between;
 
     gap: 3.2rem;
-    padding: 0 18rem 0 12.3rem;
+    padding: 0 12.3rem 0 12.3rem;
     
     color: ${({ theme }) => theme.COLORS.WHITE};
 

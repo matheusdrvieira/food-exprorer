@@ -7,34 +7,86 @@ import QRCODE from "../../assets/Vector.png";
 import { FaRegCreditCard, FaQrcode } from "react-icons/fa";
 import { RiFileListLine, RiTimer2Line } from "react-icons/ri";
 import { ImSpoonKnife, ImCancelCircle } from "react-icons/im";
+import { api } from "../../services/api";
 
 export function PayOut() {
     const [payment, setPayment] = useState(false);
-    const [process, setProcess] = useState(false);
-    const [status, setStatus] = useState(null);
+    const [paymentMethod, setPaymentMethod] = useState('Cartão de Crédito');
+    const [statusAdm, setStatusAdm] = useState(null);
+    const [orders, setOrders] = useState([]);
+    const [disableButtons, setDisableButtons] = useState(false);
 
     const handlePayment = () => {
-        setPayment(!payment)
-    }
+        setPayment(!payment);
+    };
 
-    const handleProcess = () => {
-        setProcess(!process)
+    const handlePaymentMethod = (method) => {
+        setPaymentMethod(method);
+        api.put(`/orders/${orders[orders.length - 1].id}`, { payment: method });
+    };
+
+    const handleClick = (method) => {
+        handlePayment();
+        handlePaymentMethod(method);
+
+        if (method === "Pix") {
+            setTimeout(() => {
+                updateStatus();
+            }, 10000);
+        }
+    };
+
+    useEffect(() => {
+        async function fetchOrders() {
+            const response = await api.get(`/orders`);
+            setOrders(response.data);
+        }
+
+        fetchOrders();
+    }, []);
+
+    async function updateStatus() {
+        const orderId = orders[orders.length - 1].id;
+        await api.patch(`/orders/${orderId}`, { status: "Pendente" });
+        setStatusAdm("Pendente")
     }
 
     useEffect(() => {
-        setStatus()
-    })
+        if (orders.length > 0) {
+            setStatusAdm(orders[orders.length - 1].status);
+        }
+    }, [orders]);
+
+    useEffect(() => {
+        if (statusAdm === "Pendente" || statusAdm === "Aprovado" || statusAdm === "Pedido Entregue" || statusAdm === "Cancelado") {
+            setDisableButtons(true);
+        } else {
+            setDisableButtons(false);
+        }
+    }, [statusAdm]);
 
     return (
         <Container>
             <h1>Pagamento</h1>
             <div id="box">
                 <div id="buttonPayments">
-                    <Button id="buttonCard" icon={FaRegCreditCard} onClick={handlePayment} />
-                    <Button id="buttonQrcode" icon={FaQrcode} onClick={handlePayment} />
+                    <Button
+                        className={!payment ? "active" : ""}
+                        id="buttonCard"
+                        icon={FaRegCreditCard}
+                        onClick={() => handleClick("Cartão de Crédito")}
+                        disabled={disableButtons}
+                    />
+                    <Button
+                        className={payment ? "active" : ""}
+                        id="buttonQrcode"
+                        icon={FaQrcode}
+                        onClick={() => handleClick("Pix")}
+                        disabled={disableButtons}
+                    />
                 </div>
                 {
-                    !process && !status ?
+                    !statusAdm ?
                         <div className="PaymentProcess">
                             {
                                 payment ?
@@ -57,14 +109,14 @@ export function PayOut() {
                                                 <Input type="number" placeholder="000" />
                                             </div>
                                         </div>
-                                        <Button title="Finalizar pagamento" icon={RiFileListLine} onClick={handleProcess} />
+                                        <Button title="Finalizar pagamento" icon={RiFileListLine} onClick={updateStatus} />
                                     </div>
                             }
                         </div>
                         :
                         <div className="paymentProcess">
                             {
-                                status == "AGUARDANDO_PAGAMENTO" ?
+                                statusAdm == "Pendente" ?
 
                                     <div className="process">
                                         <RiTimer2Line />
@@ -74,7 +126,7 @@ export function PayOut() {
                             }
 
                             {
-                                status == "PAGAMENTO_APROVADO" ?
+                                statusAdm == "Aprovado" ?
 
                                     <div className="process">
                                         <GoVerified />
@@ -84,7 +136,7 @@ export function PayOut() {
                             }
 
                             {
-                                status == "PEDIDO_ENTREGUE" ?
+                                statusAdm == "Pedido Entregue" ?
 
                                     <div className="process">
                                         <ImSpoonKnife />
@@ -94,7 +146,7 @@ export function PayOut() {
                             }
 
                             {
-                                status == "PEDIDO_CANCELADO" ?
+                                statusAdm == "Cancelado" ?
 
                                     <div className="process">
                                         <ImCancelCircle />
