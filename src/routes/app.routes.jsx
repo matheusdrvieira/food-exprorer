@@ -23,6 +23,7 @@ export function AppRoutes() {
 
             <Route path="/details/:id" element={<Details />} />
             <Route path="/order" element={<MyOrder />} />
+            <Route path="/order/:id" element={<MyOrder />} />
             <Route path="/history" element={<OrderHistory />} />
             <Route path="/favorites" element={<MyFavorites />} />
             <Route path="/payment" element={<Payment />} />

@@ -5,16 +5,18 @@ import dishPlaceholder from "../../assets/dish.png"
 import { api } from "../../services/api";
 
 export function Order({ data, ...rest }) {
-    const [orderDish, setOrderDish] = useState(data);
-
     async function handleRemoveDish(orderId, dishId) {
         try {
-            await api.delete(`/orders/${orderId}`, { data: { dishes: [{ id: dishId }] } });
-            const updatedOrderDishes = orderDish.dishes.filter(dish => dish.id !== dishId);
-            setOrderDish({ ...orderDish, dishes: updatedOrderDishes });
-            alert("Prato removido do seu pedido recarregue sua pagina!")
+
+            await api.delete(`/orders/${orderId}`, {
+                data: {
+                    dishes: [{ id: dishId }]
+                }
+            });
+            alert("Prato removido com sucesso!")
+
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     }
 

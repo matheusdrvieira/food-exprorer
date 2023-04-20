@@ -22,7 +22,7 @@ export function OrderHistory() {
 
         async function fetchOrdersAdm() {
             const startDate = "2023-04-10";
-            const endDate = "2023-04-20";
+            const endDate = "2023-05-20";
             const response = await api.get(`/users/orders?startDate=${startDate}&endDate=${endDate}`)
             setOrdersAdm(response.data)
         }
@@ -41,10 +41,8 @@ export function OrderHistory() {
         });
 
         setOrdersAdm(updatedOrdersAdm);
-        await api.patch(`/orders/${orderId}`, { status: newStatus });
 
-        const order = { id: orderId, status: newStatus };
-        localStorage.setItem("orderStatus", JSON.stringify(order));
+        await api.patch(`/orders/${orderId}`, { status: newStatus });
         alert("Status atualizado com sucesso!")
     }
 

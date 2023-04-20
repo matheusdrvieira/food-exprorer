@@ -13,12 +13,16 @@ import { WINDOW_MOBILE_WIDTH } from "../../utils/constants";
 import { RiFileListLine, RiCloseLine, RiUserLine } from "react-icons/ri";
 import { Container, LogoTextDesktop, LogoTextMobile } from "./style";
 import { useAuth } from "../../hooks/auth";
+import { api } from "../../services/api";
 
 export function Header({ handleCallback }) {
     const isMobile = Resize();
     const isAdm = IsAdm();
 
     const [showMenu, setShowMenu] = useState(false)
+    const [orderId, setOrderId] = useState()
+    const [order, setOrder] = useState([]);
+    const [NumberOfDishes, setNumberOfDishes] = useState(0)
 
     const handleMenu = () => {
         setShowMenu(!showMenu)
@@ -35,6 +39,25 @@ export function Header({ handleCallback }) {
         }
 
     }, [search]);
+
+    useEffect(() => {
+        async function fetchOrderId() {
+            const orderId = localStorage.getItem("orderId");
+            const response = await api.get(`/orders/${orderId}`);
+            setOrder(response.data);
+            setOrderId(orderId);
+
+            if (response.data[0].status !== "Pendente") {
+                setNumberOfDishes(0);
+                return;
+            }
+
+            const numberOfDishes = order.map((item) => item.dishes.length).reduce((a, b) => a + b, 0);
+            setNumberOfDishes(numberOfDishes);
+        }
+
+        fetchOrderId();
+    }, [order]);
 
     return (
         <Container>
@@ -75,7 +98,7 @@ export function Header({ handleCallback }) {
                             isAdm ?
                                 <Link to="/dish"><Button id="buttonRequest" title={`Novo prato`} /></Link>
                                 :
-                                <Link to="/order"><Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${"0"})`} /></Link>
+                                <Link to={`/order/${orderId}`}> <Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${NumberOfDishes})`} /></Link>
                         }
                         <Link to="/profile"><ButtonSvg icon={RiUserLine} /></Link>
 
@@ -105,7 +128,7 @@ export function Header({ handleCallback }) {
                                 <div id="buttonList">
 
                                     <ButtonSvg icon={RiFileListLine} />
-                                    <span>{0}</span>
+                                    <span>{NumberOfDishes}</span>
                                     <ButtonSvg icon={RiUserLine} />
                                 </div>
                             </Link>

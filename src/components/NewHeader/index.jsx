@@ -14,6 +14,7 @@ import { RiFileListLine, RiCloseLine } from "react-icons/ri";
 import { Container, LogoTextDesktop, LogoTextMobile } from "./style";
 import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { api } from "../../services/api";
 
 export function NewHeader() {
     const isMobile = Resize();
@@ -24,6 +25,10 @@ export function NewHeader() {
     const [showMenu, setShowMenu] = useState(false)
     const [search, setSearch] = useState("");
 
+    const [orderId, setOrderId] = useState()
+    const [order, setOrder] = useState([]);
+    const [NumberOfDishes, setNumberOfDishes] = useState(0)
+
     const navigate = useNavigate();
 
     const handleMenu = () => {
@@ -31,12 +36,30 @@ export function NewHeader() {
     }
 
     useEffect(() => {
-
         if (!search == " ") {
             navigate("/")
         }
 
     }, [search]);
+
+    useEffect(() => {
+        async function fetchOrderId() {
+            const orderId = localStorage.getItem("orderId");
+            const response = await api.get(`/orders/${orderId}`);
+            setOrder(response.data);
+            setOrderId(orderId);
+
+            if (response.data[0].status !== "Pendente") {
+                setNumberOfDishes(0);
+                return;
+            }
+
+            const numberOfDishes = order.map((item) => item.dishes.length).reduce((a, b) => a + b, 0);
+            setNumberOfDishes(numberOfDishes);
+        }
+
+        fetchOrderId();
+    }, [order]);
 
     return (
         <Container>
@@ -75,7 +98,7 @@ export function NewHeader() {
 
                         <Link to="/favorites"><ButtonText className="buttonsHeader" title="Meus favoritos" /></Link>
                         <Link to="/history"><ButtonText className="buttonsHeader" title="Histórico de pedidos" /></Link>
-                        <Link to="/order"><Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${"0"})`} /></Link>
+                        <Link to={`/order/${orderId}`}><Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${NumberOfDishes})`} /></Link>
 
                         <ButtonSvg id="buttonExit" icon={RxExit} onClick={signOut} />
                     </LogoTextDesktop>
@@ -96,7 +119,7 @@ export function NewHeader() {
                             <Link to="/order">
                                 <div id="buttonList">
                                     <ButtonSvg icon={RiFileListLine} />
-                                    <span>{0}</span>
+                                    <span>{NumberOfDishes}</span>
                                 </div>
                             </Link>
                         </LogoTextMobile >

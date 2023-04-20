@@ -11,10 +11,15 @@ import { api } from "../../services/api";
 
 export function PayOut() {
     const [payment, setPayment] = useState(false);
-    const [paymentMethod, setPaymentMethod] = useState('Cartão de Crédito');
-    const [statusAdm, setStatusAdm] = useState(null);
+    const [paymentMethod, setPaymentMethod] = useState();
     const [orders, setOrders] = useState([]);
+    const [status, setStatus] = useState(null);
     const [disableButtons, setDisableButtons] = useState(false);
+    const orderId = localStorage.getItem("orderId");
+
+    const [numberCard, setNumberCard] = useState(false);
+    const [validate, setValidate] = useState(false);
+    const [segurityCode, setSegurityCode] = useState(false);
 
     const handlePayment = () => {
         setPayment(!payment);
@@ -22,48 +27,76 @@ export function PayOut() {
 
     const handlePaymentMethod = (method) => {
         setPaymentMethod(method);
-        api.put(`/orders/${orders[orders.length - 1].id}`, { payment: method });
-    };
-
-    const handleClick = (method) => {
-        handlePayment();
-        handlePaymentMethod(method);
 
         if (method === "Pix") {
             setTimeout(() => {
-                updateStatus();
-            }, 10000);
+                finalizePaymentPix();
+            }, 5000);
         }
+
+        api.put(`/orders/${orderId}`, { payment: method });
+    };
+
+    const handleClick = (method) => {
+        if (method === paymentMethod) {
+            return;
+        }
+
+        handlePayment();
+        handlePaymentMethod(method);
     };
 
     useEffect(() => {
         async function fetchOrders() {
-            const response = await api.get(`/orders`);
+            const response = await api.get(`/orders/${orderId}`);
             setOrders(response.data);
+
+            if (response.data[0].payment == "Pix") {
+                setPayment(true)
+            }
         }
 
         fetchOrders();
     }, []);
 
-    async function updateStatus() {
-        const orderId = orders[orders.length - 1].id;
-        await api.patch(`/orders/${orderId}`, { status: "Pendente" });
-        setStatusAdm("Pendente")
-    }
-
     useEffect(() => {
-        if (orders.length > 0) {
-            setStatusAdm(orders[orders.length - 1].status);
+        const currentStatus = orders.map(order => order.status).toString();
+        if (currentStatus !== "Pendente") {
+
+            setStatus(currentStatus);
         }
     }, [orders]);
 
+    const finalizePayment = (method) => {
+        if (!numberCard) {
+            alert("Coloque o numero do seu Cartao")
+            return
+        }
+
+        if (!validate) {
+            alert("Coloque o numero da validade do seu Cartao")
+            return
+        }
+
+        if (!segurityCode) {
+            alert("Coloque o codigo de seguranca do seu Cartao")
+            return
+        }
+
+        setStatus(orders.map(order => order.status).toString())
+    };
+
+    const finalizePaymentPix = () => {
+        setStatus(orders.map(order => order.status).toString())
+    };
+
     useEffect(() => {
-        if (statusAdm === "Pendente" || statusAdm === "Aprovado" || statusAdm === "Pedido Entregue" || statusAdm === "Cancelado") {
+        if (status === "Pendente" || status === "Aprovado" || status === "Pedido Entregue" || status === "Cancelado") {
             setDisableButtons(true);
         } else {
             setDisableButtons(false);
         }
-    }, [statusAdm]);
+    }, [status]);
 
     return (
         <Container>
@@ -86,7 +119,7 @@ export function PayOut() {
                     />
                 </div>
                 {
-                    !statusAdm ?
+                    !status ?
                         <div className="PaymentProcess">
                             {
                                 payment ?
@@ -95,28 +128,28 @@ export function PayOut() {
                                     <div id="boxPayment">
                                         <div id="inputs-Wrapper">
                                             <label htmlFor="">Número do Cartão</label>
-                                            <Input type="number" placeholder="0000 0000 0000 0000" />
+                                            <Input type="number" placeholder="0000 0000 0000 0000" onChange={e => setNumberCard(e.target.value)} />
                                         </div>
 
                                         <div id="inputPayments">
                                             <div id="inputs-Wrapper">
                                                 <label htmlFor="">Validade</label>
-                                                <Input type="number" placeholder="04/25" />
+                                                <Input type="number" placeholder="04/25" onChange={e => setValidate(e.target.value)} />
                                             </div>
 
                                             <div id="inputs-Wrapper">
                                                 <label htmlFor="">CVC</label>
-                                                <Input type="number" placeholder="000" />
+                                                <Input type="number" placeholder="000" onChange={e => setSegurityCode(e.target.value)} />
                                             </div>
                                         </div>
-                                        <Button title="Finalizar pagamento" icon={RiFileListLine} onClick={updateStatus} />
+                                        <Button title="Finalizar pagamento" icon={RiFileListLine} onClick={finalizePayment} />
                                     </div>
                             }
                         </div>
                         :
                         <div className="paymentProcess">
                             {
-                                statusAdm == "Pendente" ?
+                                status == "Pendente" ?
 
                                     <div className="process">
                                         <RiTimer2Line />
@@ -126,7 +159,7 @@ export function PayOut() {
                             }
 
                             {
-                                statusAdm == "Aprovado" ?
+                                status == "Aprovado" ?
 
                                     <div className="process">
                                         <GoVerified />
@@ -136,7 +169,7 @@ export function PayOut() {
                             }
 
                             {
-                                statusAdm == "Pedido Entregue" ?
+                                status == "Pedido Entregue" ?
 
                                     <div className="process">
                                         <ImSpoonKnife />
@@ -146,7 +179,7 @@ export function PayOut() {
                             }
 
                             {
-                                statusAdm == "Cancelado" ?
+                                status == "Cancelado" ?
 
                                     <div className="process">
                                         <ImCancelCircle />

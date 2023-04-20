@@ -17,12 +17,13 @@ export function MyOrder() {
 
     useEffect(() => {
         async function fetchOrders() {
-            const response = await api.get(`/orders`);
+            const orderId = localStorage.getItem("orderId");
+            const response = await api.get(`/orders/${orderId}`);
             setDishes(response.data);
         }
 
         fetchOrders();
-    }, []);
+    }, [dishes]);
 
     const handleProcess = () => {
         navigate("/payment")
@@ -35,14 +36,15 @@ export function MyOrder() {
                 <section>
                     <h2>Meu Pedido</h2>
                     {
-                        dishes.slice().reverse()[0] &&
-                        <Order
-                            key={dishes.slice().reverse()[0].id}
-                            data={dishes.slice().reverse()[0]}
-                        />
+                        dishes.map(dish => (
+                            <Order
+                                key={dish.id}
+                                data={dish}
+                            />
+                        ))
                     }
                     {
-                        dishes.slice(-1).map((dish) => (
+                        dishes.map(dish => (
                             <span key={dish.id}>Total: R$ {dish.amount.toFixed(2)}</span>
                         ))
                     }

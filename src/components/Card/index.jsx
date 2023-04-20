@@ -28,6 +28,20 @@ export function Card({ data, ...rest }) {
         setIsFavorite(false);
     }
 
+    async function createOrder(id) {
+        const order = {
+            dishes: [{
+                id,
+                quantity: count
+            }]
+        };
+        const response = await api.post("/orders", order);
+        alert("Prato adicionado ao seu pedido")
+
+        const orderId = response.data.order_id;
+        localStorage.setItem("orderId", orderId);
+    }
+
     const imageUrl = data.image ? `${api.defaults.baseURL}/image/${data.image}` : dishPlaceholder;
 
     return (
@@ -67,12 +81,7 @@ export function Card({ data, ...rest }) {
                     <Input id="inputNumber" type="number" value={count} onChange={e => setCount(e.target.value)} />
                     <ButtonSvg id="ButtonSvg" icon={FiPlus} onClick={() => setCount(count + 1)} />
                 </div>
-
-                {
-                    count > 0 ?
-                        <Button id="buttonAdd" title="incluir" onClick={() => createOrder(data)} /> :
-                        <Button id="buttonAdd" title="remover" onClick={() => removeDishToLocalStorage(data)} />
-                }
+                <Button id="buttonAdd" title="incluir" onClick={() => createOrder(data.id)} />
             </div>
         </Container >
     )
