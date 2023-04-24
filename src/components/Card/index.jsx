@@ -78,7 +78,7 @@ export function Card({ data, ...rest }) {
             {
                 isAdm ?
                     null :
-                    <div id="Buttons-Wrapper">
+                    < div id="Buttons-Wrapper">
                         <div id="input-Wrapper">
                             <ButtonSvg id="ButtonSvg" icon={FiMinus} onClick={() => setCount(count <= 0 ? 0 : count - 1)} />
                             <Input id="inputNumber" type="number" value={count} onChange={e => setCount(e.target.value)} />
