@@ -48,17 +48,19 @@ export function NewHeader() {
             const response = await api.get(`/orders/${orderId}`);
             setOrder(response.data);
             setOrderId(orderId);
-
-            if (response.data[0].status !== "Pendente") {
-                setNumberOfDishes(0);
-                return;
-            }
-
-            const numberOfDishes = order.map((item) => item.dishes.length).reduce((a, b) => a + b, 0);
-            setNumberOfDishes(numberOfDishes);
         }
 
         fetchOrderId();
+    }, []);
+
+    useEffect(() => {
+        if (order[0]?.status !== "Pendente") {
+            setNumberOfDishes(0);
+            return;
+        }
+
+        const numberOfDishes = order.map((item) => item.dishes.length).reduce((a, b) => a + b, 0);
+        setNumberOfDishes(numberOfDishes);
     }, [order]);
 
     return (
@@ -150,6 +152,8 @@ export function NewHeader() {
                                                     null
                                             }
                                             <Link to="/favorites"><ButtonText title="Meus favoritos" /></Link>
+                                            <hr />
+                                            <Link to="/history"><ButtonText title="Histórico" /></Link>
                                             <hr />
                                             <ButtonText title="Sair" onClick={signOut} />
                                             <hr />

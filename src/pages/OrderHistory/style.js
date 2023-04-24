@@ -17,38 +17,53 @@ export const Container = styled.div`
             border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_TAG};
             border-radius: 8px;
 
-            #inputs{
-                display: flex;
-                gap: 1.5rem;
-            }
-    
-            label{
-                font-family: 'Poppins';
-                font-weight: 500;
-                font-size: 1.6rem;    
-            }
-    
-            div{
-                width: 100%;
-                div{
-                  
+            .inputs-Wrapper{
+                margin-top: 2rem;
+
+                label{
+                    font-family: 'Poppins';
+                    font-weight: 500;
+                    font-size: 1.6rem;
                 }
             }
         }
-    }
 
-    h2{
-        margin-bottom: 1rem;
-        white-space: nowrap;
-        font-family: 'Poppins';
-        font-weight: 500;
-        font-size: 2.8rem;    
+        h2{
+            white-space: nowrap;
+            font-family: 'Poppins';
+            font-weight: 500;
+            font-size: 2.8rem;    
+        }
     }
-    
 
 @media(min-width: 400px) {
     main{
         padding:3.5rem 5rem 10rem;
+
+        h2{
+            font-size: 2.5rem;
+        }
+    } 
+}
+
+@media(min-width: 500px) {
+    main{
+        padding:3.5rem 5rem 10rem;
+
+        #inputDate{
+            .inputs-Wrapper{
+                margin-top: 0;
+            }
+        }
+
+        #inputs{
+            display: flex;
+            gap: 1.5rem;
+            
+            div{
+                width: 100%;
+            }
+        }
     } 
 }
 
@@ -56,28 +71,27 @@ export const Container = styled.div`
     main{
         padding:3.5rem 18rem 5rem;
 
+        h2{
+            font-size: 3.2rem;
+            margin: 0;
+        }
+    } 
+}
+
+@media(min-width: 1150px) {
+    main{
         #inputDate{
             display: flex;
             justify-content: space-between;
             align-items: center;
-    
-            border: 2px solid ${({ theme }) => theme.COLORS.BACKGROUND_TAG};
-            border-radius: 5px;
-
-            gap: 3rem;
-
+            
             #inputs{
                 display: flex;
                 width: auto;
                 gap: 3rem;
             }
         }
-    }
-
-    h2{
-        font-size: 3.2rem;
-        margin-bottom:0;
-    }
+    } 
 }
 `;
 
@@ -93,7 +107,7 @@ export const BoxOrderMobile = styled.div`
     border-radius: 8px;
 
     margin-bottom: 1.7rem;
-
+            
     .boxHeade{
         display: flex;
         align-items: center;

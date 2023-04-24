@@ -207,7 +207,6 @@ export const LogoTextMobile = styled.div`
 
             font-family: 'Poppins';
             font-size: 1.4rem;
-            
 
             display: flex;
             justify-content: center;

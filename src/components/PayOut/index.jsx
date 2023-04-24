@@ -67,7 +67,7 @@ export function PayOut() {
         }
     }, [orders]);
 
-    const finalizePayment = (method) => {
+    const finalizePayment = () => {
         if (!numberCard) {
             alert("Coloque o numero do seu Cartao")
             return

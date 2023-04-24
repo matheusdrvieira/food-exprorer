@@ -158,7 +158,7 @@ export const LogoTextMobile = styled.div`
 
     color: ${({ theme }) => theme.COLORS.WHITE};
 
-    div{
+    #logo{
         display: flex;
         gap: 8px;
 
@@ -194,7 +194,7 @@ export const LogoTextMobile = styled.div`
 
             position: relative;
 
-            right: 2rem;
+            right: 1.4rem;
             bottom: 8px;
 
             border-radius: 50%;
@@ -202,7 +202,6 @@ export const LogoTextMobile = styled.div`
             font-family: 'Poppins';
             font-size: 1.4rem;
             
-
             display: flex;
             justify-content: center;
             align-items: center;

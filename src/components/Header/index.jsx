@@ -46,17 +46,19 @@ export function Header({ handleCallback }) {
             const response = await api.get(`/orders/${orderId}`);
             setOrder(response.data);
             setOrderId(orderId);
-
-            if (response.data[0].status !== "Pendente") {
-                setNumberOfDishes(0);
-                return;
-            }
-
-            const numberOfDishes = order.map((item) => item.dishes.length).reduce((a, b) => a + b, 0);
-            setNumberOfDishes(numberOfDishes);
         }
 
         fetchOrderId();
+    }, []);
+
+    useEffect(() => {
+        if (order[0]?.status !== "Pendente") {
+            setNumberOfDishes(0);
+            return;
+        }
+
+        const numberOfDishes = order.map((item) => item.dishes.length).reduce((a, b) => a + b, 0);
+        setNumberOfDishes(numberOfDishes);
     }, [order]);
 
     return (
@@ -96,7 +98,10 @@ export function Header({ handleCallback }) {
 
                         {
                             isAdm ?
-                                <Link to="/dish"><Button id="buttonRequest" title={`Novo prato`} /></Link>
+                                <>
+                                    <Link to="/dish"><Button id="buttonRequest" title={`Novo prato`} /></Link>
+                                    <Link to="/history"><ButtonSvg id="buttonRequest" icon={RiFileListLine} /></Link>
+                                </>
                                 :
                                 <Link to={`/order/${orderId}`}> <Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${NumberOfDishes})`} /></Link>
                         }
@@ -115,7 +120,7 @@ export function Header({ handleCallback }) {
                         <LogoTextMobile>
                             <ButtonSvg icon={BsList} onClick={handleMenu} />
                             <Link to="/">
-                                <div>
+                                <div id="logo">
                                     <img src={titleBg} alt="logo" />
                                     {
                                         isAdm ?
@@ -125,12 +130,15 @@ export function Header({ handleCallback }) {
                             </Link>
 
                             <Link to="/order">
-                                <div id="buttonList">
-
-                                    <ButtonSvg icon={RiFileListLine} />
-                                    <span>{NumberOfDishes}</span>
-                                    <ButtonSvg icon={RiUserLine} />
-                                </div>
+                                {
+                                    isAdm ?
+                                        null :
+                                        <div id="buttonList">
+                                            <ButtonSvg icon={RiFileListLine} />
+                                            <span>{NumberOfDishes}</span>
+                                            <ButtonSvg icon={RiUserLine} />
+                                        </div>
+                                }
                             </Link>
                         </LogoTextMobile >
 
@@ -155,6 +163,8 @@ export function Header({ handleCallback }) {
                                                 isAdm ?
                                                     <>
                                                         <Link to="/dish"><ButtonText title="Novo Prato" /></Link>
+                                                        <hr />
+                                                        <Link to="/history"><ButtonText title="Histórico" /></Link>
                                                         <hr />
                                                     </>
                                                     :

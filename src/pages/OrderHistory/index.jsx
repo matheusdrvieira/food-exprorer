@@ -14,6 +14,17 @@ export function OrderHistory() {
     const [orders, setOrders] = useState([]);
     const [ordersAdm, setOrdersAdm] = useState([]);
 
+    const [startDate, setStartDate] = useState(() => {
+        const now = new Date();
+        return new Date(now.getFullYear(), now.getMonth(), 1).toISOString().substr(0, 10);
+    });
+
+    const [endDate, setEndDate] = useState(() => {
+        const now = new Date();
+        const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+        return lastDayOfMonth.toISOString().substr(0, 10);
+    });
+
     useEffect(() => {
         async function fetchOrders() {
             const response = await api.get(`/orders`)
@@ -21,14 +32,12 @@ export function OrderHistory() {
         }
 
         async function fetchOrdersAdm() {
-            const startDate = "2023-04-10";
-            const endDate = "2023-05-20";
             const response = await api.get(`/users/orders?startDate=${startDate}&endDate=${endDate}`)
             setOrdersAdm(response.data)
         }
 
-        fetchOrders();
         fetchOrdersAdm();
+        fetchOrders();
     }, []);
 
     async function updateStatus(orderId, newStatus) {
@@ -73,13 +82,13 @@ export function OrderHistory() {
                                     <div id="inputDate">
                                         <h2>Histórico de pedidos</h2>
                                         <div id="inputs">
-                                            <div>
+                                            <div className="inputs-Wrapper">
                                                 <label>de:</label>
-                                                <Input type="text" placeholder="Ex: 2023-01-01" />
+                                                <Input type="date" placeholder="Ex: 2023-01-01" value={startDate} onChange={e => setStartDate(e.target.value)} />
                                             </div>
-                                            <div>
+                                            <div className="inputs-Wrapper">
                                                 <label>até:</label>
-                                                <Input type="text" placeholder="Ex: 2023-02-30" />
+                                                <Input type="date" placeholder="Ex: 2023-02-30" value={endDate} onChange={e => setEndDate(e.target.value)} />
                                             </div>
                                         </div>
                                     </div>
@@ -158,18 +167,18 @@ export function OrderHistory() {
                                     <div id="inputDate">
                                         <h2>Histórico de pedidos</h2>
                                         <div id="inputs">
-                                            <div>
+                                            <div className="inputs-Wrapper">
                                                 <label>de:</label>
-                                                <Input type="text" placeholder="Exemplo: 2023-01-01" />
+                                                <Input type="date" placeholder="Exemplo: 2023-01-01" value={startDate} onChange={e => setStartDate(e.target.value)} />
                                             </div>
-                                            <div>
+                                            <div className="inputs-Wrapper">
                                                 <label>até:</label>
-                                                <Input type="text" placeholder="Exemplo: 2023-02-30" />
+                                                <Input type="date" placeholder="Exemplo: 2023-02-30" value={endDate} onChange={e => setEndDate(e.target.value)} />
                                             </div>
                                         </div>
                                     </div>
                                 </> :
-                                <h2>Histórico de pedidos</h2>
+                                null
                         }
                         {
                             isAdm ?
