@@ -6,6 +6,7 @@ export const Container = styled.div`
    display: flex;
    flex-direction: column;
    align-items: center;
+   justify-content: center;
    text-align: center;
    flex: none;
   
@@ -19,7 +20,6 @@ export const Container = styled.div`
      
    .favorite, .edit{
        width: 100%;
-       height: 0;
 
        display: flex;
        justify-content: flex-end;
@@ -56,6 +56,10 @@ export const Container = styled.div`
                     -webkit-appearance: none;
                     margin: 0;
                 }
+
+                input{
+                    padding-left: 17px;
+                }
             }
         }
         
@@ -85,7 +89,6 @@ export const Container = styled.div`
             color:${({ theme }) => theme.COLORS.WHITE};
         }
     }
-
 
 @media (min-width: 1000px) {
     width:30.4rem;

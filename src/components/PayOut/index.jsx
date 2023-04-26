@@ -83,12 +83,23 @@ export function PayOut() {
             return
         }
 
-        setStatus(orders.map(order => order.status).toString())
+        const newStatus = orders.map(order => order.status).toString()
+        setStatus(newStatus)
+        localStorage.setItem('@OrderStatus', newStatus)
     };
 
     const finalizePaymentPix = () => {
-        setStatus(orders.map(order => order.status).toString())
+        const newStatus = orders.map(order => order.status).toString()
+        setStatus(newStatus)
+        localStorage.setItem('@OrderStatus', newStatus)
     };
+
+    useEffect(() => {
+        const localStorageStatus = localStorage.getItem('status')
+        if (localStorageStatus) {
+            setStatus(localStorageStatus)
+        }
+    }, [orders]);
 
     useEffect(() => {
         if (status === "Pendente" || status === "Aprovado" || status === "Pedido Entregue" || status === "Cancelado") {

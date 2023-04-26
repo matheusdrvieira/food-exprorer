@@ -25,7 +25,7 @@ export function NewHeader() {
     const [showMenu, setShowMenu] = useState(false)
     const [search, setSearch] = useState("");
 
-    const [orderId, setOrderId] = useState()
+    const orderId = localStorage.getItem("orderId");
     const [order, setOrder] = useState([]);
     const [NumberOfDishes, setNumberOfDishes] = useState(0)
 
@@ -44,14 +44,12 @@ export function NewHeader() {
 
     useEffect(() => {
         async function fetchOrderId() {
-            const orderId = localStorage.getItem("orderId");
             const response = await api.get(`/orders/${orderId}`);
             setOrder(response.data);
-            setOrderId(orderId);
         }
 
         fetchOrderId();
-    }, []);
+    }, [order, orderId]);
 
     useEffect(() => {
         if (order[0]?.status !== "Pendente") {
@@ -119,10 +117,12 @@ export function NewHeader() {
                             </Link>
 
                             <Link to="/order">
-                                <div id="buttonList">
-                                    <ButtonSvg icon={RiFileListLine} />
-                                    <span>{NumberOfDishes}</span>
-                                </div>
+                                {isAdm ? null :
+                                    <div id="buttonList">
+                                        <ButtonSvg icon={RiFileListLine} />
+                                        <span>{NumberOfDishes}</span>
+                                    </div>
+                                }
                             </Link>
                         </LogoTextMobile >
 

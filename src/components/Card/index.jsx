@@ -29,17 +29,23 @@ export function Card({ data, ...rest }) {
     }
 
     async function createOrder(id) {
-        const order = {
-            dishes: [{
-                id,
-                quantity: count
-            }]
-        };
-        const response = await api.post("/orders", order);
-        alert("Prato adicionado ao seu pedido")
+        try {
+            const order = {
+                dishes: [{
+                    id,
+                    quantity: count
+                }]
+            };
+            const response = await api.post("/orders", order);
+            alert("Prato adicionado ao seu pedido")
 
-        const orderId = response.data.order_id;
-        localStorage.setItem("orderId", orderId);
+            const orderId = response.data.order_id;
+            localStorage.setItem("orderId", orderId);
+
+        } catch (error) {
+            alert("Não foi possível adicionar o prato ao seu pedido. Por favor, tente novamente mais tarde.");
+            console.log(error);
+        }
     }
 
     const imageUrl = data.image ? `${api.defaults.baseURL}/image/${data.image}` : dishPlaceholder;

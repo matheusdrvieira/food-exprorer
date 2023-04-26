@@ -31,14 +31,21 @@ export function OrderHistory() {
             setOrders(response.data)
         }
 
+        fetchOrders();
+    }, []);
+
+    useEffect(() => {
         async function fetchOrdersAdm() {
             const response = await api.get(`/users/orders?startDate=${startDate}&endDate=${endDate}`)
             setOrdersAdm(response.data)
         }
 
-        fetchOrdersAdm();
-        fetchOrders();
-    }, []);
+        if (isAdm) {
+            fetchOrdersAdm();
+        }
+
+    }, [startDate, endDate, isAdm]);
+
 
     async function updateStatus(orderId, newStatus) {
         const updatedOrdersAdm = ordersAdm.map(orderAdm => {

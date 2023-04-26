@@ -20,8 +20,8 @@ export function Header({ handleCallback }) {
     const isAdm = IsAdm();
 
     const [showMenu, setShowMenu] = useState(false)
-    const [orderId, setOrderId] = useState()
     const [order, setOrder] = useState([]);
+    const orderId = localStorage.getItem("orderId");
     const [NumberOfDishes, setNumberOfDishes] = useState(0)
 
     const handleMenu = () => {
@@ -42,14 +42,12 @@ export function Header({ handleCallback }) {
 
     useEffect(() => {
         async function fetchOrderId() {
-            const orderId = localStorage.getItem("orderId");
             const response = await api.get(`/orders/${orderId}`);
             setOrder(response.data);
-            setOrderId(orderId);
         }
 
         fetchOrderId();
-    }, []);
+    }, [order, orderId]);
 
     useEffect(() => {
         if (order[0]?.status !== "Pendente") {
