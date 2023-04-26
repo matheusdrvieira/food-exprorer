@@ -62,7 +62,6 @@ export function PayOut() {
     useEffect(() => {
         const currentStatus = orders.map(order => order.status).toString();
         if (currentStatus !== "Pendente") {
-
             setStatus(currentStatus);
         }
     }, [orders]);
@@ -95,7 +94,7 @@ export function PayOut() {
     };
 
     useEffect(() => {
-        const localStorageStatus = localStorage.getItem('status')
+        const localStorageStatus = localStorage.getItem('@OrderStatus')
         if (localStorageStatus) {
             setStatus(localStorageStatus)
         }

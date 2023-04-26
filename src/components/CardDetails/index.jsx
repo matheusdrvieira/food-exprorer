@@ -13,7 +13,27 @@ import { api } from "../../services/api";
 
 export function CardDetails({ data, ...rest }) {
     const isAdm = IsAdm();
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
+
+    async function createOrder(id) {
+        try {
+            const order = {
+                dishes: [{
+                    id,
+                    quantity: count
+                }]
+            };
+            const response = await api.post("/orders", order);
+            alert("Prato adicionado ao seu pedido")
+
+            const orderId = response.data.order_id;
+            localStorage.setItem("orderId", orderId);
+
+        } catch (error) {
+            alert("Não foi possível adicionar o prato ao seu pedido. Por favor, tente novamente mais tarde.");
+            console.log(error);
+        }
+    }
 
     const imageUrl = data.image ? `${api.defaults.baseURL}/image/${data.image}` : dishPlaceholder;
 
@@ -46,7 +66,7 @@ export function CardDetails({ data, ...rest }) {
                                 <div id="input-Wrapper">
                                     <ButtonSvg id="ButtonSvg"
                                         icon={FiMinus}
-                                        onClick={() => setCount(count <= 1 ? 1 : count - 1)}
+                                        onClick={() => setCount(count <= 0 ? 0 : count - 1)}
                                     />
 
                                     <Input id="inputNumber"
@@ -60,7 +80,7 @@ export function CardDetails({ data, ...rest }) {
                                     />
                                 </div>
 
-                                <Button className="buttonAdd" title="Pedir" price={` R$ ${data.price}`} icon={RiFileListLine} />
+                                <Button className="buttonAdd" title="Pedir" price={` R$ ${data.price}`} icon={RiFileListLine} onClick={() => createOrder(data.id)} />
                             </>
                     }
                 </div>
