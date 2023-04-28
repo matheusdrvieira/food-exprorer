@@ -1,6 +1,8 @@
 # 🍔Food Explorer
 
 * food explorer é uma aplicação que simula o site de restaurante, ou seja um cliente pode fazer pedidos, e administrador gerencia esses pedidos.
+ 
+![Capa do Projeto](src/assets/Capa.png)
 
 # 💬Sobre
 
