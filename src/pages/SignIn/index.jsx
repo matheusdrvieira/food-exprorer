@@ -54,7 +54,6 @@ export function SignIn() {
                 />
 
                 <Button title="Entrar" onClick={handleSignIn} />
-
                 <Link to="/register"><ButtonText id="buttonText" title="Criar uma conta" /></Link>
             </form>
         </Container>

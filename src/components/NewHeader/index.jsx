@@ -100,7 +100,7 @@ export function NewHeader() {
                         <Link to="/history"><ButtonText className="buttonsHeader" title="Histórico de pedidos" /></Link>
                         <Link to={`/order/${orderId}`}><Button id="buttonRequest" icon={RiFileListLine} title={`Pedidos(${NumberOfDishes})`} /></Link>
 
-                        <ButtonSvg id="buttonExit" icon={RxExit} onClick={signOut} />
+                        <Link to="/"><ButtonSvg id="buttonExit" icon={RxExit} onClick={signOut} /></Link>
                     </LogoTextDesktop>
                     :
                     <>
@@ -117,11 +117,12 @@ export function NewHeader() {
                             </Link>
 
                             <Link to="/order">
-                                {isAdm ? null :
-                                    <div id="buttonList">
-                                        <ButtonSvg icon={RiFileListLine} />
-                                        <span>{NumberOfDishes}</span>
-                                    </div>
+                                {
+                                    isAdm ? null :
+                                        <div id="buttonList">
+                                            <ButtonSvg icon={RiFileListLine} />
+                                            <span>{NumberOfDishes}</span>
+                                        </div>
                                 }
                             </Link>
                         </LogoTextMobile >
@@ -155,7 +156,7 @@ export function NewHeader() {
                                             <hr />
                                             <Link to="/history"><ButtonText title="Histórico" /></Link>
                                             <hr />
-                                            <ButtonText title="Sair" onClick={signOut} />
+                                            <Link to="/"><ButtonText title="Sair" onClick={signOut} /></Link>
                                             <hr />
                                         </div>
                                     </div>

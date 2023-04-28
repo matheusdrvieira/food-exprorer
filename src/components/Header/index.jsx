@@ -105,11 +105,13 @@ export function Header({ handleCallback }) {
                         }
                         <Link to="/profile"><ButtonSvg icon={RiUserLine} /></Link>
 
-                        <ButtonSvg
-                            id="buttonExit"
-                            icon={RxExit}
-                            onClick={signOut}
-                        />
+                        <Link to="/">
+                            <ButtonSvg
+                                id="buttonExit"
+                                icon={RxExit}
+                                onClick={signOut}
+                            />
+                        </Link>
                     </LogoTextDesktop>
 
                     :
@@ -168,7 +170,7 @@ export function Header({ handleCallback }) {
                                                     :
                                                     null
                                             }
-                                            <ButtonText title="Sair" onClick={signOut} />
+                                            <Link to="/"><ButtonText title="Sair" onClick={signOut} /></Link>
                                             <hr />
                                         </div>
                                     </div>
