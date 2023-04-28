@@ -40,7 +40,7 @@ aonde foi proposto a construção de uma aplicação para gerenciar os pedidos d
 
 * Para utilizar esse projeto localmente, primeiro você precisará instalar o backend conforme essa [documentação](https://github.com/matheusvieira14/food_explorer-Backend_js).
 
-* git clone https://github.com/matheusvieira14/final_Challenge--food_Exprorer.git
+* git clone https://github.com/matheusvieira14/final_Challenge-food_Exprorer.git
 * Entre no diretório
 * Instale as dependências:
 * $npm install
