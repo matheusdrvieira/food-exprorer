@@ -51,6 +51,6 @@ aonde foi proposto a construção de uma aplicação para gerenciar os pedidos d
 
 # Autor
 
-Feito com ❤️ por Dev Matheus da Rocha Vieira 😀 Veja meu [LinkedIn](https://www.linkedin.com/in/matheus-vieira-001b46248/).
+Feito por Dev Matheus da Rocha Vieira 😀 Veja meu [LinkedIn](https://www.linkedin.com/in/matheus-vieira-001b46248/).
 
 
