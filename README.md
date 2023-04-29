@@ -1,13 +1,20 @@
 # 🍔Food Explorer - Front-End
 
-* food explorer é uma aplicação que simula o site de restaurante, ou seja um cliente pode fazer pedidos, e administrador gerencia esses pedidos.
+* Esse projeto é um cardápio digital para um restaurante fictício, conhecido como foodExplorer.
  
 ![Capa do Projeto](src/assets/Capa.png)
 
 # 💬Sobre
 
-* Este é o projeto final do programa Explorer da Rocketseat, 
-aonde foi proposto a construção de uma aplicação para gerenciar os pedidos de um restaurante. 
+Este é o backend do Desafio Final do programa Explorer da Rocketseat.
+
+Essa aplicação simula um restaurante fictício, conhecido como FoodExplorer, onde usuários podem se cadastrar, logar e realizar pedidos.
+
+os usuarios sao divididos em dois grupos cliente e adsministrador.
+
+Sendo o usuário um Administrador, ele poderá adicionar pratos, ingredientes e atualizar pedidos.
+
+Sendo o usuário um Cliente, ele poderá atualizar seu perfil, fazer um pedido, adicionar pratos a os favoritos.
 
 # 📝Tecnologias
 
@@ -50,12 +57,12 @@ git clone https://github.com/matheusvieira14/final_Challenge-food_Exprorer.git
 #### Entre no diretório:
 
 ```` 
-$cd final_Challenge-food_Exprorer
+cd final_Challenge-food_Exprorer
 ````
 
 #### Instale as dependências:
 ```` 
-$npm install 
+npm install 
 ````
 
 #### Defina a variável local, conforme o endereço que será gerado no backend. Exemplo:
@@ -66,7 +73,7 @@ baseURL: "https://localhost:3333"
 
 #### Inicie um servidor local para o frontend:
 ```` 
-$npm run dev
+npm run dev
 ````
 
 # 🔑Conta administrador:
